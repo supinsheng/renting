@@ -45,3 +45,23 @@ Route::get('/admin/editHousehold/{id}','AdminController@editHousehold')->name('e
 
 // 执行编辑
 Route::post('/admin/doeditHold/{id}','AdminController@doeditHold')->name('doeditHold');
+
+
+
+// 小区管理开始
+// 小区管理
+Route::get('/admin/village','AdminController@village')->name('village');
+
+// 删除小区
+Route::get('/admin/delVillage/{id}','AdminController@delVillage')->name('delVillage');
+
+// 编辑小区
+Route::get('/admin/editVillage/{id}','AdminController@editVillage')->name('editVillage');
+// 执行编辑
+Route::post('/admin/doeditVillage/{id}','AdminController@doeditVillage')->name('doeditVillage');
+
+// 新增小区
+Route::get('/admin/addVillage','AdminController@addVillage')->name('addVillage');
+// 执行新增
+Route::post('/admin/doaddVillage','AdminController@doaddVillage')->name('doaddVillage');
+// 小区管理结束

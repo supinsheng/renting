@@ -34,6 +34,7 @@ body{overflow-x:hidden; background:url(/images/main/leftbg.jpg) left top repeat-
         <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">住户信息查询</a>
         <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">住户信息统计</a>
         <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">房屋出租记录查询</a>
+        <a href="/admin/village" target="mainFrame" onFocus="this.blur()">小区管理</a>
         <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">收费管理</a>
       </div>
       <div class="collapsed">

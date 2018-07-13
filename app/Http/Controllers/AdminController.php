@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Household;
 use App\Model\Admin;
+use App\Model\Village;
 
 class AdminController extends Controller
 {
@@ -89,7 +90,9 @@ class AdminController extends Controller
     // 录入住户
     public function addHousehold(){
 
-        return view('admin.main_add');
+        $village = Village::get();
+
+        return view('admin.main_add',['village'=>$village]);
     }
 
     // 执行录入
@@ -106,7 +109,9 @@ class AdminController extends Controller
 
         $household = Household::find($id);
 
-        return view('admin.main_edit',['household'=>$household]);
+        $village = Village::get();
+
+        return view('admin.main_edit',['household'=>$household,'village'=>$village]);
     }
 
     // 执行编辑
@@ -118,4 +123,69 @@ class AdminController extends Controller
         $household->save();
         return redirect()->route('indexMain');
     }
+
+    // 小区管理开始
+    // 小区管理
+    public function village(Request $req){
+
+        if($req->keyword){
+            
+            $village = Village::where(function($q) use($req){
+
+                $q->where('name','like',"%$req->keyword%");
+            })->orderBy('id','desc')->get();
+        }else {
+            $village = Village::orderBy('id','desc')->get();
+        }
+
+        return view('admin.village',['village'=>$village]);
+    }
+
+    // 删除小区
+    public function delVillage($id){
+
+        $village = Village::find($id);
+        $village->delete();
+
+        return back();
+    }
+
+    // 编辑小区
+    public function editVillage($id){
+
+        $village = Village::find($id);
+
+        return view('admin.village_edit',['village'=>$village]);
+        
+    }
+
+    // 执行编辑
+    public function doeditVillage(Request $req,$id){
+        
+        $village = Village::find($id);
+        
+        $village->fill($req->all());
+        
+        $village->save();
+        
+        return redirect()->route('village');
+    }
+
+    // 新增小区
+    public function addVillage(){
+
+        return view('admin.village_add');
+    }
+
+    // 执行新增
+    public function doaddVillage(Request $req){
+
+        $village = new Village;
+        $village->fill($req->all());
+
+        $village->save();
+
+        return redirect()->route('village');
+    }
+    // 小区管理结束
 }
