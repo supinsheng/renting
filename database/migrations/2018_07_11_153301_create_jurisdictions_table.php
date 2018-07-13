@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJurisdictionTable extends Migration
+class CreateJurisdictionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateJurisdictionTable extends Migration
      */
     public function up()
     {
-        Schema::create('jurisdiction', function (Blueprint $table) {
+        Schema::create('jurisdictions', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->timestamps();
             $table->string('name',10)->comment('账号');
@@ -32,6 +32,6 @@ class CreateJurisdictionTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jurisdiction');
+        Schema::dropIfExists('jurisdictions');
     }
 }

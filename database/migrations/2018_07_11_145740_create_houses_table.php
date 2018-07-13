@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHouseTable extends Migration
+class CreateHousesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateHouseTable extends Migration
      */
     public function up()
     {
-        Schema::create('house', function (Blueprint $table) {
+        Schema::create('houses', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->string('house_id')->comment('房屋编号');
             $table->enum('state',['出租中','没出租'])->comment('房屋状态');
@@ -30,6 +30,6 @@ class CreateHouseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('house');
+        Schema::dropIfExists('houses');
     }
 }

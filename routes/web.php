@@ -65,3 +65,11 @@ Route::get('/admin/addVillage','AdminController@addVillage')->name('addVillage')
 // 执行新增
 Route::post('/admin/doaddVillage','AdminController@doaddVillage')->name('doaddVillage');
 // 小区管理结束
+
+
+
+
+
+// ajax接口
+// 续租
+Route::post('/xuzu/{data}','XzTzController@xuzu');

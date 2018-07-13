@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGuaranteeTable extends Migration
+class CreateGuaranteesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGuaranteeTable extends Migration
      */
     public function up()
     {
-        Schema::create('guarantee', function (Blueprint $table) {
+        Schema::create('guarantees', function (Blueprint $table) {
             $table->increments('id')->comment('ID');
             $table->timestamps();
             $table->string('flow_number',20)->comment('流水号');
@@ -37,6 +37,6 @@ class CreateGuaranteeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guarantee');
+        Schema::dropIfExists('guarantees');
     }
 }
