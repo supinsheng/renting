@@ -35,7 +35,12 @@ Route::get('/admin/indexBottom','AdminController@indexBottom');
 // 删除住户
 Route::get('/admin/deleteHousehold/{id}','AdminController@delHousehold')->name('deleteHousehold');
 
-// 编辑用户
+// 录入住户
+Route::get('/admin/addHousehold','AdminController@addHousehold')->name('addHousehold');
+// 执行录入
+Route::post('admin/doaddHold','AdminController@doaddHold')->name('doaddHold');
+
+// 编辑住户
 Route::get('/admin/editHousehold/{id}','AdminController@editHousehold')->name('editHousehold');
 
 // 执行编辑

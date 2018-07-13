@@ -17,7 +17,6 @@ class CreateHouseholdsTable extends Migration
             $table->increments('id')->comment('ID');
             $table->timestamps();
             $table->string("username",10)->comment('用户账号');
-            $table->char('password',60)->comment('用户密码');
             $table->string('realname',10)->comment('用户实名(用户名称)');
             $table->string('cardId',18)->comment('用户身份证');
             $table->string('phone',11)->comment('手机号码');

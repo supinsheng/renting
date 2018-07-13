@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Household extends Model
 {
-    protected $fillable = ['realname','phone','address','village'];
+    protected $fillable = ['username','realname','cardId','phone','address','village'];
 }

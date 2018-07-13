@@ -66,9 +66,9 @@ class AdminController extends Controller
                   ->orWhere('address','like',"%$req->keyword%")
                   ->orWhere('village','like',"%$req->keyword%")
                   ->orWhere('phone','like',"%$req->keyword%");
-            })->paginate(15);
+            })->orderBy('id','desc')->paginate(15);
         }else {
-            $household = Household::paginate(15);
+            $household = Household::orderBy('id','desc')->paginate(15);
         }
         
         return view('admin.main',['household'=>$household,'req'=>$req]);
@@ -84,6 +84,21 @@ class AdminController extends Controller
         $household = Household::find($id);
         $household->delete();
         return redirect()->route('indexMain');
+    }
+
+    // 录入住户
+    public function addHousehold(){
+
+        return view('admin.main_add');
+    }
+
+    // 执行录入
+    public function doaddHold(Request $req){
+
+        $household = new Household;
+        $household->fill($req->all());
+        $household->save();
+        return redirect()->route('indexMain');    
     }
 
     // 编辑住户

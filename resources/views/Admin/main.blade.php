@@ -27,13 +27,28 @@ body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
 .gray{ color:#dbdbdb;}
 td.fenye{ padding:10px 0 0 0; text-align:right;}
 .bggray{ background:#f9f9f9}
+.btn {
+    float:right;
+    margin-top:-35px;
+    margin-right: 30px;
+    weight: 80px;
+    height: 30px;
+    background-color: green;
+    border: 1px solid rgb(29, 58, 255);
+    border-radius: 5px;
+}
+.btn a {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+}
 </style>
 </head>
 <body>
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：用户管理</td>
+    <td width="99%" align="left" valign="top">您的位置：住户管理</td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -46,9 +61,9 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
               <input name="" type="submit" value="查询" class="text-but">
 	         </form>
          </td>
-
-  		</tr>
-	</table>
+      </tr>
+  </table>
+  <button class="btn"><a href="{{ route('addHousehold') }}">录入住户</a></button>
     </td>
   </tr>
   <tr>
