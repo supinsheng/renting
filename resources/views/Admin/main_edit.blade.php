@@ -69,9 +69,23 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         </td>
         </tr>
         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">电话：</td>
+        <td align="right" valign="middle" class="borderright borderbottom bggray">身份证：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <input type="text" name="cardId" value="{{ $household->cardId }}" class="text-word">
+        </td>
+        </tr>
+
+        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">入住时间：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="start" value="{{ $household->start }}" class="text-word">
+        </td>
+        </tr>
+
+        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">入住时长：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="time" value="{{ $household->time }}" class="text-word">
         </td>
         </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">

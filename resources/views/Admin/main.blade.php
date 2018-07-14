@@ -76,6 +76,8 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <th align="center" valign="middle" class="borderright">姓名</th>
         <th align="center" valign="middle" class="borderright">电话</th>
         <th align="center" valign="middle" class="borderright">身份证</th>
+        <th align="center" valign="middle" class="borderright">入住时间</th>
+        <th align="center" valign="middle" class="borderright">入住时长</th>
         <th align="center" valign="middle" class="borderright">用户住址</th>
         <th align="center" valign="middle" class="borderright">小区</th>
         <th align="center" valign="middle">操作</th>
@@ -87,6 +89,8 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="center" valign="middle" class="borderright borderbottom">{{ $h->realname }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $h->phone }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $h->cardId }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->start }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->time }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $h->address }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $h->village }}</td>
         <td align="center" valign="middle" class="borderbottom"><a href="{{ route('editHousehold',['id'=>$h->id]) }}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a><span class="gray">&nbsp;|&nbsp;</span>

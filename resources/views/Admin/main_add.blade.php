@@ -77,6 +77,20 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       </tr>
 
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">入住时间：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="start" value="" class="text-word">
+        </td>
+      </tr>
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">入住时长：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="time" value="" class="text-word">
+        </td>
+      </tr>
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">住址：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <input type="text" name="address" value="" class="text-word">
