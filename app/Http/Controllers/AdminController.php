@@ -66,7 +66,10 @@ class AdminController extends Controller
                 $q->where('realname','like',"%$req->keyword%")
                   ->orWhere('address','like',"%$req->keyword%")
                   ->orWhere('village','like',"%$req->keyword%")
-                  ->orWhere('phone','like',"%$req->keyword%");
+                  ->orWhere('phone','like',"%$req->keyword%")
+                  ->orWhere('cardId','like',"%$req->keyword%")
+                  ->orWhere('time','like',"%$req->keyword%")
+                  ->orWhere('start','like',"%$req->keyword%");
             })->orderBy('id','desc')->paginate(15);
         }else {
             $household = Household::orderBy('id','desc')->paginate(15);
