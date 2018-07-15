@@ -69,7 +69,26 @@ Route::post('/admin/doaddVillage','AdminController@doaddVillage')->name('doaddVi
 
 
 
-
-// ajax接口
+// 续租退租
 // 续租
-Route::post('/xuzu/{data}','XzTzController@xuzu');
+Route::get('/admin/xuzu','XzTzController@xuzu')->name('xuzu');
+
+// 续租审核
+// 审核通过
+Route::get('/admin/xzStateY/{id}','XzTzController@xzStateY')->name('xzStateY');
+
+// 审核不通过
+Route::get('/admin/xzStateN/{id}','XzTzController@xzStateN')->name('xzStateN');
+
+// 删除续租
+Route::get('/admin/del_xuzu/{id}','XzTzController@del_xuzu')->name('del_xuzu');
+
+// 编辑续租
+Route::get('/admin/edit_xuzu/{id}','XzTzController@edit_xuzu')->name('edit_xuzu');
+// 执行编辑
+Route::post('/admin/doeditXuzu/{id}','XzTzController@doeditXuzu')->name('doeditXuzu');
+
+// 添加续租
+Route::get('/admin/add_xuzu','XzTzController@add_xuzu')->name('add_xuzu');
+// 执行添加
+Route::post('/admin/doAdd_xuzu','XzTzController@doAdd_xuzu')->name('doAdd_xuzu');
