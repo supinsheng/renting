@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Xuzu;
 use App\Model\Village;
 use App\Model\Household;
+use App\Model\Tuizu;
 
 class XzTzController extends Controller
 {
@@ -110,7 +111,7 @@ class XzTzController extends Controller
     }
 
     // 退租开始
-    //续租
+    // 退租
     public function tuizu(Request $req){
 
         if($req->keyword){
@@ -122,13 +123,91 @@ class XzTzController extends Controller
                   ->orWhere('village','like',"%$req->keyword%")
                   ->orWhere('phone','like',"%$req->keyword%")
                   ->orWhere('cardId','like',"%$req->keyword%")
+                  ->orWhere('tuizu_cause','like',"%$req->keyword%")
                   ->orWhere('state','like',"%$req->keyword%");
             })->orderBy('id','desc')->paginate(15);
         }else {
             $tuizu = Tuizu::orderBy('id','desc')->paginate(15);
         }
         
-        return view('admin.xuzu.xuzu',['xuzu'=>$xuzu,'req'=>$req]);
+        return view('admin.tuizu.tuizu',['tuizu'=>$tuizu,'req'=>$req]);
     }
+
+    // 删除退租
+    public function del_tuizu($id){
+
+        $tuizu = Tuizu::find($id);
+        $tuizu->delete();
+        return back();
+    }
+
+    // 编辑续租
+    public function edit_tuizu($id){
+
+        $tuizu = Tuizu::find($id);
+        $village = Village::get();
+
+        return view('admin.tuizu.tuizu_edit',['tuizu'=>$tuizu,'village'=>$village]);
+    }
+    // 执行编辑
+    public function doeditTuizu(Request $req,$id){
+        
+        $tuizu = Tuizu::find($id);
+
+        $tuizu->fill($req->all());
+        $tuizu->flow_number = date("Ymdhis");
+
+        $tuizu->save();
+        return redirect()->route('tuizu');
+    }
+
+    // 添加退租
+    public function add_tuizu(){
+
+        $village = Village::get();
+
+        return view('admin.tuizu.tuizu_add',['village'=>$village]);
+    }
+    // 执行添加
+    public function doAdd_tuizu(Request $req){
+
+        if($req->realname=='' || $req->phone=='' || $req->cardId=='' || $req->address==''){
+            return back()->withInput()->withErrors(['error'=>'填入的数据不完整，请重新输入']);
+        }else {
+            $tuizu = new Tuizu;
+            $tuizu->fill($req->all());
+            $tuizu->flow_number = date("Ymdhis");
+
+            $tuizu->save();
+            return redirect()->route('tuizu');
+        }    
+    }
+
+    // 退租审核通过
+    public function tzStateY($id){
+
+        $tuizu = Tuizu::find($id);
+        $tuizu->state = '审核通过';
+        $tuizu->save();
+
+        $household = HouseHold::where(['realname'=>$tuizu->realname,'cardId'=>$tuizu->cardId])
+                                ->first();
+
+        if($household){
+            $household->delete();
+        }
+        
+        return redirect()->route('tuizu');
+    }
+
+    // 退租审核不通过
+    public function tzStateN($id){
+
+        $tuizu = Tuizu::find($id);
+        $tuizu->state = '审核不通过';
+        $tuizu->save();
+        return redirect()->route('tuizu');
+    }
+
     // 退租结束
 }
