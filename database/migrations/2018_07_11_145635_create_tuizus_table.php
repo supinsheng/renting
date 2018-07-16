@@ -21,6 +21,7 @@ class CreateTuizusTable extends Migration
             $table->string('phone',11)->comment('手机号码');
             $table->string('address',30)->comment('用户住址(精确到房间号)');
             $table->string('village',20)->comment('小区');
+            $table->longText('tuizu_cause')->comment('退租原因');
             $table->enum('state',['审核中','审核通过','审核不通过'])->comment('审核状态');
             $table->string('flow_number',20)->comment('流水号');
             

@@ -38,7 +38,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：续租管理&nbsp;&nbsp;>&nbsp;&nbsp;添加续租</td>
+    <td width="99%" align="left" valign="top">您的位置：退租管理&nbsp;&nbsp;>&nbsp;&nbsp;添加退租</td>
   </tr>
   <tr>
     <td align="left" valign="top" id="addinfo">
@@ -47,7 +47,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
   </tr>
   <tr>
     <td align="left" valign="top">
-    <form method="post" action="{{ route('doAdd_xuzu') }}">
+    <form method="post" action="{{ route('doAdd_tuizu') }}">
     {{ csrf_field() }}
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
     @if($errors->has('error'))
@@ -73,19 +73,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         </td>
         </tr>
 
-        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">续租时长：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <select name="time" value="" id="level">
-     
-	    <option value="1" >&nbsp;&nbsp;1个月</option>
-        <option value="3" >&nbsp;&nbsp;3个月</option>
-        <option value="6" >&nbsp;&nbsp;半年</option>
-        <option value="12" >&nbsp;&nbsp;一年</option>
-    
-        </select>
-        </td>
-      </tr>
+      
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">住址：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
@@ -103,6 +91,11 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       @endforeach
         </select>
         </td>
+      </tr>
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">退租原因：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for"><textarea name="tuizu_cause" cols="" rows=""></textarea></td>
       </tr>
 
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">

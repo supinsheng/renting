@@ -82,7 +82,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <a href="{{ route('xzStateN',['id'=>$xz->id]) }}" style="text-decoration:none" onclick="return confirm('当前操作为：审核 不通过，请确认！')" target="mainFrame" onFocus="this.blur()" class="add">不通过</a></td>
         @endif
         <td align="center" valign="middle" class="borderbottom"><a href="{{ route('edit_xuzu',['id'=>$xz->id]) }}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a><span class="gray">&nbsp;|&nbsp;</span>
-        <a href="{{ route('del_xuzu',['id'=>$xz->id]) }}" onclick="return confirm('当前操作为：审核 不通过，请确认！')" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
+        <a href="{{ route('del_xuzu',['id'=>$xz->id]) }}" onclick="return confirm(' 确定要删除吗？')" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
       </tr>
       @endforeach
     </table></td>

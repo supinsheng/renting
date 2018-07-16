@@ -76,7 +76,6 @@ Route::get('/admin/xuzu','XzTzController@xuzu')->name('xuzu');
 // 续租审核
 // 审核通过
 Route::get('/admin/xzStateY/{id}','XzTzController@xzStateY')->name('xzStateY');
-
 // 审核不通过
 Route::get('/admin/xzStateN/{id}','XzTzController@xzStateN')->name('xzStateN');
 
@@ -96,4 +95,23 @@ Route::post('/admin/doAdd_xuzu','XzTzController@doAdd_xuzu')->name('doAdd_xuzu')
 
 // 退租开始
 Route::get('/admin/tuizu','XzTzController@tuizu')->name('tuizu');
+
+// 退租审核
+// 审核通过
+Route::get('/admin/tzStateY/{id}','XzTzController@tzStateY')->name('tzStateY');
+// 审核不通过
+Route::get('/admin/tzStateN/{id}','XzTzController@tzStateN')->name('tzStateN');
+
+// 删除退租
+Route::get('/admin/del_tuizu/{id}','XzTzController@del_tuizu')->name('del_tuizu');
+
+// 编辑退租
+Route::get('/admin/edit_tuizu/{id}','XzTzController@edit_tuizu')->name('edit_tuizu');
+// 执行编辑
+Route::post('/admin/doeditTuizu/{id}','XzTzController@doeditTuizu')->name('doeditTuizu');
+
+// 添加退租
+Route::get('/admin/add_tuizu','XzTzController@add_tuizu')->name('add_tuizu');
+// 执行添加
+Route::post('/admin/doAdd_tuizu','XzTzController@doAdd_tuizu')->name('doAdd_tuizu');
 // 续租结束

@@ -33,7 +33,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：续租管理</td>
+    <td width="99%" align="left" valign="top">您的位置：退租管理</td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -46,7 +46,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
               <input name="" type="submit" value="查询" class="text-but">
 	        </form>
          </td>
-  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{ route('add_tuizu') }}" target="mainFrame" onFocus="this.blur()" class="add">新增续租</a></td>
+  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{ route('add_tuizu') }}" target="mainFrame" onFocus="this.blur()" class="add">新增退租</a></td>
   		</tr>
 	</table>
     </td>
@@ -62,6 +62,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <th align="center" valign="middle" class="borderright">身份证</th>
         <th align="center" valign="middle" class="borderright">住址</th>
         <th align="center" valign="middle" class="borderright">小区</th>
+        <th align="center" valign="middle" class="borderright">退租原因</th>
         <th align="center" valign="middle" class="borderright">审核状态</th>
         <th align="center" valign="middle">操作</th>
       </tr>
@@ -73,6 +74,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->cardId }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->address }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->village }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->tuizu_cause }}</td>
         @if( $tz->state != '审核中')
         <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->state }}</td>
         @else
@@ -80,7 +82,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <a href="{{ route('tzStateN',['id'=>$tz->id]) }}" style="text-decoration:none" onclick="return confirm('当前操作为：审核 不通过，请确认！')" target="mainFrame" onFocus="this.blur()" class="add">不通过</a></td>
         @endif
         <td align="center" valign="middle" class="borderbottom"><a href="{{ route('edit_tuizu',['id'=>$tz->id]) }}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a><span class="gray">&nbsp;|&nbsp;</span>
-        <a href="{{ route('del_tuizu',['id'=>$tz->id]) }}" onclick="return confirm('当前操作为：审核 不通过，请确认！')" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
+        <a href="{{ route('del_tuizu',['id'=>$tz->id]) }}" onclick="return confirm('确定要删除吗？')" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
       </tr>
       @endforeach
     </table></td>
