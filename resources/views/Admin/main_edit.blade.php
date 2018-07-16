@@ -85,9 +85,16 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">入住时长：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="time" value="{{ $household->time }}" class="text-word">
+        <select name="time" value="" id="level">
+     
+	    <option @if($household->time==1) selected @endif value="1" >&nbsp;&nbsp;1个月</option>
+      <option @if($household->time==3) selected @endif value="3" >&nbsp;&nbsp;3个月</option>
+      <option @if($household->time==6) selected @endif value="6" >&nbsp;&nbsp;半年</option>
+      <option @if($household->time==12) selected @endif value="12" >&nbsp;&nbsp;一年</option>
+    
+        </select>
         </td>
-        </tr>
+      </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">住址：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">

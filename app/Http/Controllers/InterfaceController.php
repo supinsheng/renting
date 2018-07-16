@@ -45,5 +45,5 @@ class InterfaceController extends Controller
         return  $xuzu->realname;
 
     }
-    
+
 }

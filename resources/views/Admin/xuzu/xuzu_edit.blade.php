@@ -30,7 +30,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 .main-for input.text-word{ width:310px; height:36px; line-height:36px; border:#ebebeb 1px solid; background:#FFF; font-family:"Microsoft YaHei","Tahoma","Arial",'宋体'; padding:0 10px;}
 .main-for select{ width:310px; height:36px; line-height:36px; border:#ebebeb 1px solid; background:#FFF; font-family:"Microsoft YaHei","Tahoma","Arial",'宋体'; color:#666;}
 .main-for input.text-but{ width:100px; height:40px; line-height:30px; border: 1px solid #cdcdcd; background:#e6e6e6; font-family:"Microsoft YaHei","Tahoma","Arial",'宋体'; color:#969696; float:left; margin:0 10px 0 0; display:inline; cursor:pointer; font-size:14px; font-weight:bold;}
-#addinfo a{ font-size:14px; font-weight:bold;  padding:0px 0 0px 20px; line-height:45px;}
+#addinfo a{ font-size:14px; font-weight:bold; padding:0px 0 0px 20px; line-height:45px;}
 
 </style>
 </head>
@@ -38,7 +38,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：住户管理&nbsp;&nbsp;>&nbsp;&nbsp;添加住户</td>
+    <td width="99%" align="left" valign="top">您的位置：续租管理&nbsp;&nbsp;>&nbsp;&nbsp;编辑续租</td>
   </tr>
   <tr>
     <td align="left" valign="top" id="addinfo">
@@ -47,71 +47,52 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
   </tr>
   <tr>
     <td align="left" valign="top">
-    <form method="post" action="{{ route('doaddHold') }}">
-        {{ csrf_field() }}
+    <form method="post" action="{{ route('doeditXuzu',['id'=>$xuzu->id]) }}">
+    {{ csrf_field() }}
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
-      @if($errors->has('error'))
-				<span style='color:red'>{{$errors->first('error')}}</span>
-        
-			@endif
+   
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">登录名：</td>
+        <td align="right" valign="middle" class="borderright borderbottom bggray">姓名：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="username" value="" class="text-word">
+        <input type="text" name="realname" value="{{ $xuzu->realname }}" class="text-word">
         </td>
         </tr>
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">真实姓名：</td>
+        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">电话：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="realname" value="" class="text-word">
+        <input type="text" name="phone" value="{{ $xuzu->phone }}" class="text-word">
         </td>
         </tr>
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">身份证：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="cardId" value="" class="text-word">
+        <input type="text" name="cardId" value="{{ $xuzu->cardId }}" class="text-word">
         </td>
-      </tr>
+        </tr>
 
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">手机号码：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="phone" value="" class="text-word">
-        </td>
-      </tr>
-
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">入住时间：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="date" name="start" value="" class="text-word">
-        </td>
-      </tr>
-
-     <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">入住时长：</td>
+        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">续租时长：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <select name="time" value="" id="level">
-
-	    <option value="1" >&nbsp;&nbsp;1个月</option>
-      <option value="3" >&nbsp;&nbsp;3个月</option>
-      <option value="6" >&nbsp;&nbsp;半年</option>
-      <option value="12" >&nbsp;&nbsp;一年</option>
+     
+	    <option @if($xuzu->time==1) selected @endif value="1" >&nbsp;&nbsp;1个月</option>
+      <option @if($xuzu->time==3) selected @endif value="3" >&nbsp;&nbsp;3个月</option>
+      <option @if($xuzu->time==6) selected @endif value="6" >&nbsp;&nbsp;半年</option>
+      <option @if($xuzu->time==12) selected @endif value="12" >&nbsp;&nbsp;一年</option>
     
         </select>
         </td>
       </tr>
-
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">住址：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="address" value="" class="text-word">
+        <input type="text" name="address" value="{{ $xuzu->address }}" class="text-word">
         </td>
-      </tr>
-
+        </tr>
       <!-- <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">小区：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="village" value="" class="text-word">
+        <input type="text" name="village" value="{{ $xuzu->village }}" class="text-word">
         </td>
       </tr> -->
 
@@ -120,8 +101,21 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <select name="village" value="" id="level">
       @foreach($village as $v)
-	    <option value="{{ $v->name }}" >&nbsp;&nbsp;{{ $v->name }}</option>
+	    <option @if($v->name==$xuzu->village) selected @endif value="{{ $v->name }}" >&nbsp;&nbsp;{{ $v->name }}</option>
       @endforeach
+        </select>
+        </td>
+      </tr>
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">审核状态：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <select name="state" value="" id="level">
+
+        <option @if($xuzu->state=='审核中') selected @endif value="审核中" >&nbsp;&nbsp;审核中</option>
+        <option @if($xuzu->state=='审核通过') selected @endif value="审核通过" >&nbsp;&nbsp;审核通过</option>
+        <option @if($xuzu->state=='审核不通过') selected @endif value="审核不通过" >&nbsp;&nbsp;审核不通过</option>
+   
         </select>
         </td>
       </tr>
@@ -129,7 +123,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">&nbsp;</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input name="" type="submit" value="录入" class="text-but">
+        <input name="" type="submit" value="修改" class="text-but">
         <input name="" type="reset" value="重置" class="text-but"></td>
         </tr>
     </table>

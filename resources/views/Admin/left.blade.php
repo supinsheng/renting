@@ -28,8 +28,8 @@ body{overflow-x:hidden; background:url(/images/main/leftbg.jpg) left top repeat-
       <div>
         <span>住户和房屋管理</span>
         <a href="/admin/indexMain" target="mainFrame" onFocus="this.blur()">入住管理</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">续租管理</a>
-        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">退租管理</a>
+        <a href="/admin/xuzu" target="mainFrame" onFocus="this.blur()">续租管理</a>
+        <a href="/admin/tuizu" target="mainFrame" onFocus="this.blur()">退租管理</a>
         <a href="main_message.html" target="mainFrame" onFocus="this.blur()">房屋出租状态查询</a>
         <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">住户信息查询</a>
         <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">住户信息统计</a>

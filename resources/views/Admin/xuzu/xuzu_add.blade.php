@@ -30,44 +30,98 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 .main-for input.text-word{ width:310px; height:36px; line-height:36px; border:#ebebeb 1px solid; background:#FFF; font-family:"Microsoft YaHei","Tahoma","Arial",'宋体'; padding:0 10px;}
 .main-for select{ width:310px; height:36px; line-height:36px; border:#ebebeb 1px solid; background:#FFF; font-family:"Microsoft YaHei","Tahoma","Arial",'宋体'; color:#666;}
 .main-for input.text-but{ width:100px; height:40px; line-height:30px; border: 1px solid #cdcdcd; background:#e6e6e6; font-family:"Microsoft YaHei","Tahoma","Arial",'宋体'; color:#969696; float:left; margin:0 10px 0 0; display:inline; cursor:pointer; font-size:14px; font-weight:bold;}
-#addinfo a{ font-size:14px; font-weight:bold;  padding:0px 0 0px 20px; line-height:45px;}
+#addinfo a{ font-size:14px; font-weight:bold; padding:0px 0 0px 20px; line-height:45px;}
 
 </style>
 </head>
 <body>
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
-
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：小区管理&nbsp;&nbsp;>&nbsp;&nbsp;新增小区</td>
+    <td width="99%" align="left" valign="top">您的位置：续租管理&nbsp;&nbsp;>&nbsp;&nbsp;编辑续租</td>
   </tr>
   <tr>
-  <td align="left" valign="top" id="addinfo">
+    <td align="left" valign="top" id="addinfo">
     <a target="mainFrame" onFocus="this.blur()" class="add"></a>
     </td>
   </tr>
   <tr>
     <td align="left" valign="top">
-    <form method="post" action="{{ route('doaddVillage') }}">
-        {{ csrf_field() }}
+    <form method="post" action="{{ route('doAdd_xuzu') }}">
+    {{ csrf_field() }}
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
     @if($errors->has('error'))
 				<span style='color:red'>{{$errors->first('error')}}</span>
         
 			@endif
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">小区：</td>
+        <td align="right" valign="middle" class="borderright borderbottom bggray">姓名：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="name" value="" class="text-word">
+        <input type="text" name="realname" value="" class="text-word">
         </td>
         </tr>
-   
+        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">电话：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="phone" value="" class="text-word">
+        </td>
+        </tr>
+        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">身份证：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="cardId" value="" class="text-word">
+        </td>
+        </tr>
+
+        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">续租时长：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <select name="time" value="" id="level">
      
+	    <option value="1" >&nbsp;&nbsp;1个月</option>
+        <option value="3" >&nbsp;&nbsp;3个月</option>
+        <option value="6" >&nbsp;&nbsp;半年</option>
+        <option value="12" >&nbsp;&nbsp;一年</option>
+    
+        </select>
+        </td>
+      </tr>
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">住址：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="address" value="" class="text-word">
+        </td>
+        </tr>
+     
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">小区：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <select name="village" value="" id="level">
+      @foreach($village as $v)
+	    <option>&nbsp;&nbsp;{{ $v->name }}</option>
+      @endforeach
+        </select>
+        </td>
+      </tr>
+
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">审核状态：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <select name="state" value="" id="level">
+
+        <option value="审核中" >&nbsp;&nbsp;审核中</option>
+        <option value="审核通过" >&nbsp;&nbsp;审核通过</option>
+        <option value="审核不通过" >&nbsp;&nbsp;审核不通过</option>
+   
+        </select>
+        </td>
+      </tr>
       
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">&nbsp;</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input name="" type="submit" value="添加" class="text-but">
+        <input name="" type="submit" value="修改" class="text-but">
         <input name="" type="reset" value="重置" class="text-but"></td>
         </tr>
     </table>
