@@ -37,6 +37,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <body>
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
+
   <tr>
     <td width="99%" align="left" valign="top">您的位置：小区管理&nbsp;&nbsp;>&nbsp;&nbsp;新增小区</td>
   </tr>
@@ -50,6 +51,10 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
     <form method="post" action="{{ route('doaddVillage') }}">
         {{ csrf_field() }}
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
+    @if($errors->has('error'))
+				<span style='color:red'>{{$errors->first('error')}}</span>
+        
+			@endif
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">小区：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">

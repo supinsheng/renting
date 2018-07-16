@@ -70,7 +70,7 @@ Route::post('/admin/doaddVillage','AdminController@doaddVillage')->name('doaddVi
 
 
 // 续租退租
-// 续租
+// 续租开始
 Route::get('/admin/xuzu','XzTzController@xuzu')->name('xuzu');
 
 // 续租审核
@@ -92,3 +92,8 @@ Route::post('/admin/doeditXuzu/{id}','XzTzController@doeditXuzu')->name('doeditX
 Route::get('/admin/add_xuzu','XzTzController@add_xuzu')->name('add_xuzu');
 // 执行添加
 Route::post('/admin/doAdd_xuzu','XzTzController@doAdd_xuzu')->name('doAdd_xuzu');
+// 续租结束
+
+// 退租开始
+Route::get('/admin/tuizu','XzTzController@tuizu')->name('tuizu');
+// 续租结束

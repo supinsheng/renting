@@ -101,10 +101,15 @@ class AdminController extends Controller
     // 执行录入
     public function doaddHold(Request $req){
 
-        $household = new Household;
-        $household->fill($req->all());
-        $household->save();
-        return redirect()->route('indexMain');    
+        if($req->username=='' || $req->realname=='' || $req->cardId=='' || $req->phone=='' || $req->start=='' || $req->address==''){
+            return back()->withInput()->withErrors(['error'=>'填入的数据不完整，请重新输入']);
+        }else {
+            $household = new Household;
+            $household->fill($req->all());
+            $household->save();
+            return redirect()->route('indexMain');  
+        }
+          
     }
 
     // 编辑住户
@@ -183,12 +188,18 @@ class AdminController extends Controller
     // 执行新增
     public function doaddVillage(Request $req){
 
-        $village = new Village;
-        $village->fill($req->all());
+            if($req->name==''){
+                return back()->withInput()->withErrors(['error'=>'请输入小区名称！']);
+            }else {
+                $village = new Village;
+                $village->fill($req->all());
 
-        $village->save();
+                $village->save();
 
-        return redirect()->route('village');
+                return redirect()->route('village');
+            }
+   
+            
     }
     // 小区管理结束
 }

@@ -97,11 +97,38 @@ class XzTzController extends Controller
     // 执行添加
     public function doAdd_xuzu(Request $req){
 
-        $xuzu = new Xuzu;
-        $xuzu->fill($req->all());
-        $xuzu->flow_number = date("Ymdhis");
+        if($req->realname=='' || $req->phone=='' || $req->cardId=='' || $req->address==''){
+            return back()->withInput()->withErrors(['error'=>'填入的数据不完整，请重新输入']);
+        }else {
+            $xuzu = new Xuzu;
+            $xuzu->fill($req->all());
+            $xuzu->flow_number = date("Ymdhis");
 
-        $xuzu->save();
-        return redirect()->route('xuzu');
+            $xuzu->save();
+            return redirect()->route('xuzu');
+        }    
     }
+
+    // 退租开始
+    //续租
+    public function tuizu(Request $req){
+
+        if($req->keyword){
+            
+            $tuizu = Tuizu::where(function($q) use($req){
+
+                $q->where('realname','like',"%$req->keyword%")
+                  ->orWhere('address','like',"%$req->keyword%")
+                  ->orWhere('village','like',"%$req->keyword%")
+                  ->orWhere('phone','like',"%$req->keyword%")
+                  ->orWhere('cardId','like',"%$req->keyword%")
+                  ->orWhere('state','like',"%$req->keyword%");
+            })->orderBy('id','desc')->paginate(15);
+        }else {
+            $tuizu = Tuizu::orderBy('id','desc')->paginate(15);
+        }
+        
+        return view('admin.xuzu.xuzu',['xuzu'=>$xuzu,'req'=>$req]);
+    }
+    // 退租结束
 }

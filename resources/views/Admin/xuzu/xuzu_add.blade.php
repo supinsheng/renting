@@ -50,7 +50,10 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
     <form method="post" action="{{ route('doAdd_xuzu') }}">
     {{ csrf_field() }}
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
-   
+    @if($errors->has('error'))
+				<span style='color:red'>{{$errors->first('error')}}</span>
+        
+			@endif
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">姓名：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">

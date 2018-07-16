@@ -46,7 +46,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
               <input name="" type="submit" value="查询" class="text-but">
 	        </form>
          </td>
-  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{ route('add_xuzu') }}" target="mainFrame" onFocus="this.blur()" class="add">新增续租</a></td>
+  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{ route('add_tuizu') }}" target="mainFrame" onFocus="this.blur()" class="add">新增续租</a></td>
   		</tr>
 	</table>
     </td>
@@ -60,35 +60,33 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <th align="center" valign="middle" class="borderright">姓名</th>
         <th align="center" valign="middle" class="borderright">电话</th>
         <th align="center" valign="middle" class="borderright">身份证</th>
-        <th align="center" valign="middle" class="borderright">续租时长</th>
         <th align="center" valign="middle" class="borderright">住址</th>
         <th align="center" valign="middle" class="borderright">小区</th>
         <th align="center" valign="middle" class="borderright">审核状态</th>
         <th align="center" valign="middle">操作</th>
       </tr>
-      @foreach($xuzu as $xz)
+      @foreach($tuizu as $tz)
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $xz->id }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $xz->realname }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $xz->phone }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $xz->cardId }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $xz->time }}个月</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $xz->address }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $xz->village }}</td>
-        @if( $xz->state != '审核中')
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $xz->state }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->id }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->realname }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->phone }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->cardId }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->address }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->village }}</td>
+        @if( $tz->state != '审核中')
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $tz->state }}</td>
         @else
-        <td align="center" valign="middle" class="borderbottom"><a style="text-decoration:none" href="{{ route('xzStateY',['id'=>$xz->id]) }}" onclick="return confirm('当前操作为：审核 通过，请确认！')" target="mainFrame" onFocus="this.blur()" class="add">通过</a><span class="gray">&nbsp;|&nbsp;</span>
-        <a href="{{ route('xzStateN',['id'=>$xz->id]) }}" style="text-decoration:none" onclick="return confirm('当前操作为：审核 不通过，请确认！')" target="mainFrame" onFocus="this.blur()" class="add">不通过</a></td>
+        <td align="center" valign="middle" class="borderbottom"><a style="text-decoration:none" href="{{ route('tzStateY',['id'=>$tz->id]) }}" onclick="return confirm('当前操作为：审核 通过，请确认！')" target="mainFrame" onFocus="this.blur()" class="add">通过</a><span class="gray">&nbsp;|&nbsp;</span>
+        <a href="{{ route('tzStateN',['id'=>$tz->id]) }}" style="text-decoration:none" onclick="return confirm('当前操作为：审核 不通过，请确认！')" target="mainFrame" onFocus="this.blur()" class="add">不通过</a></td>
         @endif
-        <td align="center" valign="middle" class="borderbottom"><a href="{{ route('edit_xuzu',['id'=>$xz->id]) }}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a><span class="gray">&nbsp;|&nbsp;</span>
-        <a href="{{ route('del_xuzu',['id'=>$xz->id]) }}" onclick="return confirm('当前操作为：审核 不通过，请确认！')" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
+        <td align="center" valign="middle" class="borderbottom"><a href="{{ route('edit_tuizu',['id'=>$tz->id]) }}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a><span class="gray">&nbsp;|&nbsp;</span>
+        <a href="{{ route('del_tuizu',['id'=>$tz->id]) }}" onclick="return confirm('当前操作为：审核 不通过，请确认！')" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
       </tr>
       @endforeach
     </table></td>
     </tr>
     <tr>
-    <td align="left" style="text-align:center" valign="top" class="fenye">{{ $xuzu->appends($req->all())->links() }}</td>
+    <td align="left" style="text-align:center" valign="top" class="fenye">{{ $tuizu->appends($req->all())->links() }}</td>
   </tr>
 </table>
 </body>
