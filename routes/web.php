@@ -67,9 +67,3 @@ Route::post('/admin/doaddVillage','AdminController@doaddVillage')->name('doaddVi
 // 小区管理结束
 
 
-
-
-
-// ajax接口
-// 续租
-Route::post('/xuzu/{data}','XzTzController@xuzu');
