@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Tuizu;
 use App\Model\Xuzu;
 
 class InterfaceController extends Controller
@@ -45,21 +46,19 @@ class InterfaceController extends Controller
 //        return  $xuzu->realname;
 
     }
-
-
     //用户退租接口
     public function  PostTuiZu(Request $req){
         $data=json_decode($req->getContent(),TRUE);
-        $xuzu = new Xuzu;
-        $xuzu->realname = $data['name'];
-        $xuzu->cardId = $data['id_card'];
-        $xuzu->phone = $data['phone_num'];
-        $xuzu->address = $data['user_add'];
-        $xuzu->village = '建南小区';
-        $xuzu->state = '审核中';
-        $xuzu->state = '审核中';
-        $xuzu->flow_number = date('YmdHis');
-        if($xuzu->save()){
+        $tuizu = new Tuizu;
+        $tuizu->realname = $data['name'];
+        $tuizu->cardId = $data['id_card'];
+        $tuizu->phone = $data['phone_num'];
+        $tuizu->address = $data['user_add'];
+        $tuizu->village = '建南小区';
+        $tuizu->state = '审核中';
+        $tuizu->tuizu_cause = '审核中';
+        $tuizu->flow_number = date('YmdHis');
+        if($tuizu->save()){
             $ret=[
                 'errno'=>1,
                 'errmsg'=>''
@@ -77,5 +76,11 @@ class InterfaceController extends Controller
             return response($ret);
         }
     }
+    // 用户提交保修申请接口
+    public  function PostBaoxiu(Request $req){
+
+    }
+
+
 
 }
