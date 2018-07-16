@@ -66,9 +66,6 @@ Route::get('/admin/addVillage','AdminController@addVillage')->name('addVillage')
 Route::post('/admin/doaddVillage','AdminController@doaddVillage')->name('doaddVillage');
 // 小区管理结束
 
-
-
-
 // 续租退租
 // 续租开始
 Route::get('/admin/xuzu','XzTzController@xuzu')->name('xuzu');
