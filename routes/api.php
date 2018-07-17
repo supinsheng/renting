@@ -20,3 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // 续租
 Route::post('/postxuzu','InterfaceController@PostXuzu');
+// 退租
+Route::post('/posttuizu','InterfaceController@PostTuiZu');
