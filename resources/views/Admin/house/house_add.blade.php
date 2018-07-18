@@ -38,7 +38,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：住户管理&nbsp;&nbsp;>&nbsp;&nbsp;编辑住户</td>
+    <td width="99%" align="left" valign="top">您的位置：退租管理&nbsp;&nbsp;>&nbsp;&nbsp;添加退租</td>
   </tr>
   <tr>
     <td align="left" valign="top" id="addinfo">
@@ -47,82 +47,36 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
   </tr>
   <tr>
     <td align="left" valign="top">
-    <form method="post" action="{{ route('doeditHold',['id'=>$household->id]) }}">
+    <form method="post" action="{{ route('doAdd_house') }}">
     {{ csrf_field() }}
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
-    <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">用户名：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="username" value="{{ $household->username }}" class="text-word">
-        </td>
-        </tr>
+    @if($errors->has('error'))
+				<span style='color:red'>{{$errors->first('error')}}</span>
+        
+			@endif
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">姓名：</td>
+        <td align="right" valign="middle" class="borderright borderbottom bggray">房屋编号：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="realname" value="{{ $household->realname }}" class="text-word">
+        <input type="text" name="house_id" value="" class="text-word" placeholder="请输入规范的房屋编号">( 如建南小区1栋 第1楼第一间房编号为：JN01 001 )
         </td>
         </tr>
-        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">电话：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="phone" value="{{ $household->phone }}" class="text-word">
-        </td>
-        </tr>
-        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">身份证：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="cardId" value="{{ $household->cardId }}" class="text-word">
-        </td>
-        </tr>
-
-        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">入住时间：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="date" name="start" value="{{ $household->start }}" class="text-word">
-        </td>
-        </tr>
-
-        <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">入住时长：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <select name="time" value="" id="level">
-     
-	    <option @if($household->time==1) selected @endif value="1" >&nbsp;&nbsp;1个月</option>
-      <option @if($household->time==3) selected @endif value="3" >&nbsp;&nbsp;3个月</option>
-      <option @if($household->time==6) selected @endif value="6" >&nbsp;&nbsp;半年</option>
-      <option @if($household->time==12) selected @endif value="12" >&nbsp;&nbsp;一年</option>
-    
-        </select>
-        </td>
-      </tr>
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">住址：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="address" value="{{ $household->address }}" class="text-word">
-        </td>
-        </tr>
-      <!-- <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">小区：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="village" value="{{ $household->village }}" class="text-word">
-        </td>
-      </tr> -->
 
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">小区：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <select name="village" value="" id="level">
       @foreach($village as $v)
-	    <option @if($v->name==$household->village) selected @endif value="{{ $v->name }}" >&nbsp;&nbsp;{{ $v->name }}</option>
+	    <option>&nbsp;&nbsp;{{ $v->name }}</option>
       @endforeach
         </select>
         </td>
       </tr>
+
       
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">&nbsp;</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input name="" type="submit" value="修改" class="text-but">
+        <input name="" type="submit" value="添加" class="text-but">
         <input name="" type="reset" value="重置" class="text-but"></td>
         </tr>
     </table>

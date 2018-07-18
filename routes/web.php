@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test',function(){
+    // echo  date("Y-m-d", strtotime("+1 months", strtotime("2010-10-06")));
+    echo(strtotime("2012-11-11")/(60*60*24) . "<br>");
+});
+
 
 // 后台人口--登录页
 Route::get('/admin','AdminController@admin_login')->name('admin_login');
@@ -112,3 +117,14 @@ Route::get('/admin/add_tuizu','XzTzController@add_tuizu')->name('add_tuizu');
 // 执行添加
 Route::post('/admin/doAdd_tuizu','XzTzController@doAdd_tuizu')->name('doAdd_tuizu');
 // 续租结束
+
+// 房屋出租状态
+Route::get('/admin/house','HouseController@house')->name('house');
+
+// 新增房屋
+Route::get('/admin/add_house','HouseController@add_house')->name('add_house');
+// 执行新增
+Route::post('/admin/doAdd_house','HouseController@doAdd_house')->name('doAdd_house');
+
+// 删除房屋
+Route::get('/admin/del_house','HouseController@del_house')->name('del_house');

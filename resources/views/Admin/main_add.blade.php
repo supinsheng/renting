@@ -57,26 +57,26 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">登录名：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="username" value="" class="text-word">
+        <input type="text" name="username" value="" class="text-word" placeholder="请输入用户登录名" autocomplete="off">
         </td>
         </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">真实姓名：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="realname" value="" class="text-word">
+        <input type="text" name="realname" value="" class="text-word" placeholder="请输入用户实名" autocomplete="off">
         </td>
         </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">身份证：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="cardId" value="" class="text-word">
+        <input type="text" name="cardId" value="" class="text-word" placeholder="请输入正确的身份证" autocomplete="off">
         </td>
       </tr>
 
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">手机号码：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="phone" value="" class="text-word">
+        <input type="text" name="phone" value="" class="text-word" placeholder="请输入正确的手机号码" autocomplete="off">
         </td>
       </tr>
 
@@ -104,7 +104,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">住址：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="address" value="" class="text-word">
+        <input type="text" name="address" value="" class="text-word" placeholder="请输入正确的房屋编号" autocomplete="off">
         </td>
       </tr>
 

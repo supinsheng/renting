@@ -101,11 +101,12 @@ class AdminController extends Controller
     // 执行录入
     public function doaddHold(Request $req){
 
-        if($req->username=='' || $req->realname=='' || $req->cardId=='' || $req->phone=='' || $req->start=='' || $req->address==''){
+        if($req->username=='' || $req->realname=='' || $req->cardId=='' || $req->phone=='' || $req->start=='' || $req->address=='' || $req->village){
             return back()->withInput()->withErrors(['error'=>'填入的数据不完整，请重新输入']);
         }else {
             $household = new Household;
             $household->fill($req->all());
+            $household->end = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
             $household->save();
             return redirect()->route('indexMain');  
         }
@@ -128,6 +129,7 @@ class AdminController extends Controller
         $household = Household::find($id);
 
         $household->fill($req->all());
+        $household->end = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
         $household->save();
         return redirect()->route('indexMain');
     }
