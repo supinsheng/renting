@@ -58,5 +58,14 @@ class HouseController extends Controller
             }
             
         } 
-    }   
+    } 
+    
+    // 删除房屋
+    public function del_house($id){
+
+        $house = House::find($id);
+        $house->delete();
+
+        return back();
+    }
 }

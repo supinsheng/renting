@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Model\Household;
 use App\Model\Admin;
 use App\Model\Village;
+use App\Model\House;
+use App\Http\Requests\HouseholdRequest;
 
 class AdminController extends Controller
 {
@@ -99,17 +101,34 @@ class AdminController extends Controller
     }
 
     // 执行录入
-    public function doaddHold(Request $req){
+    public function doaddHold(HouseholdRequest $req){
+     
+        $house = House::where('house_id',$req->address)->first();
+                
+        if($house){
 
-        if($req->username=='' || $req->realname=='' || $req->cardId=='' || $req->phone=='' || $req->start=='' || $req->address=='' || $req->village){
-            return back()->withInput()->withErrors(['error'=>'填入的数据不完整，请重新输入']);
-        }else {
             $household = new Household;
             $household->fill($req->all());
             $household->end = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
             $household->save();
-            return redirect()->route('indexMain');  
+
+            $house->state = '已出租';
+            $house->hold_name = $req->realname;
+            $house->hold_phone = $req->phone;
+            $house->start_time = $req->start;
+            $house->end_time = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
+            if(strtotime('now')<strtotime($req->start)){
+                $house->residual_lease = $req->time;
+                
+            }else {
+                $house->residual_lease = ceil((strtotime($household->end)-strtotime('now'))/(60*60*24)).'天';
+            }
+            $house->save();
+            return redirect()->route('indexMain');
+        }else {
+            return back()->withInput()->withErrors(['address'=>'住址不存在']);
         }
+        
           
     }
 

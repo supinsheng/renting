@@ -82,7 +82,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="center" valign="middle" class="borderright borderbottom">{{ $h->residual_lease }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $h->village }}</td>
         
-        <td align="center" valign="middle" class="borderbottom"><a href="" target="mainFrame" onFocus="this.blur()" class="add">编辑</a><span class="gray">&nbsp;|&nbsp;</span>
+        <td align="center" valign="middle" class="borderbottom"><span class="gray"></span>
         <a href="{{ route('del_house',['id'=>$h->id]) }}" onclick="return confirm(' 确定要删除吗？')" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
       </tr>
       @endforeach
