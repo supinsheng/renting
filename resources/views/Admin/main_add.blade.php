@@ -54,7 +54,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">登录名：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="username" value="" class="text-word" placeholder="请输入用户登录名" autocomplete="off">
+        <input type="text" name="username" value="{{ old('username') }}" class="text-word" placeholder="请输入用户登录名" autocomplete="off">
         @if($errors->has('username'))
 				  <span style='color:red'>{{$errors->first('username')}}</span>
 			  @endif
@@ -64,7 +64,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">真实姓名：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="realname" value="" class="text-word" placeholder="请输入用户实名" autocomplete="off">
+        <input type="text" name="realname" value="{{ old('realname') }}" class="text-word" placeholder="请输入用户实名" autocomplete="off">
         @if($errors->has('realname'))
 				  <span style='color:red'>{{$errors->first('realname')}}</span>
 			  @endif
@@ -73,7 +73,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">身份证：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="cardId" value="" class="text-word" placeholder="请输入正确的身份证" autocomplete="off">
+        <input type="text" name="cardId" value="{{ old('cardId') }}" class="text-word" placeholder="请输入正确的身份证" autocomplete="off">
         @if($errors->has('cardId'))
 				  <span style='color:red'>{{$errors->first('cardId')}}</span>
 			  @endif
@@ -83,7 +83,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">手机号码：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="phone" value="" class="text-word" placeholder="请输入正确的手机号码" autocomplete="off">
+        <input type="text" name="phone" value="{{ old('phone') }}" class="text-word" placeholder="请输入正确的手机号码" autocomplete="off">
         @if($errors->has('phone'))
 				  <span style='color:red'>{{$errors->first('phone')}}</span>
 			  @endif
@@ -93,7 +93,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">入住时间：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="date" name="start" value="" class="text-word">
+        <input type="date" name="start" value="{{ old('start') }}" class="text-word">
         @if($errors->has('start'))
 				  <span style='color:red'>{{$errors->first('start')}}</span>
 			  @endif
@@ -105,10 +105,10 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <select name="time" value="" id="level">
 
-	    <option value="1" >&nbsp;&nbsp;1个月</option>
-      <option value="3" >&nbsp;&nbsp;3个月</option>
-      <option value="6" >&nbsp;&nbsp;半年</option>
-      <option value="12" >&nbsp;&nbsp;一年</option>
+	    <option @if(old('time')==1) selected @endif value="1" >&nbsp;&nbsp;1个月</option>
+      <option @if(old('time')==3) selected @endif value="3" >&nbsp;&nbsp;3个月</option>
+      <option @if(old('time')==6) selected @endif value="6" >&nbsp;&nbsp;半年</option>
+      <option @if(old('time')==12) selected @endif value="12" >&nbsp;&nbsp;一年</option>
     
         </select>
         </td>
@@ -117,7 +117,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">住址：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="address" value="" class="text-word" placeholder="请输入正确的房屋编号" autocomplete="off">
+        <input type="text" name="address" value="{{ old('address') }}" class="text-word" placeholder="请输入正确的房屋编号" autocomplete="off">
         @if($errors->has('address'))
 				  <span style='color:red'>{{$errors->first('address')}}</span>
 			  @endif
@@ -136,7 +136,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <select name="village" value="" id="level">
       @foreach($village as $v)
-	    <option value="{{ $v->name }}" >&nbsp;&nbsp;{{ $v->name }}</option>
+	    <option @if(old('village')==$v->name) selected @endif value="{{ $v->name }}" >&nbsp;&nbsp;{{ $v->name }}</option>
       @endforeach
         </select>
         @if($errors->has('village'))

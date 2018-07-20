@@ -132,3 +132,11 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 </table>
 </body>
 </html>
+<script>
+  window.onload=function(){
+    var a=document.getElementsByTagName("input");
+    for(var i=0,len=a.length;i<len;i++){
+      if(a[i].getAttribute("type")=='text'){a[i].setAttribute('autocomplete','off')}
+    }
+  }
+</script>

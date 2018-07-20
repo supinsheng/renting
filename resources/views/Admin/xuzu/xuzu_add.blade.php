@@ -50,26 +50,32 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
     <form method="post" action="{{ route('doAdd_xuzu') }}">
     {{ csrf_field() }}
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
-    @if($errors->has('error'))
-				<span style='color:red'>{{$errors->first('error')}}</span>
-        
-			@endif
+    
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">姓名：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="realname" value="" class="text-word">
+        <input type="text" name="realname" value="{{ old('realname') }}" class="text-word">
+        @if($errors->has('realname'))
+				  <span style='color:red'>{{$errors->first('realname')}}</span> 
+			  @endif
         </td>
         </tr>
         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">电话：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="phone" value="" class="text-word">
+        <input type="text" name="phone" value="{{ old('phone') }}" class="text-word">
+        @if($errors->has('phone'))
+				  <span style='color:red'>{{$errors->first('phone')}}</span> 
+			  @endif
         </td>
         </tr>
         <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">身份证：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="cardId" value="" class="text-word">
+        <input type="text" name="cardId" value="{{ old('cardId') }}" class="text-word">
+        @if($errors->has('cardId'))
+				  <span style='color:red'>{{$errors->first('cardId')}}</span> 
+			  @endif
         </td>
         </tr>
 
@@ -78,10 +84,10 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <select name="time" value="" id="level">
      
-	    <option value="1" >&nbsp;&nbsp;1个月</option>
-        <option value="3" >&nbsp;&nbsp;3个月</option>
-        <option value="6" >&nbsp;&nbsp;半年</option>
-        <option value="12" >&nbsp;&nbsp;一年</option>
+	    <option @if(old('time')=='1') selected @endif value="1" >&nbsp;&nbsp;1个月</option>
+        <option @if(old('time')=='3') selected @endif value="3" >&nbsp;&nbsp;3个月</option>
+        <option @if(old('time')=='6') selected @endif value="6" >&nbsp;&nbsp;半年</option>
+        <option @if(old('time')=='12') selected @endif value="12" >&nbsp;&nbsp;一年</option>
     
         </select>
         </td>
@@ -89,7 +95,10 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">住址：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="address" value="" class="text-word">
+        <input type="text" name="address" value="{{ old('address') }}" class="text-word">
+        @if($errors->has('address'))
+				  <span style='color:red'>{{$errors->first('address')}}</span> 
+			  @endif
         </td>
         </tr>
      
@@ -99,10 +108,14 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <select name="village" value="" id="level">
       @foreach($village as $v)
-	    <option>&nbsp;&nbsp;{{ $v->name }}</option>
+	    <option @if(old('village')==$v->name) selected @endif value="{{ $v->name }}">&nbsp;&nbsp;{{ $v->name }}</option>
       @endforeach
         </select>
+        @if($errors->has('village'))
+				  <span style='color:red'>{{$errors->first('village')}}</span> 
+			  @endif
         </td>
+        
       </tr>
 
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
@@ -110,9 +123,9 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <select name="state" value="" id="level">
 
-        <option value="审核中" >&nbsp;&nbsp;审核中</option>
-        <option value="审核通过" >&nbsp;&nbsp;审核通过</option>
-        <option value="审核不通过" >&nbsp;&nbsp;审核不通过</option>
+        <option @if(old('state')=='审核中') selected @endif value="审核中" >&nbsp;&nbsp;审核中</option>
+        <option @if(old('state')=='审核通过') selected @endif value="审核通过" >&nbsp;&nbsp;审核通过</option>
+        <option @if(old('state')=='审核不通过') selected @endif value="审核不通过" >&nbsp;&nbsp;审核不通过</option>
    
         </select>
         </td>
@@ -131,3 +144,11 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 </table>
 </body>
 </html>
+<script>
+  window.onload=function(){
+    var a=document.getElementsByTagName("input");
+    for(var i=0,len=a.length;i<len;i++){
+      if(a[i].getAttribute("type")=='text'){a[i].setAttribute('autocomplete','off')}
+    }
+  }
+</script> 

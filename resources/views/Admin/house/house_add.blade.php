@@ -66,7 +66,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <select name="village" value="" id="level">
       @foreach($village as $v)
-	    <option>&nbsp;&nbsp;{{ $v->name }}</option>
+	    <option value="{{ $v->name }}">&nbsp;&nbsp;{{ $v->name }}</option>
       @endforeach
         </select>
         </td>

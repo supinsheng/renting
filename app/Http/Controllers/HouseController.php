@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\House;
 use App\Model\Village;
+use App\Model\Household;
 
 class HouseController extends Controller
 {
@@ -41,7 +42,7 @@ class HouseController extends Controller
 
     // 执行新增
     public function doAdd_house(Request $req){
-
+        
         if($req->house_id=='' || $req->village==''){
             return back()->withInput()->withErrors(['error'=>'输入数据不完整！']);
             
@@ -65,6 +66,11 @@ class HouseController extends Controller
 
         $house = House::find($id);
         $house->delete();
+
+        $household = Household::where('address',$house->house_id)->first();
+        if($household){
+            $household->delete();
+        }
 
         return back();
     }

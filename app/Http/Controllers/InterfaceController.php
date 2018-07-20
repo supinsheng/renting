@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\Tuizu;
 use App\Model\Xuzu;
+use App\Model\Guarantees;
+use App\Model\User;
 
 class InterfaceController extends Controller
 {
@@ -78,9 +80,69 @@ class InterfaceController extends Controller
     }
     // 用户提交保修申请接口
     public  function PostBaoxiu(Request $req){
+        $data=json_decode($req->getContent(),TRUE);
+        $guarantees = new Guarantees;
+        $guarantees->device_name = $data['selectwupin'];
+        $guarantees->describe = $data['miaoshu'];
+        $guarantees->username ="唐椿崴";
+        $guarantees->realname ="唐椿崴";
+        $guarantees->img = "444";
+        $guarantees->address = $data['address'];
+        $guarantees->state = '审核中';
+        $guarantees->flow_number = date('YmdHis');
+        return$_FILES['#uploader'];
+//        return $data;
+//        判断提交是否成功
+//        if($guarantees->save()){
+//            $ret=[
+//                'errno'=>1,
+//                'errmsg'=>''
+//            ];
+////            状态码
+//            $status=200;
+//            return response($ret);
+//        }else {
+//            $ret=[
+//                'errno'=>0,
+//                'errmsg'=>'申请失败'
+//            ];
+////            状态码
+//            $status=201;
+//            return response($ret);
+//        }
+    }
+    // 用户登录接口
+    public  function PostUser(Request $req){
+        $data=json_decode($req->getContent(),TRUE);
+        $user = new User;
+        $user = User::where('username',$data['username'])->first();
+        if($user){
+            if($user->passwd == $data['password']){
+                $ret=[
+                    'errno'=>1,
+                    'errmsg'=>'登录成功'
+                ];
+                session([
 
+                    'username'=>$user->username,
+                ]);
+                return response($ret);
+            }else{
+                $ret=[
+                    'errno'=>0,
+                    'errmsg'=>'密码错误'
+                ];
+                return response($ret);
+                }
+        }else{
+            $ret=[
+                'errno'=>2,
+                'errmsg'=>'账号不存在'
+            ];
+            return response($ret);
+        }
     }
 
 
-
 }
+
