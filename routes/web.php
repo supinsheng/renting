@@ -128,3 +128,10 @@ Route::post('/admin/doAdd_house','HouseController@doAdd_house')->name('doAdd_hou
 
 // 删除房屋
 Route::get('/admin/del_house/{id}','HouseController@del_house')->name('del_house');
+
+//后台2
+// 中心登录
+Route::get('/core','CoreController@login')->name('core_login');
+Route::post('/core','CoreController@doLogin')->name('cr_doLogin');
+// 中心首页
+Route::get('/core/main','CoreController@main')->name('cr_main');
