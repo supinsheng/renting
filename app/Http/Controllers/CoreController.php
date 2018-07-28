@@ -41,7 +41,7 @@ class CoreController extends Controller
     function main(){
         $date = 1;
         $end = date("Y-m-d");
-        $m = 6;
+        $m = 7;
         $time = strtotime($end) - 3600*24*30*$m;
         $start = date('Y-m-d',$time); 
         // return [$a,$time];
@@ -49,14 +49,26 @@ class CoreController extends Controller
         // $data = House::whereBetween('start_time',['2018-05-01','2018-09-23'])
         //                 ->groupBy('month')
         //                 ->get();
-        $data = House::select('month',DB::raw('count(*) as num'))
-        ->whereBetween('start_time',[$start,$end])
-        ->groupBy('month')->get();
+        // $data = House::select('month',DB::raw('count(*) as num'))
+        // ->whereBetween('start_time',[$start,$end])
+        // ->groupBy('month')->get();
+        $data = DB::table('households')->whereBetween('start',[$start,$end])->get();
         $datas = json_encode($data);
+
+        $total_chuzu = DB::table('households')->count();
+        $villages = DB::table('villages')->select('id','name')->get();
+        //获取发布策略
+        // $celues = DB::table('celues')
+        // ->where('is_release',1)->orderBy('updated_ar','desc')->get();
         // return $datas;
         return view('core.main',[
             'date'=>$date,
-            'data'=>$datas
+            'data'=>$datas,
+            'total_chuzu'=>$total_chuzu,
+            'villages'=>$villages,
+            'start'=>$start,
+            'end'=>$end,
+            // 'celues'=>$celues
         ]);
     }
 }

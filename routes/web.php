@@ -135,3 +135,11 @@ Route::get('/core','CoreController@login')->name('core_login');
 Route::post('/core','CoreController@doLogin')->name('cr_doLogin');
 // 中心首页
 Route::get('/core/main','CoreController@main')->name('cr_main');
+//催费策略定制
+Route::get('/core/tactics','CoreListController@celue_list')->name('cl_list');
+Route::post('/core/tactics','CoreListController@add_celue')->name('add_celue');
+Route::post('/core/tactics/edit','CoreListController@edit_celue')->name('edit_celue');
+Route::get('/core/tactics/del/{id}','CoreListController@del')->name('del_celue');
+Route::post('/core/tactics/release','CoreListController@release')->name('release_celue');
+
+

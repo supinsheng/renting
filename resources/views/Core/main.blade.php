@@ -8,11 +8,11 @@
 					<!-- OVERVIEW -->
 					<div class="panel panel-headline">
 						<div class="panel-heading">
-							<h3 class="panel-title">统计所有公租房每个月的出租数量或比例{{$date}}</h3>
-							<p class="panel-subtitle">日期: Oct 14, 2016 - Oct 21, 2016</p>
+							<h3 class="panel-title">统计所有公租房每个月的出租数量</h3>
+							<p class="panel-subtitle">日期: {{$start}} - {{$end}}</p>
 						</div>
 						<div class="panel-body">
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col-md-3">
 									<div class="metric">
 										<span class="icon"><i class="fa fa-download"></i></span>
@@ -49,313 +49,74 @@
 										</p>
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<div class="row">
 								<div class="col-md-9">
 									<div id="headline-chart" class="" style="width: 700px;height:400px"></div>
 								</div>
 								<div class="col-md-3">
 									<div class="weekly-summary text-right">
-										<span class="number">2,315</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 12%</span>
+										<span class="number">{{$total_chuzu}}</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> </span>
 										<span class="info-label">总出租量</span>
 									</div>
 									<div class="weekly-summary text-right">
-										<span class="number">$5,758</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 23%</span>
-										<span class="info-label">每月收入</span>
-									</div>
-									<div class="weekly-summary text-right">
+										<span class="number" id="num-avg"></span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> </span>
+										<span class="info-label">平均每月出租</span>
+									</div> 
+									<!-- <div class="weekly-summary text-right">
 										<span class="number">$65,938</span> <span class="percentage"><i class="fa fa-caret-down text-danger"></i> 8%</span>
 										<span class="info-label">总收入</span>
-									</div>
+									</div>  -->
 								</div>
 							</div>
 						</div>
 					</div>
+			
 					<!-- END OVERVIEW -->
 					<div class="row">
-						<div class="col-md-6">
-							<!-- RECENT PURCHASES -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Recent Purchases</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body no-padding">
-									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Order No.</th>
-												<th>Name</th>
-												<th>Amount</th>
-												<th>Date &amp; Time</th>
-												<th>Status</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td><a href="#">763648</a></td>
-												<td>Steve</td>
-												<td>$122</td>
-												<td>Oct 21, 2016</td>
-												<td><span class="label label-success">COMPLETED</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763649</a></td>
-												<td>Amber</td>
-												<td>$62</td>
-												<td>Oct 21, 2016</td>
-												<td><span class="label label-warning">PENDING</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763650</a></td>
-												<td>Michael</td>
-												<td>$34</td>
-												<td>Oct 18, 2016</td>
-												<td><span class="label label-danger">FAILED</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763651</a></td>
-												<td>Roger</td>
-												<td>$186</td>
-												<td>Oct 17, 2016</td>
-												<td><span class="label label-success">SUCCESS</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763652</a></td>
-												<td>Smith</td>
-												<td>$362</td>
-												<td>Oct 16, 2016</td>
-												<td><span class="label label-success">SUCCESS</span></td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="panel-footer">
-									<div class="row">
-										<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
-										<div class="col-md-6 text-right"><a href="#" class="btn btn-primary">View All Purchases</a></div>
-									</div>
-								</div>
-							</div>
-							<!-- END RECENT PURCHASES -->
-						</div>
-						<div class="col-md-6">
+					
+						<div class="col-md-8">
 							<!-- MULTI CHARTS -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">Projection vs. Realization</h3>
+									<select class="form-control" style="width: 240px;" id="form-select"  onChange="villageChange(this.value)">
+									</select>
 									<div class="right">
 										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
 									</div>
 								</div>
 								<div class="panel-body">
-									<div id="visits-trends-chart" class="ct-chart"></div>
+									<div id="visits-trends-chart" class="ct-chart" style="width:450px;height: 350px"></div>
+								</div>
 								</div>
 							</div>
 							<!-- END MULTI CHARTS -->
 						</div>
+						
 					</div>
 					<div class="row">
-						<div class="col-md-7">
+						<div class="col-md-9" style="margin-left:15px"> 
 							<!-- TODO LIST -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">To-Do List</h3>
+									<select class="form-control" style="width: 200px;" id="village-select"  onChange="villageEchart(this.value)">
+									</select>
 									<div class="right">
 										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
 									</div>
 								</div>
-								<div class="panel-body">
-									<ul class="list-unstyled todo-list">
-										<li>
-											<label class="control-inline fancy-checkbox">
-												<input type="checkbox"><span></span>
-											</label>
-											<p>
-												<span class="title">Restart Server</span>
-												<span class="short-description">Dynamically integrate client-centric technologies without cooperative resources.</span>
-												<span class="date">Oct 9, 2016</span>
-											</p>
-											<div class="controls">
-												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
-											</div>
-										</li>
-										<li>
-											<label class="control-inline fancy-checkbox">
-												<input type="checkbox"><span></span>
-											</label>
-											<p>
-												<span class="title">Retest Upload Scenario</span>
-												<span class="short-description">Compellingly implement clicks-and-mortar relationships without highly efficient metrics.</span>
-												<span class="date">Oct 23, 2016</span>
-											</p>
-											<div class="controls">
-												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
-											</div>
-										</li>
-										<li>
-											<label class="control-inline fancy-checkbox">
-												<input type="checkbox"><span></span>
-											</label>
-											<p>
-												<strong>Functional Spec Meeting</strong>
-												<span class="short-description">Monotonectally formulate client-focused core competencies after parallel web-readiness.</span>
-												<span class="date">Oct 11, 2016</span>
-											</p>
-											<div class="controls">
-												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
-											</div>
-										</li>
-									</ul>
+								<div class="panel-body" id="village-mon-table" style="width: 700px;height:400px">
+									
 								</div>
 							</div>
 							<!-- END TODO LIST -->
 						</div>
-						<div class="col-md-5">
-							<!-- TIMELINE -->
-							<div class="panel panel-scrolling">
-								<div class="panel-heading">
-									<h3 class="panel-title">Recent User Activity</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<ul class="list-unstyled activity-list">
-										<li>
-											<img src="/images/core/user1.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Michael</a> has achieved 80% of his completed tasks <span class="timestamp">20 minutes ago</span></p>
-										</li>
-										<li>
-											<img src="/images/core/user2.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Daniel</a> has been added as a team member to project <a href="#">System Update</a> <span class="timestamp">Yesterday</span></p>
-										</li>
-										<li>
-											<img src="/images/core/user3.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Martha</a> created a new heatmap view <a href="#">Landing Page</a> <span class="timestamp">2 days ago</span></p>
-										</li>
-										<li>
-											<img src="/images/core/user4.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Jane</a> has completed all of the tasks <span class="timestamp">2 days ago</span></p>
-										</li>
-										<li>
-											<img src="/images/core/user5.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Jason</a> started a discussion about <a href="#">Weekly Meeting</a> <span class="timestamp">3 days ago</span></p>
-										</li>
-									</ul>
-									<button type="button" class="btn btn-primary btn-bottom center-block">Load More</button>
-								</div>
-							</div>
-							<!-- END TIMELINE -->
-						</div>
+								<!-- END TIMELINE -->
 					</div>
-					<div class="row">
-						<div class="col-md-4">
-							<!-- TASKS -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">My Tasks</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<ul class="list-unstyled task-list">
-										<li>
-											<p>Updating Users Settings <span class="label-percent">23%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width:23%">
-													<span class="sr-only">23% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Load &amp; Stress Test <span class="label-percent">80%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-													<span class="sr-only">80% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Data Duplication Check <span class="label-percent">100%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-													<span class="sr-only">Success</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Server Check <span class="label-percent">45%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-													<span class="sr-only">45% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Mobile App Development <span class="label-percent">10%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
-													<span class="sr-only">10% Complete</span>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<!-- END TASKS -->
-						</div>
-						<div class="col-md-4">
-							<!-- VISIT CHART -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Website Visits</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<div id="visits-chart" class="ct-chart"></div>
-								</div>
-							</div>
-							<!-- END VISIT CHART -->
-						</div>
-						<div class="col-md-4">
-							<!-- REALTIME CHART -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">System Load</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<div id="system-load" class="easy-pie-chart" data-percent="70">
-										<span class="percent">70</span>
-									</div>
-									<h4>CPU Load</h4>
-									<ul class="list-unstyled list-justify">
-										<li>High: <span>95%</span></li>
-										<li>Average: <span>87%</span></li>
-										<li>Low: <span>20%</span></li>
-										<li>Threads: <span>996</span></li>
-										<li>Processes: <span>259</span></li>
-									</ul>
-								</div>
-							</div>
-							<!-- END REALTIME CHART -->
-						</div>
-					</div>
+				
+					
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->
@@ -377,137 +138,362 @@
 	<script src="/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="/vendor/chartist/js/chartist.min.js"></script>
 	<script src="/scripts/klorofil-common.js"></script>
-	<script src="/js/echarts.common.min.js"></script>
+	<script src="/js/echarts.min.js"></script>
 	<script>
-	
-	$(function() {
-
-		var data, options;
-		
-		let str = '{{$data}}';
-		// console.log(str);
-		s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
-		// console.log(s1);
-		let s2 = JSON.parse(s1)
-		// console.log(s2);
-		// console.log(s2[1].month);
-		// console.log(s2.length);
-		let serie1 = [];
-		for(let i=0;i<s2.length;i++){
-			serie1.push(s2[i].num);
-		}	
-		let labels = [];
-		for(let i=0;i<s2.length;i++){
-			labels.push(s2[i].month+'月');
+	var data, options;
+		function quot(str){
+			s1=str.replace(/&quot;/g,'"');
+			return JSON.parse(s1)
 		}
-	var myChart = echarts.init(document.getElementById('headline-chart'));
+		// let str = '{{$data}}';
+		// console.log(str);
+		// s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
+		let arr =quot('{{$data}}')
+
+		console.log(arr);
+		let map = {}, dest= [];
+		for(let i=0;i<arr.length;i++){
+			let ai = arr[i];
+			let mon = parseInt(ai.start.substr(5,2));
+			if(!map[mon]){
+				dest.push({
+					mon:mon,
+					num:1,
+					village:[{'name':ai.village.trim(),'num':1}]
+				});
+				map[mon] = [mon,ai.village.trim()];
+			}else{
+				for(let j = 0; j < dest.length; j++){
+					let dj = dest[j];
+					
+					if(dj.mon == mon) {
+						dj.num ++;
+						//1. 判断village中是否存在这个小区 
+						// 存在 +1 不存在追加
+						// dj.village.push({'name':ai.village,'num':1});
+						for(let m = 0;m < dj.village.length; m++){
+							// console.log(ai.village,dj.village[m].name,mon);
+							
+							// let vi = dest.village[m];
+							if(ai.village.trim()  == dj.village[m].name){
+								dj.village[m].num++;
+								break;
+							}else{
+								dj.village.push({'name':ai.village.trim(),'num':1});
+								break;
+							}
+						}
+						break;
+					}
+					
+				}
+			}
+		}
+		console.log(dest,1111);
+		let map1 = {}, dest1= [];
+		for(let i=0;i<arr.length;i++){
+			let ai = arr[i];
+			//主要：区域 次要：月份 数量
+			/*
+				[
+					{'name':'草桥',data:[
+						{'mon':1,'num':0},
+						{'mon':2,'num':0},
+						{'mon':3,'num':0},
+						{'mon':4,'num':0}
+					]}
+				]
+			 */
+			let mon = parseInt(ai.start.substr(5,2));
+			let vill = ai.village.trim();
+			if(!map1[vill]){
+				dest1.push({
+					village:vill,
+					month:[{'mon':mon,'num':1}]
+				});
+				map1[vill] = [vill];
+			}else{
+				for(let j = 0; j < dest1.length; j++){
+					let dj = dest1[j];
+					if(dj.village == vill) {
+						//1. 判断village中是否存在这个小区 
+						// 存在 +1 不存在追加
+						// dj.village.push({'name':ai.village,'num':1});
+						for(let m = 0;m < dj.month.length; m++){
+							// console.log(ai.village,dj.village[m].name,mon);
+							
+							// let vi = dest.village[m];
+							if(mon  == dj.month[m].mon){
+								dj.month[m].num++;
+								break;
+							}else{
+								dj.month.push({'mon':mon,'num':1});
+								break;
+							}
+						}
+						break;
+					}
+					
+				}
+			}
+		}
+		// console.log(dest1);
+		function compart(pro){
+			return function(a,b){
+				var value1 =a[pro];
+				var value2 = b[pro];
+				return value1 - value2;
+			}
+		}
+		
+		dest.sort(compart('mon'));
+		// console.log(dest);
+		let month = [],num = [];
+		for(let i = 0;i < dest.length; i++){
+			month.push( dest[i].mon );
+			num.push( dest[i].num );
+		}
+		console.log(month);
+		let htmlMonth = '';
+		// doument.querySelector(符合css选择器规则的元素)
+		// console.log(htmlMonth);
+		var date   = new Date();
+ 		var monthn = date.getMonth()+1;
+		// date.setMonth(date.getMonth()-5);
+		//获取前6个月，然后定义一个数组，[1, 2, 3, 4, 5, 6, 7]
+		var date1 = new Date();
+		date1.setMonth(date1.getMonth()-6); 
+		var start_month=date1.getMonth()+1;
+		let months = [];
+		for(i=start_month;i<=monthn;i++){
+			months.push({'mon':i,'num':0});
+		}
+
+		for(let i = 0;i < month.length; i++){
+			if(month[i] == monthn){
+				htmlMonth += `<option value="${month[i]}" selected>${month[i]}月份区域出租量</option>`;
+			}else{
+				htmlMonth += `<option value="${month[i]}">${month[i]}月份区域出租量</option>`;
+			}
+		}
+		// console.log(htmlMonth);
+		document.getElementById('form-select').innerHTML = htmlMonth;
+		let villages = quot('{{$villages}}');
+		let villages1 = [];
+		for(let i = 0;i< villages.length;i++){
+			villages1.push({'name':villages[i].name.trim(),'num':0});
+		}
+	// console.log(dest[4].village);
+		for(let i = 0; i< dest[4].village.length;i++){
+			for(let j = 0; j <villages1.length; j++){
+				if(dest[4].village[i].name == villages1[j].name){
+					villages1[j].num = dest[4].village[i].num;
+					// console.log(1);
+					break;
+				}
+			}
+		}
+		// console.log(dest);
+		//平均每月出租量
+		let numAvg = 0
+		for(let i = 0; i < dest.length; i++){
+			numAvg += dest[i].num;
+		}
+		numAvg = Math.ceil(numAvg / dest.length)
+		document.getElementById('num-avg').innerText = numAvg;
+
+		// console.log(villages1);
+		let villageName = [],villageNum = [];
+		for(let i = 0; i < villages1.length; i++){
+			villageName.push(villages1[i].name);
+			villageNum.push(villages1[i].num);
+		}
+		let htmlVillage = '';
+		for(let i = 0;i < villageName.length; i++){
+			if(i == 0){
+				htmlVillage += `<option value="${villageName[i]}" selected>${villageName[i]}每月出租量</option>`;
+			}else{
+				htmlVillage += `<option value="${villageName[i]}">${villageName[i]}每月出租量</option>`;
+			}
+		}
+		document.getElementById('village-select').innerHTML = htmlVillage;
+		function villageChange(mon){
+			console.log(mon);
+			let index = 0;
+			for(let i=0;i < dest.length; i++){
+				if(dest[i].mon == mon){
+					index = i;
+					break;
+				}
+			}
+			// console.log(index);
+			// let villages1 = villages1;
+			// console.log(villages1)
+			for(let i = 0;i< villages1.length;i++){
+				villages1[i].num = 0;
+			}
+		
+			// console.log(villages1);
+			for(let i = 0; i< dest[index].village.length;i++){
+				for(let j = 0; j <villages1.length; j++){
+					if(dest[index].village[i].name == villages1[j].name){
+						villages1[j].num = dest[index].village[i].num;
+						break;
+					}
+				}
+			}
+			let villageNum = [];
+			for(let i = 0; i < villages1.length; i++){
+				// villageName.push(villages1[i].name);
+				villageNum.push(villages1[i].num);
+			}
+			var myChart1 = echarts.init(document.getElementById('visits-trends-chart'));
+			var option1 = {
+				title: {
+					text: '区域某月的出租数量'
+				},
+				tooltip: {
+					trigger: 'axis'
+				},
+				legend: {
+					data:['出租数量','联盟广告','视频广告','直接访问','搜索引擎']
+				},
+				grid: {
+					left: '5%',
+					right: '4%',
+					bottom: '3%',
+					containLabel: true
+				},
+				xAxis: {
+					type: 'category',
+					boundaryGap: false,
+					data: villageName
+				},
+				yAxis: {
+					type: 'value'
+				},
+				series: [
+					{
+						name:'出租数量',
+						type:'line',
+						stack: '总量',
+						data:villageNum
+					},
+			
+				]
+			};
+			myChart1.setOption(option1);
+		}
+		villageChange(monthn);
+		//统计某个区域内每个月的出租数量或比例，以柱前图显示
+		function villageEchart(key){
+			// data 所选中的区域
+			//dest1.month  存放月份
+			//months 月份数组
+			let index = 0;
+			let dataArr = dest1;//当前函数所使用的dest数组
+			for(let i=0;i < dest.length; i++){
+				if(dataArr[i].village == key){
+					index = i;
+					break;
+				}
+			}
+			// vill
+			// console.log(index);
+			// let villages1 = villages1;
+			// console.log(villages1)
+			for(let i = 0;i< months.length;i++){
+				months[i].num = 0;
+			}
+		
+			// console.log(villages1);
+			let de = dataArr[index].month;
+			// 如果dest1中的month 下的mon 月份等于 months中的mon 月份 ,就让dest1的num 赋值给months
+			for(let i = 0; i< de.length;i++){
+				for(let j = 0; j <months.length; j++){
+					if(de[i].mon == months[j].mon){
+						months[j].num =de[i].num;
+						break;
+					}
+				}
+			}
+
+			let monthNum = [],monthName = [];
+			for(let i = 0; i < months.length; i++){
+				monthName.push(months[i].mon+'月');
+				monthNum.push(months[i].num);
+			}
+			console.log(monthNum);
+			// 图表
+			var myChart3 = echarts.init(document.getElementById('village-mon-table'));
+			var option3 = {
+				title: {
+					text: '区域近7个月的出租数量'
+				},
+				color: ['#00a0f0'],
+				tooltip : {
+					trigger: 'axis',
+					axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+						type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+					}
+				},
+				grid: {
+					left: '3%',
+					right: '4%',
+					bottom: '3%',
+					containLabel: true
+				},
+				xAxis : [
+					{
+						type : 'category',
+						data : monthName,
+						axisTick: {
+							alignWithLabel: true
+						}
+					}
+				],
+				yAxis : [
+					{
+						type : 'value'
+					}
+				],
+				series : [
+					{
+						name:'出租数量',
+						type:'bar',
+						barWidth: '60%',
+						data:monthNum
+					}
+				]
+			};
+			myChart3.setOption(option3);
+		}
+		villageEchart(villageName[0]);
+		console.log(dest);
+
+
+
+		// 统计所有公租房每个月的出租数量
+		var myChart = echarts.init(document.getElementById('headline-chart'));
 		var option =  {
+			color: ['#3398DB'],
 			title: {
-                text: '近6月的房屋出租数量'
+                text: '近7月的房屋出租数量'
             },
             tooltip: {},
             legend: {
                 data:['出租数量']
             },
             xAxis: {
-                data: labels
+                data: month
             },
             yAxis: {},
             series: [{
                 name: '出租数量',
                 type: 'bar',
-                data: serie1
+                data: num
             }]
 		};
 		myChart.setOption(option);
-		// visits trend charts
-		data = {
-			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-			series: [{
-				name: 'series-real',
-				data: [200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
-			}, {
-				name: 'series-projection',
-				data: [240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800],
-			}]
-		};
-
-		options = {
-			fullWidth: true,
-			lineSmooth: false,
-			height: "270px",
-			low: 0,
-			high: 'auto',
-			series: {
-				'series-projection': {
-					showArea: true,
-					showPoint: false,
-					showLine: false
-				},
-			},
-			axisX: {
-				showGrid: false,
-
-			},
-			axisY: {
-				showGrid: false,
-				onlyInteger: true,
-				offset: 0,
-			},
-			chartPadding: {
-				left: 20,
-				right: 20
-			}
-		};
-
-		new Chartist.Line('#visits-trends-chart', data, options);
-
-
-		// visits chart
-		data = {
-			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-			series: [
-				[6384, 6342, 5437, 2764, 3958, 5068, 7654]
-			]
-		};
-
-		options = {
-			height: 300,
-			axisX: {
-				showGrid: false
-			},
-		};
-
-		new Chartist.Bar('#visits-chart', data, options);
-
-
-		// real-time pie chart
-		var sysLoad = $('#system-load').easyPieChart({
-			size: 130,
-			barColor: function(percent) {
-				return "rgb(" + Math.round(200 * percent / 100) + ", " + Math.round(200 * (1.1 - percent / 100)) + ", 0)";
-			},
-			trackColor: 'rgba(245, 245, 245, 0.8)',
-			scaleColor: false,
-			lineWidth: 5,
-			lineCap: "square",
-			animate: 800
-		});
-
-		var updateInterval = 3000; // in milliseconds
-
-		setInterval(function() {
-			var randomVal;
-			randomVal = getRandomInt(0, 100);
-
-			sysLoad.data('easyPieChart').update(randomVal);
-			sysLoad.find('.percent').text(randomVal);
-		}, updateInterval);
-
-		function getRandomInt(min, max) {
-			return Math.floor(Math.random() * (max - min + 1)) + min;
-		}
-
-	});
 	</script>
 @endsection

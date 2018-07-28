@@ -1,0 +1,36 @@
+.defaultTab-T {background: #fdfdfd; border-bottom: 1px solid #f1eff6;}
+.defaultTable { width: 98%; margin: 0 auto;}
+.defaultTable tr { position: relative;}
+.defaultTable th { height: 48px; background: #fdfdfd; font-weight: normal; font-size: 16px; color: #363636; }
+.defaultTable2 { width: 98%; margin: 5px auto;}
+.defaultTable td { color: #545454; padding: 15px 0; border-bottom: 1px solid #f6f5fa;}
+.defaultTable .t_1 { width: 10%; text-align: left; padding-left: 1%; position: relative;}
+.defaultTable .t_2 { width: 55%; text-align: left;}
+.defaultTable .t_3 { width: 15%; text-align: center;}
+.defaultTable .t_4 { width: 30%; text-align: center;}
+.defaultTable .t_5 { width: 14%; text-align: left;}
+.defaultTable .t_6 { width: 25%; text-align: left; padding-left: 1%; position: relative;}
+.defaultTable .t_7 { width: 35%; text-align: left;}
+.defaultTable .t_8 { width: 20%; text-align: left;}
+.defaultTable .t_9 { width: 20%; text-align: center;}
+.defaultTable .t_2_1 { width: 30%; text-align: left;}
+.defaultTable tr:hover { background: #fafafa;}
+.defaultTable .cr-btn a { display: inline-block; padding: 0 9px; height: 23px; line-height: 23px; color: #fff; border-radius: 2px; -moz-border-radius: 2px; -webkit-border-radius: 2px; margin: 0 2%;}
+.defaultTable .cr-btn a.Top ,.defaultTable .cr-btn a.look { color: #00B38B; border: 1px solid #00B38B; cursor: pointer;}
+.defaultTable .cr-btn a.modify { color: #fe990b; border: 1px solid #fe990b;}
+.defaultTable .cr-btn a.delete { color: #f23e47; border: 1px solid #f23e47;}
+.defaultTable .cr-btn a.Top:hover ,.defaultTable .cr-btn a.look:hover { background: #00B38B; color: #fff;}
+.defaultTable .cr-btn a.modify:hover { background: #fe990b; color: #fff;}
+.defaultTable .cr-btn a.delete:hover { background: #f23e47; color: #fff;}
+.defaultTable .cr-btn a.Top.toping { background: #00B38B; color: #fff;}
+
+.pageSelect { position: relative; height: 74px; margin: 0 2%;}
+.pageSelect span { position: absolute; left: 0; top: 0; line-height: 74px; color: #8a8a8a;}
+.pageSelect span b { font-weight: normal; color: #f23e47;}
+.pageSelect .pageWrap { text-align: center; padding-top: 21px;}
+.pageSelect .pageWrap a { display: inline-block; width: 41px; height: 33px;border: 1px solid #e6e6e6; text-align: center; color: #919191; line-height: 33px; margin: 0 3px; background: #fff;}
+.pageSelect .pageWrap a i { cursor: pointer;}
+
+.pageSelect .pageWrap a.cur ,.pageSelect .pageWrap a:hover { background: #81848b; color: #fff; border-radius: 1px; -moz-border-radius: 1px; -webkit-border-radius: 1px;}
+.pageSelect .pageWrap a i.ico-pre { display: block; width: 8px; height: 33px; background: url(../images/ico_fabu_page.png) no-repeat 0 10px; margin: 0 auto; }
+.pageSelect .pageWrap a i.ico-next { display: block; width: 8px; height: 33px; background: url(../images/ico_fabu_page.png) no-repeat 0 -29px; margin: 0 auto;}
