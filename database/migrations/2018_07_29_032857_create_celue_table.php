@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCeluesTable extends Migration
+class CreateCelueTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,6 +19,9 @@ class CreateCeluesTable extends Migration
             $table->string('title')->comment('策略标题');
             $table->longText('description')->comment('策略内容');
             $table->enum('is_release',[0,1])->default(0)->comment('是否发布');
+            
+            $table->engine="innodb";
+            $table->comment="发布策略表";
         });
     }
 

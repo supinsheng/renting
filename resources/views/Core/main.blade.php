@@ -150,7 +150,6 @@
 		// s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
 		let arr =quot('{{$data}}')
 
-		console.log(arr);
 		let map = {}, dest= [];
 		for(let i=0;i<arr.length;i++){
 			let ai = arr[i];
@@ -189,7 +188,6 @@
 				}
 			}
 		}
-		console.log(dest,1111);
 		let map1 = {}, dest1= [];
 		for(let i=0;i<arr.length;i++){
 			let ai = arr[i];
@@ -237,7 +235,6 @@
 				}
 			}
 		}
-		// console.log(dest1);
 		function compart(pro){
 			return function(a,b){
 				var value1 =a[pro];
@@ -269,7 +266,7 @@
 			months.push({'mon':i,'num':0});
 		}
 
-		for(let i = 0;i < month.length; i++){
+		for(let i = 0;i < months.length; i++){
 			if(month[i] == monthn){
 				htmlMonth += `<option value="${month[i]}" selected>${month[i]}月份区域出租量</option>`;
 			}else{

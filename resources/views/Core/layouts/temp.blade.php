@@ -92,7 +92,7 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="{{route('cr_main')}}"  @if(Route::currentRouteName() == 'cr_main') class="active" @endif><i class="lnr lnr-home"></i> <span>出租数据统计</span></a></li>
-						<li><a href="tables.html" class=""><i class="lnr lnr-dice"></i> <span>缴费数据统计</span></a></li>						
+						<li><a href="{{route('charts_main')}}"  @if(Route::currentRouteName() == 'charts_main') class="active" @endif><i class="lnr lnr-dice"></i> <span>缴费数据统计</span></a></li>						
 						<li><a href="{{route('cl_list')}}"  @if(Route::currentRouteName() == 'cl_list') class="active" @endif ><i class="lnr lnr-code"></i> <span>策略定制</span></a></li>
 						<li><a href="charts.html" ><i class="lnr lnr-chart-bars"></i> <span>住户管理</span></a></li>
 						<!-- <li><a href="panels.html" class=""><i class="lnr lnr-cog"></i> <span>Panels</span></a></li> -->

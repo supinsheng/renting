@@ -141,5 +141,6 @@ Route::post('/core/tactics','CoreListController@add_celue')->name('add_celue');
 Route::post('/core/tactics/edit','CoreListController@edit_celue')->name('edit_celue');
 Route::get('/core/tactics/del/{id}','CoreListController@del')->name('del_celue');
 Route::post('/core/tactics/release','CoreListController@release')->name('release_celue');
-
+//缴费情况图表
+ROute::get('/core/charts','ChartsController@main')->name('charts_main');
 
