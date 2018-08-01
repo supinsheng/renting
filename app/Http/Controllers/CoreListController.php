@@ -103,20 +103,20 @@ class CoreListController extends Controller
     }
 
 
-    public  function sendSms(Request $req) {
-        $config = [
-            'accessKeyId'    => 'LTAIZHa2BPopnEcF',
-            'accessKeySecret' => 'smFrrx0an8tV5jvLp1sOWfMcZ8Lg1e',
-        ];
-        $client  = new Client($config);
-        $sendSms = new SendSms;
-        $sendSms->setPhoneNumbers($req->mobile);
-        $sendSms->setSignName('建宁县公租房管理平台');
-        $sendSms->setTemplateCode('SMS_135430007');
-        $sendSms->setTemplateParam(['code' => rand(100000, 999999)]);
-        $sendSms->setOutId('demo');
+    // public  function sendSms(Request $req) {
+    //     $config = [
+    //         'accessKeyId'    => 'LTAIZHa2BPopnEcF',
+    //         'accessKeySecret' => 'smFrrx0an8tV5jvLp1sOWfMcZ8Lg1e',
+    //     ];
+    //     $client  = new Client($config);
+    //     $sendSms = new SendSms;
+    //     $sendSms->setPhoneNumbers($req->mobile);
+    //     $sendSms->setSignName('建宁县公租房管理平台');
+    //     $sendSms->setTemplateCode('SMS_135430007');
+    //     $sendSms->setTemplateParam(['code' => rand(100000, 999999)]);
+    //     $sendSms->setOutId('demo');
 
-        $client->execute($sendSms);
-    }
+    //     $client->execute($sendSms);
+    // }
     
 }
