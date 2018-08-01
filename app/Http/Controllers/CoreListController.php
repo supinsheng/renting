@@ -94,10 +94,12 @@ class CoreListController extends Controller
                         ['data','>',DB::raw('now()')],
                         ['is_pay','0']
                     ])->get();
-        // return $data;
         return view('core.urge',[
             'data'=>$data
         ]);
+
+
+
     }
 
 
@@ -108,12 +110,13 @@ class CoreListController extends Controller
         ];
         $client  = new Client($config);
         $sendSms = new SendSms;
-        $sendSms->setPhoneNumbers('17805202039');
+        $sendSms->setPhoneNumbers($req->mobile);
         $sendSms->setSignName('建宁县公租房管理平台');
         $sendSms->setTemplateCode('SMS_135430007');
         $sendSms->setTemplateParam(['code' => rand(100000, 999999)]);
         $sendSms->setOutId('demo');
 
-        print_r($client->execute($sendSms));
+        $client->execute($sendSms);
     }
+    
 }
