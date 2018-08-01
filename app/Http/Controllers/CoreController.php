@@ -24,7 +24,8 @@ class CoreController extends Controller
     function doLogin(CoreRequest $req){
         $user = Core::where('name',$req->username)->first();
         if($user){
-            if(Hash::check($req->password,$user->password)){
+            // if(Hash::check($req->password,$user->password)){
+            if($req->password == $user->password){
                 session([
                     'id'=>$user->id
                     // 'face'=
@@ -70,5 +71,10 @@ class CoreController extends Controller
             'end'=>$end,
             // 'celues'=>$celues
         ]);
+    }
+
+    public function loginout(Request $req) {
+        $req->session()->flush();//清空session
+        return redirect()->route('core_login');
     }
 }

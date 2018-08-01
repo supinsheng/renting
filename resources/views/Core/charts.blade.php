@@ -58,11 +58,7 @@
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
-		<footer>
-			<div class="container-fluid">
-				<p class="copyright">Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-			</div>
-		</footer>
+	
 	</div>
 	<!-- END WRAPPER -->
 	<!-- Javascript -->
@@ -106,18 +102,6 @@
 			}
 
 		}
-		// let adds = [];
-		// for(i=0;i<arr.length;i++){
-		// 	console.log(arr[i].address,1111111);
-		// 	adds.push(arr[i].address);
-		// 	for(j=0;j<adds.length;j++){
-		// 		if(adds[j] !=  arr[i].address){
-		// 			adds.push(arr[i].address);
-		// 		}
-		// 	}
-		// }
-		// console.log(adds);
-		//获取缴费情况
 
 		let htmlMonth = '';
 		//操作数据，总结出月份 区域 缴费情况

@@ -44,14 +44,14 @@
 									<input type="password" class="form-control" name="password" placeholder="请输入密码">
 								</div>
 								<div class="form-group clearfix">
-									<label class="fancy-checkbox element-left">
+									<!-- <label class="fancy-checkbox element-left">
 										<input type="checkbox">
 										<span>记住我</span>
-									</label>
+									</label> -->
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
 								<div class="bottom">
-									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">忘记密码？</a></span>
+									<!-- <span class="helper-text"><i class="fa fa-lock"></i> <a href="#">忘记密码？</a></span> -->
 								</div>
 							</form>
 						</div>
@@ -59,8 +59,8 @@
 					<div class="right">
 						<div class="overlay"></div>
 						<div class="content text">
-							<h1 class="heading">Free Bootstrap dashboard template</h1>
-							<p>by The Develovers</p>
+							<h1 class="heading">欢迎进入公租房管理中心</h1>
+							<!-- <p>by The Develovers</p> -->
 							@if($errors->any())
 								@foreach($errors->all() as $e)
 									<p>{{$e}}</p>

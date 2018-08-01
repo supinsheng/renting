@@ -73,11 +73,7 @@
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
-		<footer>
-			<div class="container-fluid">
-				<p class="copyright">Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-			</div>
-		</footer>
+
 	</div>
 
 	<!-- END WRAPPER -->
@@ -95,7 +91,7 @@
 					<input type="text" name="title" class="form-control" placeholder="请输入新策略的标题">
 					<br>
 					<textarea class="form-control" placeholder="请输入策略的内容" name="description" rows="6"></textarea>
-					
+					<input type="hidden"  name="username" value="">
 				</div>				
 			</div>
 			<div class="modal-footer">

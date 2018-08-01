@@ -133,14 +133,30 @@ Route::get('/admin/del_house/{id}','HouseController@del_house')->name('del_house
 // 中心登录
 Route::get('/core','CoreController@login')->name('core_login');
 Route::post('/core','CoreController@doLogin')->name('cr_doLogin');
-// 中心首页
-Route::get('/core/main','CoreController@main')->name('cr_main');
-//催费策略定制
-Route::get('/core/tactics','CoreListController@celue_list')->name('cl_list');
-Route::post('/core/tactics','CoreListController@add_celue')->name('add_celue');
-Route::post('/core/tactics/edit','CoreListController@edit_celue')->name('edit_celue');
-Route::get('/core/tactics/del/{id}','CoreListController@del')->name('del_celue');
-Route::post('/core/tactics/release','CoreListController@release')->name('release_celue');
-//缴费情况图表
-ROute::get('/core/charts','ChartsController@main')->name('charts_main');
+Route::middleware('coreLogin')->group(function (){    
+    // 中心首页
+    Route::get('/core/main','CoreController@main')->name('cr_main');
+    //催费策略定制
+    Route::get('/core/tactics','CoreListController@celue_list')->name('cl_list');
+    Route::post('/core/tactics','CoreListController@add_celue')->name('add_celue');
+    Route::post('/core/tactics/edit','CoreListController@edit_celue')->name('edit_celue');
+    Route::get('/core/tactics/del/{id}','CoreListController@del')->name('del_celue');
+    Route::post('/core/tactics/release','CoreListController@release')->name('release_celue');
+    //缴费情况图表
+    ROute::get('/core/charts','ChartsController@main')->name('charts_main');
+    //发送信息到区域
+    Route::get('/core/send','CoreListController@send')->name('send_message');
+    Route::post('/core/send','CoreListController@doSend')->name('doSend_message');
+    //住户管理
+    Route::get('/core/household','CoreListController@household_list')->name('household_list');
+    Route::get('/core/ajax','CoreListController@ajax_houselhold')->name('ajax_household');
+    //催缴功能
+    Route::get('/core/urge','CoreListController@urgePay')->name('urgePay');
+
+    Route::get('/core/sendSms','CoreListController@sendSms')->name('coreSendSms');
+
+    Route::get('/core/loginout','CoreController@loginout')->name('coreLoginout');
+});
+
+
 
