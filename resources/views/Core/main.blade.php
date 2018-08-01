@@ -12,44 +12,7 @@
 							<p class="panel-subtitle">日期: {{$start}} - {{$end}}</p>
 						</div>
 						<div class="panel-body">
-							<!-- <div class="row">
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-download"></i></span>
-										<p>
-											<span class="number">1000次</span>
-											<span class="title">下载</span>
-										</p>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-shopping-bag"></i></span>
-										<p>
-											<span class="number">203</span>
-											<span class="title">销售</span>
-										</p>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-eye"></i></span>
-										<p>
-											<span class="number">274,678次</span>
-											<span class="title">访问</span>
-										</p>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-bar-chart"></i></span>
-										<p>
-											<span class="number">35%的</span>
-											<span class="title">转换次数</span>
-										</p>
-									</div>
-								</div>
-							</div> -->
+							
 							<div class="row">
 								<div class="col-md-9">
 									<div id="headline-chart" class="" style="width: 700px;height:400px"></div>
@@ -75,7 +38,7 @@
 					<!-- END OVERVIEW -->
 					<div class="row">
 					
-						<div class="col-md-8">
+						<div class="col-md-12">
 							<!-- MULTI CHARTS -->
 							<div class="panel">
 								<div class="panel-heading">
@@ -87,7 +50,7 @@
 									</div>
 								</div>
 								<div class="panel-body">
-									<div id="visits-trends-chart" class="ct-chart" style="width:450px;height: 350px"></div>
+									<div id="visits-trends-chart" class="ct-chart" style="width:100%;height: 350px"></div>
 								</div>
 								</div>
 							</div>
@@ -95,8 +58,8 @@
 						</div>
 						
 					</div>
-					<div class="row">
-						<div class="col-md-9" style="margin-left:15px"> 
+					<!-- <div class="row"> -->
+						<div class="col-md-12" > 
 							<!-- TODO LIST -->
 							<div class="panel">
 								<div class="panel-heading">
@@ -107,14 +70,14 @@
 										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
 									</div>
 								</div>
-								<div class="panel-body" id="village-mon-table" style="width: 700px;height:400px">
+								<div class="panel-body" id="village-mon-table" style="width: 100%;height:400px">
 									
 								</div>
 							</div>
 							<!-- END TODO LIST -->
 						</div>
 								<!-- END TIMELINE -->
-					</div>
+					<!-- </div> -->
 				
 					
 				</div>
@@ -245,8 +208,7 @@
 			month.push( dest[i].mon );
 			num.push( dest[i].num );
 		}
-		console.log(month);
-		let htmlMonth = '';
+		
 		// doument.querySelector(符合css选择器规则的元素)
 		// console.log(htmlMonth);
 		var date   = new Date();
@@ -260,12 +222,13 @@
 		for(i=start_month;i<=monthn;i++){
 			months.push({'mon':i,'num':0});
 		}
-
+		let htmlMonth = '';
 		for(let i = 0;i < months.length; i++){
-			if(month[i] == monthn){
-				htmlMonth += `<option value="${month[i]}" selected>${month[i]}月份区域出租量</option>`;
+			mon = months[i].mon;
+			if(mon == monthn){
+				htmlMonth += `<option value="${mon}" selected>${mon}月份区域出租量</option>`;
 			}else{
-				htmlMonth += `<option value="${month[i]}">${month[i]}月份区域出租量</option>`;
+				htmlMonth += `<option value="${mon}">${mon}月份区域出租量</option>`;
 			}
 		}
 		// console.log(htmlMonth);
@@ -274,16 +237,6 @@
 		let villages1 = [];
 		for(let i = 0;i< villages.length;i++){
 			villages1.push({'name':villages[i].name.trim(),'num':0});
-		}
-	// console.log(dest[4].village);
-		for(let i = 0; i< dest[4].village.length;i++){
-			for(let j = 0; j <villages1.length; j++){
-				if(dest[4].village[i].name == villages1[j].name){
-					villages1[j].num = dest[4].village[i].num;
-					// console.log(1);
-					break;
-				}
-			}
 		}
 		// console.log(dest);
 		//平均每月出租量
@@ -310,30 +263,31 @@
 		}
 		document.getElementById('village-select').innerHTML = htmlVillage;
 		function villageChange(mon){
-			console.log(mon);
-			let index = 0;
+			//如果没有当前月的数据， 就为空
+			let index = null;
 			for(let i=0;i < dest.length; i++){
 				if(dest[i].mon == mon){
 					index = i;
 					break;
 				}
 			}
-			// console.log(index);
 			// let villages1 = villages1;
 			// console.log(villages1)
 			for(let i = 0;i< villages1.length;i++){
 				villages1[i].num = 0;
 			}
-		
-			// console.log(villages1);
-			for(let i = 0; i< dest[index].village.length;i++){
-				for(let j = 0; j <villages1.length; j++){
-					if(dest[index].village[i].name == villages1[j].name){
-						villages1[j].num = dest[index].village[i].num;
-						break;
+			if(index != null){
+				for(let i = 0; i< dest[index].village.length;i++){
+					for(let j = 0; j <villages1.length; j++){
+						if(dest[index].village[i].name == villages1[j].name){
+							villages1[j].num = dest[index].village[i].num;
+							break;
+						}
 					}
 				}
 			}
+			
+
 			let villageNum = [];
 			for(let i = 0; i < villages1.length; i++){
 				// villageName.push(villages1[i].name);
@@ -382,7 +336,7 @@
 			// data 所选中的区域
 			//dest1.month  存放月份
 			//months 月份数组
-			let index = 0;
+			let index = null;
 			let dataArr = dest1;//当前函数所使用的dest数组
 			for(let i=0;i < dest.length; i++){
 				if(dataArr[i].village == key){
@@ -390,32 +344,29 @@
 					break;
 				}
 			}
-			// vill
-			// console.log(index);
-			// let villages1 = villages1;
-			// console.log(villages1)
+		
 			for(let i = 0;i< months.length;i++){
 				months[i].num = 0;
 			}
-		
-			// console.log(villages1);
-			let de = dataArr[index].month;
-			// 如果dest1中的month 下的mon 月份等于 months中的mon 月份 ,就让dest1的num 赋值给months
-			for(let i = 0; i< de.length;i++){
-				for(let j = 0; j <months.length; j++){
-					if(de[i].mon == months[j].mon){
-						months[j].num =de[i].num;
-						break;
+			if( index != null) {
+				let de = dataArr[index].month;
+				// 如果dest1中的month 下的mon 月份等于 months中的mon 月份 ,就让dest1的num 赋值给months
+				for(let i = 0; i< de.length;i++){
+					for(let j = 0; j <months.length; j++){
+						if(de[i].mon == months[j].mon){
+							months[j].num =de[i].num;
+							break;
+						}
 					}
 				}
 			}
+			
 
 			let monthNum = [],monthName = [];
 			for(let i = 0; i < months.length; i++){
 				monthName.push(months[i].mon+'月');
 				monthNum.push(months[i].num);
 			}
-			console.log(monthNum);
 			// 图表
 			var myChart3 = echarts.init(document.getElementById('village-mon-table'));
 			var option3 = {
@@ -461,7 +412,6 @@
 			myChart3.setOption(option3);
 		}
 		villageEchart(villageName[0]);
-		console.log(dest);
 
 
 

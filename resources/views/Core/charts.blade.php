@@ -13,7 +13,7 @@
 									<select class="form-control" style="width: 240px;" id="village-select"  onChange="villageChart(this.value)">
 									</select>
 								</div>
-								<div class="panel-body" id="echart-1" style="width:500;height:400px">
+								<div class="panel-body" id="echart-1" style="width:100%;height:400px">
 								</div>
 							</div>
 						</div>
@@ -22,7 +22,7 @@
 								<div class="panel-heading">
 									<h3 class="panel-title">所有公租房的近7个月的缴费情况</h3>
 								</div>
-								<div class="panel-body" id="echart-months" style="width:500;height:400px">
+								<div class="panel-body" id="echart-months" style="width:100%;height:400px">
 									
 								</div>
 							</div>
@@ -35,7 +35,7 @@
 								<select class="form-control" style="width: 240px;" id="address-select"  onChange="addressChart(this.value)">
 									</select>
 								</div>
-								<div class="panel-body"  id="echart-address" style="width:500;height:400px">
+								<div class="panel-body"  id="echart-address" style="width:100%;height:400px">
 				
 								</div>
 							</div>
@@ -46,7 +46,7 @@
 								<select class="form-control" style="width: 240px;" id="village-month-select"  onChange="villageChange(this.value)">
 									</select>
 								</div>
-								<div class="panel-body" id="village-month-chart" style="width:500;height:400px">
+								<div class="panel-body" id="village-month-chart" style="width:100%;height:400px">
 
 								</div>
 							</div>
@@ -75,7 +75,6 @@
 		}
 		let arr = quot('{{$data}}');
 		//输出所有的区域
-		console.log(arr,1111111);
 		let villages = quot('{{$villages}}');
 		let villagesList = [];
 		for(let i = 0;i< villages.length;i++){
@@ -170,7 +169,6 @@
 					}
 				}
 			}
-			// console.log(paid,unpaid);
 			
 			myChart = echarts.init(document.getElementById('echart-1'))
 	
@@ -451,7 +449,6 @@
 				addressMonths[i].paid = 0;
 				addressMonths[i].unpaid = 0;
 			}
-			console.log(dest1);
 			for(let i=0;i < dest1.length; i++){
 				vill = dest1[i].village;
 				
@@ -469,7 +466,6 @@
 					}
 				}
 			}
-			console.log(addressMonths);
 			//总结数据 x轴数组 已缴费数据 未交费数据
 			let month =[],paid= [],unpaid = [];
 			for(i=0;i<addressMonths.length;i++){
