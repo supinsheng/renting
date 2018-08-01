@@ -88,6 +88,17 @@ class AdminController extends Controller
     public function delHousehold($id){
 
         $household = Household::find($id);
+        $house = House::where('house_id',$household->address)->first();
+        if($house){
+
+            $house->state = '未出租';
+            $house->hold_name = '';
+            $house->hold_phone = '';
+            $house->start_time = '';
+            $house->end_time = '';
+            $house->residual_lease = '';
+            $house->save();
+        }
         $household->delete();
         return redirect()->route('indexMain');
     }
@@ -102,13 +113,14 @@ class AdminController extends Controller
 
     // 执行录入
     public function doaddHold(HouseholdRequest $req){
-     
-        $house = House::where('house_id',$req->address)->first();
+        
+        $house = House::where('house_id',$req->address)->where('village',$req->village)->first();
                 
         if($house){
-
+            
             $household = new Household;
             $household->fill($req->all());
+            $household->time = $req->time;
             $household->end = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
             $household->save();
 
@@ -121,12 +133,12 @@ class AdminController extends Controller
                 $house->residual_lease = $req->time;
                 
             }else {
-                $house->residual_lease = ceil((strtotime($household->end)-strtotime('now'))/(60*60*24)).'天';
+                $house->residual_lease = floor((strtotime($household->end)-strtotime('now'))/(60*60*24)).'天';
             }
             $house->save();
             return redirect()->route('indexMain');
         }else {
-            return back()->withInput()->withErrors(['address'=>'住址不存在']);
+            return back()->withInput()->withErrors(['address'=>'该房屋编号 不存在']);
         }
         
           
@@ -146,10 +158,34 @@ class AdminController extends Controller
     public function doeditHold(Request $req,$id){
         
         $household = Household::find($id);
+        $house = House::where('house_id',$household->address)->first();
+        $house->state = '未出租';
+        $house->hold_name = '';
+        $house->hold_phone = '';
+        $house->start_time = '';
+        $house->end_time = '';
+        $house->residual_lease = '';
+        $house->save();
 
         $household->fill($req->all());
+        $household->time = $req->time."个月";
         $household->end = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
         $household->save();
+
+        $house = House::where('house_id',$req->address)->where('village',$req->village)->first();
+        $house->state = '已出租';
+        $house->hold_name = $req->realname;
+        $house->hold_phone = $req->phone;
+        $house->start_time = $req->start;
+        $house->end_time = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
+        if(strtotime('now')<strtotime($req->start)){
+            $house->residual_lease = $req->time;
+            
+        }else {
+            $house->residual_lease = floor((strtotime($household->end)-strtotime('now'))/(60*60*24)).'天';
+        }
+        $house->save();
+
         return redirect()->route('indexMain');
     }
 
@@ -158,7 +194,7 @@ class AdminController extends Controller
     public function village(Request $req){
 
         if($req->keyword){
-            
+
             $village = Village::where(function($q) use($req){
 
                 $q->where('name','like',"%$req->keyword%");

@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "6f22614ab835b12941e22b11196008b4",
@@ -365,6 +365,7 @@
             "time": "2017-06-15T17:19:42+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "guzzlehttp/guzzle",
             "version": "6.3.3",
             "source": {
@@ -463,10 +464,35 @@
                     "src/functions_include.php"
                 ]
             },
+=======
+            "name": "flc/dysms",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flc1125/dysms.git",
+                "reference": "a32a8f7ae8a493d4eb48a8d82c200b3b358c74d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flc1125/dysms/zipball/a32a8f7ae8a493d4eb48a8d82c200b3b358c74d1",
+                "reference": "a32a8f7ae8a493d4eb48a8d82c200b3b358c74d1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Flc\\Dysms\\": "src/"
+                }
+            },
+>>>>>>> 2621ca09c2c613facb9040d10aa82cbf13f35bec
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
+<<<<<<< HEAD
             "authors": [
                 {
                     "name": "Michael Dowling",
@@ -544,6 +570,17 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+=======
+            "description": "阿里短信-适用Laravel、Yii、Thinkphp等任何PHP项目...",
+            "keywords": [
+                "alisms",
+                "aliyun",
+                "dysms",
+                "flc",
+                "阿里短信"
+            ],
+            "time": "2018-01-16T03:55:46+00:00"
+>>>>>>> 2621ca09c2c613facb9040d10aa82cbf13f35bec
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1100,8 +1137,13 @@
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bd088dc940a418f09cda079a9b5c7c478890fb8d",
                 "reference": "bd088dc940a418f09cda079a9b5c7c478890fb8d",
+=======
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/35b8caf75e791ba1b2d24fec1552168d72692b12",
+                "reference": "35b8caf75e791ba1b2d24fec1552168d72692b12",
+>>>>>>> 2621ca09c2c613facb9040d10aa82cbf13f35bec
                 "shasum": ""
             },
             "require": {
@@ -1808,8 +1850,13 @@
             },
             "dist": {
                 "type": "zip",
+<<<<<<< HEAD
                 "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/7d760881d266d63c5e7a1155cbcf2ac656a31ca8",
                 "reference": "7d760881d266d63c5e7a1155cbcf2ac656a31ca8",
+=======
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/aa899fef280b1c1aec8d5d4ac069af7f80c89a23",
+                "reference": "aa899fef280b1c1aec8d5d4ac069af7f80c89a23",
+>>>>>>> 2621ca09c2c613facb9040d10aa82cbf13f35bec
                 "shasum": ""
             },
             "require": {
