@@ -128,3 +128,11 @@ Route::post('/admin/doAdd_house','HouseController@doAdd_house')->name('doAdd_hou
 
 // 删除房屋
 Route::get('/admin/del_house/{id}','HouseController@del_house')->name('del_house');
+
+
+//微信
+Route::any('/wechat', 'WechatController@serve');
+Route::get('/user', function () {
+    $user = session('wechat.oauth_user'); // 拿到授权用户资料
+    return redirect()->to('/home#/index'); //這時候已經拿到用戶資料了，跳轉到想要的路由
+});
