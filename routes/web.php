@@ -129,6 +129,38 @@ Route::post('/admin/doAdd_house','HouseController@doAdd_house')->name('doAdd_hou
 // 删除房屋
 Route::get('/admin/del_house/{id}','HouseController@del_house')->name('del_house');
 
+
+//住户信息查询
+Route::get('/admin/list_household','HouseholdController@list')->name('list_household');
+//房屋出租记录查询、
+Route::get('/admin/select_house','HouseholdController@houseSelect')->name('select_house');
+//收费管理
+Route::get('/admin/payment','HouseholdController@payment')->name('edit_payment');
+Route::post('/admin/doPayment','HouseholdController@doPayment')->name('doEdit_payment');
+
+
+
+//新闻添加
+Route::get('/admin/addNew','NewController@add')->name('addNew');
+Route::post('/admin/doAddNew','NewController@doAdd')->name('doAddNew');
+Route::get('/admin/editNew','NewController@edit')->name('editNew');
+Route::post('/admin/doEditNew','NewController@doEdit')->name('doEditNew');
+
+Route::get('/admin/queryNew','NewController@query')->name('queryNew');
+// 删除新闻
+Route::get('/admin/delNew/{id}','NewController@del')->name('delNew');
+//权限管理
+Route::get('/admin/jurList','JurController@list')->name('jurList');
+
+Route::post('/admin/addUser','JurController@add')->name('addUser');
+Route::post('/admin/editUser','JurController@edit')->name('editUser');
+
+Route::get('/admin/delUser/{id}','JurController@del')->name('delUser');
+
+Route::get('/admin/juris','JurController@jurisList')->name('jurisList');
+Route::post('/admin/addJuris','JurController@addJuris')->name("addJuris");
+Route::get('/admin/delJuris/{id}','JurController@delJuris')->name('delJuris');
+//====================
 //微信
 Route::any('/wechat', 'WechatController@serve');
 Route::get('/user', function () {

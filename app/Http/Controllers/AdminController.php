@@ -8,7 +8,7 @@ use App\Model\Admin;
 use App\Model\Village;
 use App\Model\House;
 use App\Http\Requests\HouseholdRequest;
-
+use DB;
 class AdminController extends Controller
 {
     public function admin_login(){
@@ -17,12 +17,19 @@ class AdminController extends Controller
 
     public function admin_doLogin(Request $req){
         $admin = Admin::where('name',$req->name)->first();
-
+        $jurs = DB::table('jurisdics')->get();
+        $dic = '';
+        for($i=0;$i<count($jurs);$i++){
+            if($jurs[$i]->id  == $admin->jurisdiction){
+                $dic = $jurs[$i]->jurisdiction;
+            }
+        }
         if($admin){
             if($admin->passwd == $req->passwd){
                 session([
 	
                     'name'=>$admin->name,
+                    'jurisdiction'=>$dic
                 ]);
                 return redirect()->route('admin_index');
             }else {

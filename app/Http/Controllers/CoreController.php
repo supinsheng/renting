@@ -40,7 +40,6 @@ class CoreController extends Controller
         }
     }
     function main(){
-        $date = 1;
         $end = date("Y-m-d");
         $m = 7;
         $time = strtotime($end) - 3600*24*30*$m;
@@ -53,7 +52,6 @@ class CoreController extends Controller
         $villages = DB::table('villages')->select('id','name')->get();
    
         return view('core.main',[
-            'date'=>$date,
             'data'=>$datas,
             'total_chuzu'=>$total_chuzu,
             'villages'=>$villages,

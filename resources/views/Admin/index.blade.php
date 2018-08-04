@@ -14,7 +14,11 @@
 	<frameset id="attachucp" framespacing="0" border="0" frameborder="no" cols="194,12,*" rows="*">
 		<frame scrolling="auto" noresize="" frameborder="no" name="leftFrame" src="/admin/indexLeft"></frame>
 		<frame id="leftbar" scrolling="no" noresize="" name="switchFrame" src="/admin/indexSwich"></frame>
+		@if(session('jurisdiction') == '新闻管理员')
+		<frame scrolling="auto" noresize="" border="0" name="mainFrame" src="/admin/editNew"></frame>
+		@else
 		<frame scrolling="auto" noresize="" border="0" name="mainFrame" src="/admin/indexMain"></frame>
+		@endif
 	</frameset>
 <!--bottom样式-->
 	<frame src="/admin/indexBottom" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" title="bottomFrame" />

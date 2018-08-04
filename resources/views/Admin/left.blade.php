@@ -22,34 +22,39 @@ body{overflow-x:hidden; background:url(/images/main/leftbg.jpg) left top repeat-
 <body onselectstart="return false;" ondragstart="return false;" oncontextmenu="return false;">
 <div id="left-top">
 	<div><img src="/images/main/member.gif" width="44" height="44" /></div>
-    <span>用户：admin<br>角色：管理员</span>
+    <span>用户：{{session('name')}}<br>角色：{{session('jurisdiction')}}</span>
 </div>
     <div style="float: left" id="my_menu" class="sdmenu">
+    @if(session('jurisdiction') != '新闻管理员')
       <div>
         <span>住户和房屋管理</span>
         <a href="/admin/indexMain" target="mainFrame" onFocus="this.blur()">入住管理</a>
         <a href="/admin/xuzu" target="mainFrame" onFocus="this.blur()">续租管理</a>
         <a href="/admin/tuizu" target="mainFrame" onFocus="this.blur()">退租管理</a>
         <a href="/admin/house" target="mainFrame" onFocus="this.blur()">房屋出租状态查询</a>
-        <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">住户信息查询</a>
-        <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">住户信息统计</a>
-        <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">房屋出租记录查询</a>
+        <a href="/admin/list_household" target="mainFrame" onFocus="this.blur()">住户信息查询</a>
+        <a href="/admin/select_house" target="mainFrame" onFocus="this.blur()">房屋出租记录查询</a>
         <a href="/admin/village" target="mainFrame" onFocus="this.blur()">小区管理</a>
-        <a href="main_menu.html" target="mainFrame" onFocus="this.blur()">收费管理</a>
+        <a href="/admin/payment" target="mainFrame" onFocus="this.blur()">收费管理</a>
       </div>
+      @endif
+      @if(session('jurisdiction') != '住户和房屋管理员')
       <div class="collapsed">
         <span>新闻管理</span>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">新闻编辑</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">新闻发布</a>
-        <a href="main_info.html" target="mainFrame" onFocus="this.blur()">新闻记录查询</a>
+        <a href="/admin/editNew" target="mainFrame" onFocus="this.blur()">新闻编辑</a>
+        <a href="/admin/addNew" target="mainFrame" onFocus="this.blur()">新闻发布</a>
+        <a href="/admin/queryNew" target="mainFrame" onFocus="this.blur()">新闻记录查询</a>
        
       </div>
+      @endif
+      @if(session('jurisdiction') == '总管理员')
       <div class="collapsed">
         <span>操作员管理</span>
-        <a href="main.html" target="mainFrame" onFocus="this.blur()">设置操作员权限</a>
-        <a href="main_list.html" target="mainFrame" onFocus="this.blur()">操作员权限表</a>
+        <a href="/admin/jurList" target="mainFrame" onFocus="this.blur()">设置操作员权限</a>
+        <a href="/admin/juris" target="mainFrame" onFocus="this.blur()">修改管理权限</a>
   
       </div>
+      @endif
     </div>
 </body>
 </html>

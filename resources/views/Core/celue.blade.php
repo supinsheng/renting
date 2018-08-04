@@ -54,18 +54,7 @@
 							</tr>
 							@endforeach
 						</tbody></table>
-						<!--pages S-->
-						<!-- <div class="pageSelect">
-							<span>共 <b>188</b> 条 每页 <b>10 </b>条   1/18</span>
-							<div class="pageWrap">
-								<a class="pagePre"><i class="ico-pre">&nbsp;</i></a>
-								<a href="#" class="pagenumb cur">1</a>
-								<a href="#" class="pagenumb">2</a>
-								<a href="#" class="pagenumb">3</a>
-								<a href="#" class="pagenext"><i class="ico-next">&nbsp;</i></a>
-							</div>
-						</div> -->
-						<!--pages E-->
+			
 					</div>
 				</div>
 			</div>
@@ -113,7 +102,7 @@
             <div class="modal-body">
 	
 				<div class="panel-body">
-				{{csrf_field()}}
+					{{csrf_field()}}
 					<input type="text" id="edit-title" name="title" class="form-control" placeholder="请输入新策略的标题">
 					<br>
 					<textarea class="form-control" id="edit-desc" name="description" placeholder="请输入策略的内容" rows="6"></textarea>

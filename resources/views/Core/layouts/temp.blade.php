@@ -21,6 +21,11 @@
 	<link rel="apple-touch-icon" sizes="76x76" href="/images/coreapple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="/images/core/favicon.png">
 	<link rel="stylesheet" href="/css/cr_table.css">
+	<style>
+		th {
+			text-align: center;
+		}
+	</style>
 </head>
 
 <body>
