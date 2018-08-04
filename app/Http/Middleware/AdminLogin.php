@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckLoginCore
+class AdminLogin
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,8 @@ class CheckLoginCore
      */
     public function handle($request, Closure $next)
     {
-        // return $next($request);
-        if(!session('coreId')){
-            return redirect()->route('core_login');
+        if(!session('adminId')){
+            return redirect()->route('admin_login');
         }
         return $next($request);
     }

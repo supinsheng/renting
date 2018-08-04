@@ -27,139 +27,141 @@ Route::post('/admin_doLogin','AdminController@admin_doLogin')->name('admin_doLog
 
 // 后台退出
 Route::get('/admin_logout','AdminController@admin_logout')->name('admin_logout');
+Route::middleware('adminLogin')->group(function () {
+    // 后台主页开始
+    Route::get('/admin/index','AdminController@index')->name('admin_index');
+    Route::get('/admin/indexTop','AdminController@indexTop');
+    Route::get('/admin/indexLeft','AdminController@indexLeft');
+    Route::get('/admin/indexSwich','AdminController@indexSwich');
+    Route::get('/admin/indexMain','AdminController@indexMain')->name('indexMain');
+    Route::get('/admin/indexBottom','AdminController@indexBottom');
+    // 后台主页结束
 
-// 后台主页开始
-Route::get('/admin/index','AdminController@index')->name('admin_index');
-Route::get('/admin/indexTop','AdminController@indexTop');
-Route::get('/admin/indexLeft','AdminController@indexLeft');
-Route::get('/admin/indexSwich','AdminController@indexSwich');
-Route::get('/admin/indexMain','AdminController@indexMain')->name('indexMain');
-Route::get('/admin/indexBottom','AdminController@indexBottom');
-// 后台主页结束
+    // 删除住户
+    Route::get('/admin/deleteHousehold/{id}','AdminController@delHousehold')->name('deleteHousehold');
 
-// 删除住户
-Route::get('/admin/deleteHousehold/{id}','AdminController@delHousehold')->name('deleteHousehold');
+    // 录入住户
+    Route::get('/admin/addHousehold','AdminController@addHousehold')->name('addHousehold');
+    // 执行录入
+    Route::post('admin/doaddHold','AdminController@doaddHold')->name('doaddHold');
 
-// 录入住户
-Route::get('/admin/addHousehold','AdminController@addHousehold')->name('addHousehold');
-// 执行录入
-Route::post('admin/doaddHold','AdminController@doaddHold')->name('doaddHold');
+    // 编辑住户
+    Route::get('/admin/editHousehold/{id}','AdminController@editHousehold')->name('editHousehold');
 
-// 编辑住户
-Route::get('/admin/editHousehold/{id}','AdminController@editHousehold')->name('editHousehold');
-
-// 执行编辑
-Route::post('/admin/doeditHold/{id}','AdminController@doeditHold')->name('doeditHold');
-
-
-
-// 小区管理开始
-// 小区管理
-Route::get('/admin/village','AdminController@village')->name('village');
-
-// 删除小区
-Route::get('/admin/delVillage/{id}','AdminController@delVillage')->name('delVillage');
-
-// 编辑小区
-Route::get('/admin/editVillage/{id}','AdminController@editVillage')->name('editVillage');
-// 执行编辑
-Route::post('/admin/doeditVillage/{id}','AdminController@doeditVillage')->name('doeditVillage');
-
-// 新增小区
-Route::get('/admin/addVillage','AdminController@addVillage')->name('addVillage');
-// 执行新增
-Route::post('/admin/doaddVillage','AdminController@doaddVillage')->name('doaddVillage');
-// 小区管理结束
-
-// 续租退租
-// 续租开始
-Route::get('/admin/xuzu','XzTzController@xuzu')->name('xuzu');
-
-// 续租审核
-// 审核通过
-Route::get('/admin/xzStateY/{id}','XzTzController@xzStateY')->name('xzStateY');
-// 审核不通过
-Route::get('/admin/xzStateN/{id}','XzTzController@xzStateN')->name('xzStateN');
-
-// 删除续租
-Route::get('/admin/del_xuzu/{id}','XzTzController@del_xuzu')->name('del_xuzu');
-
-// 编辑续租
-Route::get('/admin/edit_xuzu/{id}','XzTzController@edit_xuzu')->name('edit_xuzu');
-// 执行编辑
-Route::post('/admin/doeditXuzu/{id}','XzTzController@doeditXuzu')->name('doeditXuzu');
-
-// 添加续租
-Route::get('/admin/add_xuzu','XzTzController@add_xuzu')->name('add_xuzu');
-// 执行添加
-Route::post('/admin/doAdd_xuzu','XzTzController@doAdd_xuzu')->name('doAdd_xuzu');
-// 续租结束
-
-// 退租开始
-Route::get('/admin/tuizu','XzTzController@tuizu')->name('tuizu');
-
-// 退租审核
-// 审核通过
-Route::get('/admin/tzStateY/{id}','XzTzController@tzStateY')->name('tzStateY');
-// 审核不通过
-Route::get('/admin/tzStateN/{id}','XzTzController@tzStateN')->name('tzStateN');
-
-// 删除退租
-Route::get('/admin/del_tuizu/{id}','XzTzController@del_tuizu')->name('del_tuizu');
-
-// 编辑退租
-Route::get('/admin/edit_tuizu/{id}','XzTzController@edit_tuizu')->name('edit_tuizu');
-// 执行编辑
-Route::post('/admin/doeditTuizu/{id}','XzTzController@doeditTuizu')->name('doeditTuizu');
-
-// 添加退租
-Route::get('/admin/add_tuizu','XzTzController@add_tuizu')->name('add_tuizu');
-// 执行添加
-Route::post('/admin/doAdd_tuizu','XzTzController@doAdd_tuizu')->name('doAdd_tuizu');
-// 续租结束
-
-// 房屋出租状态
-Route::get('/admin/house','HouseController@house')->name('house');
-
-// 新增房屋
-Route::get('/admin/add_house','HouseController@add_house')->name('add_house');
-// 执行新增
-Route::post('/admin/doAdd_house','HouseController@doAdd_house')->name('doAdd_house');
-
-// 删除房屋
-Route::get('/admin/del_house/{id}','HouseController@del_house')->name('del_house');
-
-
-//住户信息查询
-Route::get('/admin/list_household','HouseholdController@list')->name('list_household');
-//房屋出租记录查询、
-Route::get('/admin/select_house','HouseholdController@houseSelect')->name('select_house');
-//收费管理
-Route::get('/admin/payment','HouseholdController@payment')->name('edit_payment');
-Route::post('/admin/doPayment','HouseholdController@doPayment')->name('doEdit_payment');
+    // 执行编辑
+    Route::post('/admin/doeditHold/{id}','AdminController@doeditHold')->name('doeditHold');
 
 
 
-//新闻添加
-Route::get('/admin/addNew','NewController@add')->name('addNew');
-Route::post('/admin/doAddNew','NewController@doAdd')->name('doAddNew');
-Route::get('/admin/editNew','NewController@edit')->name('editNew');
-Route::post('/admin/doEditNew','NewController@doEdit')->name('doEditNew');
+    // 小区管理开始
+    // 小区管理
+    Route::get('/admin/village','AdminController@village')->name('village');
 
-Route::get('/admin/queryNew','NewController@query')->name('queryNew');
-// 删除新闻
-Route::get('/admin/delNew/{id}','NewController@del')->name('delNew');
-//权限管理
-Route::get('/admin/jurList','JurController@list')->name('jurList');
+    // 删除小区
+    Route::get('/admin/delVillage/{id}','AdminController@delVillage')->name('delVillage');
 
-Route::post('/admin/addUser','JurController@add')->name('addUser');
-Route::post('/admin/editUser','JurController@edit')->name('editUser');
+    // 编辑小区
+    Route::get('/admin/editVillage/{id}','AdminController@editVillage')->name('editVillage');
+    // 执行编辑
+    Route::post('/admin/doeditVillage/{id}','AdminController@doeditVillage')->name('doeditVillage');
 
-Route::get('/admin/delUser/{id}','JurController@del')->name('delUser');
+    // 新增小区
+    Route::get('/admin/addVillage','AdminController@addVillage')->name('addVillage');
+    // 执行新增
+    Route::post('/admin/doaddVillage','AdminController@doaddVillage')->name('doaddVillage');
+    // 小区管理结束
 
-Route::get('/admin/juris','JurController@jurisList')->name('jurisList');
-Route::post('/admin/addJuris','JurController@addJuris')->name("addJuris");
-Route::get('/admin/delJuris/{id}','JurController@delJuris')->name('delJuris');
+    // 续租退租
+    // 续租开始
+    Route::get('/admin/xuzu','XzTzController@xuzu')->name('xuzu');
+
+    // 续租审核
+    // 审核通过
+    Route::get('/admin/xzStateY/{id}','XzTzController@xzStateY')->name('xzStateY');
+    // 审核不通过
+    Route::get('/admin/xzStateN/{id}','XzTzController@xzStateN')->name('xzStateN');
+
+    // 删除续租
+    Route::get('/admin/del_xuzu/{id}','XzTzController@del_xuzu')->name('del_xuzu');
+
+    // 编辑续租
+    Route::get('/admin/edit_xuzu/{id}','XzTzController@edit_xuzu')->name('edit_xuzu');
+    // 执行编辑
+    Route::post('/admin/doeditXuzu/{id}','XzTzController@doeditXuzu')->name('doeditXuzu');
+
+    // 添加续租
+    Route::get('/admin/add_xuzu','XzTzController@add_xuzu')->name('add_xuzu');
+    // 执行添加
+    Route::post('/admin/doAdd_xuzu','XzTzController@doAdd_xuzu')->name('doAdd_xuzu');
+    // 续租结束
+
+    // 退租开始
+    Route::get('/admin/tuizu','XzTzController@tuizu')->name('tuizu');
+
+    // 退租审核
+    // 审核通过
+    Route::get('/admin/tzStateY/{id}','XzTzController@tzStateY')->name('tzStateY');
+    // 审核不通过
+    Route::get('/admin/tzStateN/{id}','XzTzController@tzStateN')->name('tzStateN');
+
+    // 删除退租
+    Route::get('/admin/del_tuizu/{id}','XzTzController@del_tuizu')->name('del_tuizu');
+
+    // 编辑退租
+    Route::get('/admin/edit_tuizu/{id}','XzTzController@edit_tuizu')->name('edit_tuizu');
+    // 执行编辑
+    Route::post('/admin/doeditTuizu/{id}','XzTzController@doeditTuizu')->name('doeditTuizu');
+
+    // 添加退租
+    Route::get('/admin/add_tuizu','XzTzController@add_tuizu')->name('add_tuizu');
+    // 执行添加
+    Route::post('/admin/doAdd_tuizu','XzTzController@doAdd_tuizu')->name('doAdd_tuizu');
+    // 续租结束
+
+    // 房屋出租状态
+    Route::get('/admin/house','HouseController@house')->name('house');
+
+    // 新增房屋
+    Route::get('/admin/add_house','HouseController@add_house')->name('add_house');
+    // 执行新增
+    Route::post('/admin/doAdd_house','HouseController@doAdd_house')->name('doAdd_house');
+
+    // 删除房屋
+    Route::get('/admin/del_house/{id}','HouseController@del_house')->name('del_house');
+
+
+    //住户信息查询
+    Route::get('/admin/list_household','HouseholdController@list')->name('list_household');
+    //房屋出租记录查询、
+    Route::get('/admin/select_house','HouseholdController@houseSelect')->name('select_house');
+    //收费管理
+    Route::get('/admin/payment','HouseholdController@payment')->name('edit_payment');
+    Route::post('/admin/doPayment','HouseholdController@doPayment')->name('doEdit_payment');
+
+
+
+    //新闻添加
+    Route::get('/admin/addNew','NewController@add')->name('addNew');
+    Route::post('/admin/doAddNew','NewController@doAdd')->name('doAddNew');
+    Route::get('/admin/editNew','NewController@edit')->name('editNew');
+    Route::post('/admin/doEditNew','NewController@doEdit')->name('doEditNew');
+
+    Route::get('/admin/queryNew','NewController@query')->name('queryNew');
+    // 删除新闻
+    Route::get('/admin/delNew/{id}','NewController@del')->name('delNew');
+    //权限管理
+    Route::get('/admin/jurList','JurController@list')->name('jurList');
+
+    Route::post('/admin/addUser','JurController@add')->name('addUser');
+    Route::post('/admin/editUser','JurController@edit')->name('editUser');
+
+    Route::get('/admin/delUser/{id}','JurController@del')->name('delUser');
+
+    Route::get('/admin/juris','JurController@jurisList')->name('jurisList');
+    Route::post('/admin/addJuris','JurController@addJuris')->name("addJuris");
+    Route::get('/admin/delJuris/{id}','JurController@delJuris')->name('delJuris');
+});
+
 //====================
 //微信
 Route::any('/wechat', 'WechatController@serve');

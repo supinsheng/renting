@@ -29,7 +29,8 @@ class AdminController extends Controller
                 session([
 	
                     'name'=>$admin->name,
-                    'jurisdiction'=>$dic
+                    'jurisdiction'=>$dic,
+                    'adminId'=>$admin->id
                 ]);
                 return redirect()->route('admin_index');
             }else {
