@@ -76,6 +76,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
   /* background-color: #33ccff; */
   width: 40px;
   height: 40px;
+  color: #fff;
 }
 .block-lived {
   position:absolute;
