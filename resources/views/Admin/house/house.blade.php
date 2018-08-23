@@ -1,10 +1,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <title>主要内容区main</title>
 <link href="/css/css.css" type="text/css" rel="stylesheet" />
 <link href="/css/main.css" type="text/css" rel="stylesheet" />
-<link rel="shortcut icon" href="/images/main/favicon.ico" />
+
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/vendor/linearicons/style.css">
 <link rel="stylesheet" href="/css/page.css">
 <style>
 body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
@@ -28,6 +33,71 @@ body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
 td.fenye{ padding:10px 0 0 0; text-align:right;}
 .bggray{ background:#f9f9f9}
 
+.main-sort {
+  margin-top: 20px;
+}
+.main-sort-header {
+  background-color: #4d514d;
+  color: #fff;
+  padding: 3 10px;
+  font-size: 14px;
+}
+.main-sort-block {
+  margin-top: 10px;
+  margin-left: 15px;
+}
+.main-sort-block li {
+  float: left;
+  width: 215px;
+  height: 160px;
+  background-color: #A9A9A9;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  position: relative;
+}
+.main-sort-block-icon {
+  position: absolute;
+  left: 50%;
+  top: 60px;
+  margin-left:-20px;
+  /* background-color: #33ccff; */
+  width: 40px;
+  height: 40px;
+}
+.main-sort-block-title {
+  color: #fff;
+}
+/*已经居住的房屋图标*/
+.main-sort-block-icon2 {
+  position: absolute;
+  left: 50%;
+  top: 48px;
+  margin-left:-20px;
+  /* background-color: #33ccff; */
+  width: 40px;
+  height: 40px;
+}
+.block-lived {
+  position:absolute;
+  bottom: 3px;
+  right: 3px
+}
+.block-lived a {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 12.5px;
+  padding: 5px;
+  /* background-color: #000; */
+  border: 1px solid #fff;
+  margin-left: 5px;
+}
+.clear{
+   clear:both; 
+   height: 0; 
+   height: 0; 
+   overflow:hidden;
+}
 </style>
 </head>
 <body>
@@ -54,7 +124,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 	</table>
     </td>
   </tr>
-  <tr>
+  <!-- <tr>
     <td align="left" valign="top">
     
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
@@ -68,9 +138,9 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <th align="center" valign="middle" class="borderright">到期时间</th>
         <th align="center" valign="middle" class="borderright">剩余租期</th>
         <th align="center" valign="middle" class="borderright">小区</th>
-        <th align="center" valign="middle">操作</th>
+        <th align="center" valign="middle">操作11</th>
       </tr>
-    @foreach($house as $h)
+      @foreach($house as $h)
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="center" valign="middle" class="borderright borderbottom">{{ $h->id }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $h->house_id }}</td>
@@ -88,9 +158,47 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       @endforeach
     </table></td>
     </tr>
-    <tr>
+   <tr>
     <td align="left" style="text-align:center" valign="top" class="fenye">{{ $house->appends($req->all())->links() }}</td>
+  </tr> -->
+  <tr>
+    
   </tr>
 </table>
+@foreach($vills as $v)
+  <div class="main-sort">
+
+    <p ><span class="main-sort-header">{{$v->name}}</span></p>
+    <ul class="main-sort-block">
+    <!-- 未出租房屋 -->
+    @foreach($house as $h)
+      @if($v->name == $h->village && $h->state == '未出租')
+      <li><p class="main-sort-block-title">{{$h->house_id}}</p>
+      
+        <span class="main-sort-block-icon"><i class="fa fa-lock fa-4x" style="color:#fff"></i></span>
+        <div class="block-lived">
+          <a href="{{ route('del_house',['id'=>$h->id]) }}" onclick="return confirm(' 如果房屋已出租，删除房屋对应的住户也会被删除，请确定是否要删除？ ')" target="mainFrame" onFocus="this.blur()"><i class="fa fa-times fa-lg" style="color:#fff"></i></a>
+        </div>
+      </li>
+      @elseif($v->name == $h->village && $h->state == '已出租')
+      <!-- 已出租房屋 -->
+      <li style="background-color:#295f90"><p class="main-sort-block-title">{{$h->house_id}}</p>
+      
+        <div class="main-sort-block-icon2"><span style="white-space:nowrap; width:10px;">{{$h->hold_name}}</span><i class="fa fa-user-circle fa-3x" style="color:#fff"></i></div>
+        <div class="block-lived">
+          <a href="#"  title="{{$h->hold_phone}}"> <i class="fa fa-phone fa-lg" style="color:#fff"></i></a>
+          <a href="#"  title="入住时间: {{$h->start_time}} &#10;到期时间: {{$h->end_time}} "> <i class="fa fa-eye fa-lg" style="color:#fff"></i></a>
+          <a href="#"  title="剩余租期: {{$h->residual_lease}} "> <i class="fa fa-bell fa-lg" style="color:#fff"></i></a>
+          <a href="{{ route('del_house',['id'=>$h->id]) }}" onclick="return confirm(' 如果房屋已出租，删除房屋对应的住户也会被删除，请确定是否要删除？ ')" target="mainFrame" onFocus="this.blur()"><i class="fa fa-times fa-lg" style="color:#fff"></i></a>
+        </div>
+      </li>
+      @endif
+    @endforeach
+    </ul>
+
+  </div>
+  <div class="clear"></div>
+  @endforeach
+  
 </body>
 </html>

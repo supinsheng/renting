@@ -28,8 +28,12 @@ class HouseController extends Controller
         }else {
             $house = House::orderBy('state','asc')->orderBy('id','desc')->paginate(15);
         }
-
-        return view('admin.house.house',['house'=>$house,'req'=>$req]);
+        $vills = Village::select('name')->get();
+        return view('admin.house.house',[
+            'house'=>$house,
+            'req'=>$req,
+            'vills'=>$vills
+        ]);
     }
 
     // 新增房屋
