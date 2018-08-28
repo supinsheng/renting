@@ -14,12 +14,9 @@ class CoreController extends Controller
     //
 
     function login(){
-        $user = Core::where('name','=','aaa')->get();
-        $pwd = Hash::make('123');
-        return view('core.index',[
-            'user'=>$user,
-            'pwd'=>$pwd
-        ]);
+        // $user = Core::where('name','=','aaa')->get();
+        // $pwd = Hash::make('123');
+        return view('core.index');
     }
     function doLogin(CoreRequest $req){
         $user = Core::where('name',$req->username)->first();
@@ -27,7 +24,7 @@ class CoreController extends Controller
             // if(Hash::check($req->password,$user->password)){
             if($req->password == $user->password){
                 session([
-                    'id'=>$user->id,
+                    'coreId'=>$user->id,
                     'uname'=>$req->username
                 ]);
                 return redirect()->route('cr_main');

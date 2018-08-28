@@ -14,8 +14,8 @@ class ChartsController extends Controller
         $time = strtotime($end) - 3600*24*30*$m;
         $start = date('Y-m-d',$time); 
  
-        $data = DB::table('households')
-                    ->leftJoin('properties','households.username','=','properties.username')
+        $data = DB::table('properties')
+                    ->leftJoin('households','households.username','=','properties.username')
                     ->select('village',DB::raw('(water_rent+power_rate+rent+property_fee+other_expenses) as moneys'),'is_pay','data','address')
                     ->whereBetween('start',[$start,$end])
                     ->get();

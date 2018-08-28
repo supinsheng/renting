@@ -74,6 +74,8 @@
 			return JSON.parse(s1)
 		}
 		let arr = quot('{{$data}}');
+
+		console.log(arr);
 		//输出所有的区域
 		let villages = quot('{{$villages}}');
 		let villagesList = [];
@@ -106,7 +108,7 @@
 		//操作数据，总结出月份 区域 缴费情况
 		for(i = 0; i< arr.length; i++){
 			let ai = arr[i];
-			// console.log(ai);
+			console.log(arr[i].data);
 			let mon = parseInt(arr[i].data.substr(5,2));
 			// console.log(mon);
 			for(j=0;j<months.length;j++){
