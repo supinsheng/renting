@@ -12,17 +12,17 @@
 <body>
 	<div class="top clearfix">
 		<img src="/images/weixin/headimg.png" />
-		<div class="name">姓名
-			<span>已入住</span>
+		<div class="name">{{session('realname')}}
+			<span>{{$ishouse}}</span>
 		</div>
 		<div class="idnum">&#xe9a7;
-			<span>71273172824831928921</span>
+			<span>{{session('cardId')}}</span>
 		</div>
 		<div class="phone">&#xe60d;
-			<span>13210987765</span>
+			<span>{{session('phone')}}</span>
 		</div>
 		<div class="addr">&#xe654;
-			<span>我的位置点击进入地图</span>
+			<span>{{session('village')}}</span>
 		</div>
 		<div class="handle">
 			<span>&#xe678;</span>
@@ -68,7 +68,7 @@
 		</div>
 	</div>
 	<div class="list clearfix">
-		<div>
+		<div onclick="location.href='{{route('weixin_warranty_claim')}}' ">
 			<div class="ico" style="color: #FF9800;">&#xe747;</div>
 			<div class="tit">保修申请</div>
 		</div>
@@ -103,5 +103,4 @@
 
 	</div>
 </body>
-
 </html>
