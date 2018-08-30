@@ -1,0 +1,105 @@
+body,html{
+	background-color: white;
+}
+body{
+	padding: 15px 12px 20px 12px;
+	box-sizing: border-box;
+}
+.stitle{
+	width: 100%;
+	background-color: white;
+	font-weight: bold;
+	color: #333333;
+	font-size: 16px;
+	letter-spacing: 1px;
+	padding: 15px 0;
+}
+input,select{
+	width: 100%;
+	height: 35px;
+	border: none;
+	outline: none;
+	background-color: #f2f2f2;
+	border-radius: 10px;
+	letter-spacing: 1px;
+	padding-left: 10px;
+	box-sizing: border-box;
+}
+.submit{
+	background-color: #00a0e9;
+	color: white;
+	text-align: center;
+	border-radius: 10px;
+	line-height: 40px;
+	letter-spacing: 1px;
+	display: block;
+	margin-top: 40px;
+}
+.back{
+	display: block;
+	color: #00a0e9;
+	text-align: center;
+	letter-spacing: 1px;
+	margin-top: 20px;
+}
+a:hover{
+	text-decoration: none;
+	background: transparent;
+}	
+.phone{
+	width: 60% !important;
+}
+.sendcode{
+	width: 38%;
+	text-align: center;
+	padding-left: 0;
+	background-color: #35AD1A;
+	color: white;
+}
+.popup{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.4);
+	display: none;
+}
+.popup_in{
+	width: 60%;
+	position: fixed;
+	top: 30%;
+	left: 20%;
+	background: white;
+	border-radius: 10px;
+}
+.ptop{
+	width: 100%;
+	height: 20px;
+	background-color: #00a0e9;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.pcontent{
+	width: 100%;
+	padding: 20px 12px;
+	box-sizing: border-box;
+	text-align: center;
+}
+.tosure{
+	width: 100%;
+	text-align: center;
+	color: #00a0e9;
+	padding: 5px 12px;
+	box-sizing: border-box;
+}
+
+.back{
+	width: calc(100% - 24px);
+	height: 40px;
+	background-color: #35AD1A;
+	text-align: center;
+	line-height: 40px;
+	color: white;
+	position: fixed;bottom: 0;
+}	

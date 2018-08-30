@@ -1,0 +1,62 @@
+body,html{
+	width: 100%;
+	height: 100%;
+	background-color: #00C46C;
+}
+.wrap{
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+}
+.wrap>img{
+	width: 90%;
+	margin-left: 5%;
+}
+.list{
+	width: 90%;
+	margin-left: 5%;
+	background-color: white;
+	padding: 10px;
+	box-sizing: border-box;
+	font-size: 0;
+	border-bottom: 1px solid #e2e2e2;
+}
+.list img{
+	width: 30%;
+	height: 80px;
+	float: left;
+	margin-right: 10px;
+}
+.name{
+	font-size: 17px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.detail{
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	position: relative;
+}
+.detail span:first-child{
+	display: inline-block;
+	width: 50%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	position: relative;
+}
+.addr{
+	font-size: 12px;
+	font-family: 'iconfont';
+	margin-top: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.addr span{
+	color: #00C46C;
+}
