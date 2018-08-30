@@ -5,13 +5,13 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<title>掌上公租房</title>
-	<link rel="stylesheet" type="text/css" href="/Weixin/css/base.css" />
-	<link rel="stylesheet" type="text/css" href="/Weixin/css/index.css" />
+	<link rel="stylesheet" type="text/css" href="/css/weixin/base.css" />
+	<link rel="stylesheet" type="text/css" href="/css/weixin/index.css" />
 </head>
 
 <body>
 	<div class="top clearfix">
-		<img src="img/headimg.png" />
+		<img src="/images/weixin/headimg.png" />
 		<div class="name">姓名
 			<span>已入住</span>
 		</div>
