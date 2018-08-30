@@ -1,0 +1,20 @@
+body,html{
+	width: 100%;
+	height: 100%;
+	background-color: white;
+}
+.tzsuccess{
+	font-size: 24px;
+	text-align: center;
+	letter-spacing: 1px;
+	margin-top: 10px;
+	font-weight: bold;
+	
+}
+.je{
+	font-size: 14px;
+	color: #000000;
+	margin-top: 10px;
+	text-align: center;
+	letter-spacing: 1px;
+}
