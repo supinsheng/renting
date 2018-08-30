@@ -152,7 +152,7 @@
 	<script src="/vendor/toastr/toastr.min.js"></script>
 	<!-- <script src="/scripts/klorofil-common.js"></script> -->
 	<script>
-	console.log('{{Route::currentRouteName()}}');
+	// console.log('{{Route::currentRouteName()}}');
 		function edit(k){
 			let str = '{{$data}}';
 			s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空

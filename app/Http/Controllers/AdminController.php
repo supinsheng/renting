@@ -164,7 +164,6 @@ class AdminController extends Controller
 
     // 执行编辑
     public function doeditHold(Request $req,$id){
-        
         $household = Household::find($id);
         $house = House::where('house_id',$household->address)->first();
         $house->state = '未出租';
@@ -176,6 +175,7 @@ class AdminController extends Controller
         $house->save();
 
         $household->fill($req->all());
+        $household->password = $req->password;
         $household->time = $req->time."个月";
         $household->end = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
         $household->save();
