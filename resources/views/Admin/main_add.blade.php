@@ -60,7 +60,17 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 			  @endif
         </td>
         
-        </tr>
+      </tr>
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">密码：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="password" value="{{ old('username') }}" class="text-word" placeholder="请输入用户密码" autocomplete="off">
+        @if($errors->has('password'))
+				  <span style='color:red'>{{$errors->first('password')}}</span>
+			  @endif
+        </td>
+        
+      </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">真实姓名：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
