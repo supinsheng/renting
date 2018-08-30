@@ -14,7 +14,7 @@ class EditHouseholdsAddColumn extends Migration
     public function up()
     {
         Schema::table('households', function (Blueprint $table) {
-            $table->string('password',60)->comment('密码');
+            $table->string('password',60)->default('123456')->comment('密码');
         });
     }
 
