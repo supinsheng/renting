@@ -25,6 +25,7 @@ class HouseholdRequest extends FormRequest
     {
         return [
             'username'=>' required | unique:households,username',
+            'password'=>' required | min:6 | max:20',
             'realname'=>' required ',
             'cardId'=>[
                 ' required ',
