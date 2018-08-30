@@ -1,24 +1,13 @@
 <?php
+//微信公众号
+//微信--显示登录页
+Route::get('/weixin_login','weixin\LoginController@login')->name('weixin_login');
+//微信--登录验证
+Route::post('/weixin_dologin','weixin\LoginController@dologin')->name('weixin_dologin');
+//微信--主页
+Route::get('/','weixin\IndexController@index')->name('weixin_index');
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/test',function(){
-    // echo  date("Y-m-d", strtotime("+1 months", strtotime("2010-10-06")));
-    echo(strtotime("2012-11-11")/(60*60*24) . "<br>");
-});
 
 
 // 后台人口--登录页
@@ -162,13 +151,6 @@ Route::middleware('adminLogin')->group(function () {
     Route::get('/admin/delJuris/{id}','JurController@delJuris')->name('delJuris');
 });
 
-//====================
-//微信
-Route::any('/wechat', 'WechatController@serve');
-Route::get('/user', function () {
-    $user = session('wechat.oauth_user'); // 拿到授权用户资料
-    return redirect()->to('/home#/index'); //這時候已經拿到用戶資料了，跳轉到想要的路由
-});
 //后台2
 // 中心登录
 Route::get('/core','CoreController@login')->name('core_login');

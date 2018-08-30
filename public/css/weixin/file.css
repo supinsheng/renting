@@ -1,0 +1,46 @@
+body,html{
+	background-color: white;
+}
+body{
+	padding: 15px 12px 20px 12px;
+	box-sizing: border-box;
+}
+.tip{
+	width: 100%;
+	font-size: 15px;
+	letter-spacing: 1px;
+	line-height: 30px;
+}
+.caozuo{
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	margin-top: 10px;
+	position: relative;
+}
+.caozuo div{
+	width: 48%;
+	line-height: 30px;
+	background-color: #35AD1A;
+	text-align: center;
+	border-radius: 5px;
+	color: white;
+}
+.caozuo input{
+	width: 48%;
+	height: 30px;
+	position: absolute;
+	border: none;
+	background: transparent;
+	right: 0;
+    opacity: 0;	
+}
+.submit{
+	width: 100%;
+	line-height: 30px;
+	background-color: #35AD1A;
+	text-align: center;
+	border-radius: 5px;
+	color: white;
+	margin-top: 20px;
+}
