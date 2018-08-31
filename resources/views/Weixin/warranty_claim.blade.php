@@ -4,10 +4,10 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>保修申请</title>
-		<link rel="stylesheet" type="text/css" href="css/base.css"/>
-		<link rel="stylesheet" type="text/css" href="css/warranty_claim.css"/>
-		<link rel="stylesheet" type="text/css" href="css/weui.min.css"/>
-		<link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/weixin/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/weixin/warranty_claim.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/weixin/weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/weixin/jquery-weui.min.css"/>
 	</head>
 	<body>
 		<div class="wrap">
@@ -49,8 +49,8 @@
 		</div>
 		<div class="submit">提交保修单</div>
 	</body>
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/jquery-weui.min.js"></script>
+	<script src="/js/weixin/js/jquery-3.2.1.min.js"></script>
+	<script src="/js/weixin/jquery-weui.min.js"></script>
 	<script>
 		$('.list div').click(function(){
 			$(this).addClass('active');
