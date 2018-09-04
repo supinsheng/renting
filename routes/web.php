@@ -8,7 +8,14 @@ Route::post('/','weixin\LoginController@dologin')->name('weixin_dologin');
 Route::get('/index','weixin\IndexController@index')->name('weixin_index');
 //微信--显示保修申请
 Route::get('/warranty_claim','weixin\WarrantyController@index')->name('weixin_warranty_claim');
-
+//微信--接受报修图片
+Route::post('/warranty_claim','weixin\WarrantyController@getImages')->name('weixin_warranty_claim_getImages');
+//微信--接收用户报修数据
+Route::post('/warranty_message','weixin\WarrantyController@getMessage')->name('weixin_warranty_claim_getMessage');
+//操作成功跳转
+Route::get('/success','weixin\SuccessController@success')->name('weixin_success');
+//微信--测试
+Route::get('/test','weixin\TestController@index')->name('weixin_test');
 
 
 
