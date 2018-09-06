@@ -14,6 +14,18 @@ Route::post('/warranty_claim','weixin\WarrantyController@getImages')->name('weix
 Route::post('/warranty_message','weixin\WarrantyController@getMessage')->name('weixin_warranty_claim_getMessage');
 //操作成功跳转
 Route::get('/success','weixin\SuccessController@success')->name('weixin_success');
+//显示报修列表
+Route::get('/warranty_list','weixin\WarrlistController@store')->name('weixin_warranty_list');
+
+//显示续租
+Route::get('/xuzu','weixin\XuzuController@index')->name('weixin_xuzu');
+//续租申请
+Route::post('/xuzu','weixin\XuzuController@store')->name('weixin_xuzu');
+//显示退租
+Route::get('/tuizu','weixin\TuizuController@index')->name('weixin_tuizu');
+//退租申请
+Route::post('/tuizu','weixin\TuizuController@store')->name('weixin_tuizu');
+
 //微信--测试
 Route::get('/test','weixin\TestController@index')->name('weixin_test');
 

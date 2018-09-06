@@ -5,11 +5,10 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>保修申请</title>
-		<link rel="stylesheet" type="text/css" href="css/base.css" />
-		<link rel="stylesheet" type="text/css" href="css/weui.min.css" />
-		<link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/weixin/base.css" />
+		<link rel="stylesheet" type="text/css" href="/css/weixin/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/css/weixin/jquery-weui.min.css" />
 	</head>
-
 	<body>
 		<div class="weui-msg">
 			<div class="weui-msg__icon-area"><i class="weui-icon-success weui-icon_msg"></i></div>
@@ -31,7 +30,6 @@
 			</div>
 		</div>
 	</body>
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/jquery-weui.min.js"></script>
-
+	<script src="/js/weixin/jquery-3.2.1.min.js"></script>
+	<script src="/js/weixin/jquery-weui.min.js"></script>
 </html>
