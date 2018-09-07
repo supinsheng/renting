@@ -1,11 +1,13 @@
 <?php
 //微信公众号
 //微信--显示登录页
-Route::get('/weixin_login','weixin\LoginController@login')->name('weixin_login');
+Route::get('/','weixin\LoginController@login')->name('weixin_login');
 //微信--登录验证
-Route::post('/weixin_dologin','weixin\LoginController@dologin')->name('weixin_dologin');
+Route::post('/','weixin\LoginController@dologin')->name('weixin_dologin');
 //微信--主页
-Route::get('/','weixin\IndexController@index')->name('weixin_index');
+Route::get('/index','weixin\IndexController@index')->name('weixin_index');
+//微信--显示保修申请
+Route::get('/warranty_claim','weixin\WarrantyController@index')->name('weixin_warranty_claim');
 
 
 

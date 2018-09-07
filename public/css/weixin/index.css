@@ -4,7 +4,7 @@ body,html{
 }
 .top{
 	width: 100%;
-	background: url(../img/bg.jpeg) no-repeat center;
+	background: url(/images/weixin/bg.jpeg) no-repeat center;
 	background-size: 100%;
 	padding: 12px;
 	box-sizing: border-box;

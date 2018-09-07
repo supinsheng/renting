@@ -5,24 +5,24 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 	<title>掌上公租房</title>
-	<link rel="stylesheet" type="text/css" href="/Weixin/css/base.css" />
-	<link rel="stylesheet" type="text/css" href="/Weixin/css/index.css" />
+	<link rel="stylesheet" type="text/css" href="/css/weixin/base.css" />
+	<link rel="stylesheet" type="text/css" href="/css/weixin/index.css" />
 </head>
 
 <body>
 	<div class="top clearfix">
-		<img src="img/headimg.png" />
-		<div class="name">姓名
-			<span>已入住</span>
+		<img src="/images/weixin/headimg.png" />
+		<div class="name">{{session('realname')}}
+			<span>{{$ishouse}}</span>
 		</div>
 		<div class="idnum">&#xe9a7;
-			<span>71273172824831928921</span>
+			<span>{{session('cardId')}}</span>
 		</div>
 		<div class="phone">&#xe60d;
-			<span>13210987765</span>
+			<span>{{session('phone')}}</span>
 		</div>
 		<div class="addr">&#xe654;
-			<span>我的位置点击进入地图</span>
+			<span>{{session('village')}}</span>
 		</div>
 		<div class="handle">
 			<span>&#xe678;</span>
@@ -68,7 +68,7 @@
 		</div>
 	</div>
 	<div class="list clearfix">
-		<div>
+		<div onclick="location.href='{{route('weixin_warranty_claim')}}' ">
 			<div class="ico" style="color: #FF9800;">&#xe747;</div>
 			<div class="tit">保修申请</div>
 		</div>
@@ -103,5 +103,4 @@
 
 	</div>
 </body>
-
 </html>
