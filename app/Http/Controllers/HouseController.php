@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\House;
 use App\Model\Village;
 use App\Model\Household;
-
+use DB;
 class HouseController extends Controller
 {
     // 房屋出租状态
@@ -78,4 +78,73 @@ class HouseController extends Controller
 
         return back();
     }
+    public function house_change(){
+        $changes = DB::table('house_changes')
+        ->select('house_changes.*','households.username')
+        ->leftJoin('households','house_changes.household_id','=','households.id')
+        ->get();
+        // return $changes;
+        return view('admin.house.house_change',[
+            'changes' => $changes
+        ]);
+       
+    }
+
+    public function house_doChange(Request $req)
+    {
+        
+        // return $req->to_examine;
+        if($req->to_examine == '1')
+        {
+            // return $req->now;
+             // 1. 根据now在house表中找到对应的房屋，获取数据$data，然后清空
+            $data = House::where('house_id', $req->now)->first();
+      
+            // $arr = [
+            //     'state' => '已出租',
+            //     'hold_name' => $data->hold_name,
+            //     'hold_phone' => $data->hold_phone,
+            //     'start_time' => $data->start_time,
+            //     'end_time' => $data->end_time, 
+            // ];
+            // 2. 根据want找到想变更的房屋，将$data 添加到表中，
+            House::where('house_id',$req->want)
+            ->update([
+                'state' => '已出租',
+                'hold_name' => $data->hold_name,
+                'hold_phone' => $data->hold_phone,
+                'start_time' => $data->start_time,
+                'end_time' => $data->end_time, 
+                'residual_lease' => $data->residual_lease,
+            ]);
+            // var_dump($arr);
+            // die;
+            // return $data;
+            House::where('house_id',$req->now)
+            ->update([
+                'state' => '未出租',
+                'hold_name' => '',
+                'hold_phone' => '',
+                'start_time' => '',
+                'end_time' => '',
+                'residual_lease' => '',
+            ]);
+            
+            // 3. 将household对应的住户数据，改为对应want的数据
+            Household::where('username',$req->username)
+            ->update([
+                'address' => $req->want,
+            ]);
+        
+        }
+        DB::table('house_changes')
+        ->where('id',$req->id)
+        ->update([
+            'to_examine' => $req->to_examine
+        ]);
+       return redirect()->route('house_change');
+
+
+    }
+
 }
