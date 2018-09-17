@@ -84,7 +84,7 @@
 			<div class="ico" style="color: red;">&#xe637;</div>
 			<div class="tit">提前退租</div>
 		</div>
-		<div onclick="location.href='{{route('weixin_warranty_list')}}' ">
+		<div onclick="location.href='{{route('weixin_fwbg')}}' ">
 			<div class="ico" style="color: #FF4081;">&#xe603;</div>
 			<div class="tit">房屋变更</div>
 		</div>

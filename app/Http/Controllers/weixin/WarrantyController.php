@@ -58,4 +58,7 @@ class WarrantyController extends Controller
             $req->session()->forget('path');
             return "200";
     }
+    public  function  failed(){
+        return view('Weixin.baoxiufailed');
+    }
 }
