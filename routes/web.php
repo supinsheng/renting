@@ -28,6 +28,8 @@ Route::post('/tuizu','weixin\TuizuController@store')->name('weixin_tuizu');
 Route::get('/fwbg','weixin\FwbgController@index')->name('weixin_fwbg');
 //处理房屋变更界面
 Route::post('/fwbg','weixin\FwbgController@store')->name('weixin_fwbg');
+//显示手机修改
+Route::get('/bindphone','weixin\BindPhoneController@index')->name('weixin_bindphone');
 //操作成功跳转
 Route::get('/success','weixin\SuccessController@success')->name('weixin_success');
 //微信--测试

@@ -4,8 +4,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>更换手机</title>
-		<link rel="stylesheet" type="text/css" href="css/base.css"/>
-		<link rel="stylesheet" type="text/css" href="css/bindphone.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/weixin/base.css"/>
+		<link rel="stylesheet" type="text/css" href="/css/weixin/bindphone.css"/>
 	</head>
 	<body>
 		<div class="stitle">手机</div>
@@ -16,7 +16,7 @@
 		<input type="text" placeholder="请填写您的验证码..."/>
 		<div class="back">更换手机</div>
 	</body>
-	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src=/js/weixin/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script>
 		//倒计时  
 			var countdown = 60;

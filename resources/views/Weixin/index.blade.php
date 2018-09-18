@@ -96,7 +96,7 @@
 			<div class="ico" style="color: #FF9F11;">&#xe613;</div>
 			<div class="tit">合同查询</div>
 		</div>
-		<div onclick="location.href='{{route('weixin_warranty_list')}}' ">
+		<div onclick="location.href='{{route('weixin_bindphone')}}' ">
 			<div class="ico" style="color: #259B24;">&#xe617;</div>
 			<div class="tit">修改手机</div>
 		</div>
