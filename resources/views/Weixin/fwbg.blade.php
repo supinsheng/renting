@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/weixin/fwbg.css"/>
 	</head>
 	<body>
-	<form action="{{route('weixin_fwbg')}}" method="post"  id="submit"></form>
+	<form action="{{route('weixin_fwbg')}}" method="post"  id="submit">
 		{{csrf_field()}}
 		<div class="stitle">现住房号</div>
 		<input type="text" placeholder="请填写您的现住房号..." name="now-fw"/>
@@ -18,6 +18,7 @@
 		<div class="stitle">说明</div>
 		<textarea placeholder="请输入您的退租原因..." name="shuoming"></textarea>
 		<div class="back" onclick="submit()">确定变更</div>
+    </form>
 	</body>
 </html>
 <script>
