@@ -72,35 +72,34 @@
 			<div class="ico" style="color: #FF9800;">&#xe747;</div>
 			<div class="tit">保修申请</div>
 		</div>
-		<div>
+		<div onclick="location.href='{{route('weixin_warranty_list')}}' ">
 			<div class="ico" style="color: #55B154;">&#xe627;</div>
 			<div class="tit">保修查询</div>
 		</div>
-		<div>
+		<div onclick="location.href='{{route('weixin_xuzu')}}' ">
 			<div class="ico" style="color: #55B154;">&#xe637;</div>
 			<div class="tit">我要续租</div>
 		</div>
-		<div>
+		<div onclick="location.href='{{route('weixin_tuizu')}}' ">
 			<div class="ico" style="color: red;">&#xe637;</div>
 			<div class="tit">提前退租</div>
 		</div>
-		<div>
+		<div onclick="location.href='{{route('weixin_fwbg')}}' ">
 			<div class="ico" style="color: #FF4081;">&#xe603;</div>
 			<div class="tit">房屋变更</div>
 		</div>
-		<div>
+		<div onclick="location.href='{{route('weixin_warranty_list')}}' ">
 			<div class="ico" style="color: #5972FB;">&#xe61c;</div>
 			<div class="tit">在线缴费</div>
 		</div>
-		<div>
+		<div onclick="location.href='{{route('weixin_htlb')}}' ">
 			<div class="ico" style="color: #FF9F11;">&#xe613;</div>
 			<div class="tit">合同查询</div>
 		</div>
-		<div>
+		<div onclick="location.href='{{route('weixin_bindphone')}}' ">
 			<div class="ico" style="color: #259B24;">&#xe617;</div>
 			<div class="tit">修改手机</div>
 		</div>
-
 	</div>
 </body>
 </html>

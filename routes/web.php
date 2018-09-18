@@ -8,6 +8,36 @@ Route::post('/','weixin\LoginController@dologin')->name('weixin_dologin');
 Route::get('/index','weixin\IndexController@index')->name('weixin_index');
 //微信--显示保修申请
 Route::get('/warranty_claim','weixin\WarrantyController@index')->name('weixin_warranty_claim');
+//微信--接受报修图片
+Route::post('/warranty_claim','weixin\WarrantyController@getImages')->name('weixin_warranty_claim_getImages');
+//微信--接收用户报修数据
+Route::post('/warranty_message','weixin\WarrantyController@getMessage')->name('weixin_warranty_claim_getMessage');
+//显示报修列表
+Route::get('/warranty_list','weixin\WarrlistController@store')->name('weixin_warranty_list');
+//报修失败
+Route::get('/warranty_failed','weixin\WarrantyController@failed')->name('weixin_warranty_failed');
+//显示续租
+Route::get('/xuzu','weixin\XuzuController@index')->name('weixin_xuzu');
+//续租申请
+Route::post('/xuzu','weixin\XuzuController@store')->name('weixin_xuzu');
+//显示退租
+Route::get('/tuizu','weixin\TuizuController@index')->name('weixin_tuizu');
+//退租申请
+Route::post('/tuizu','weixin\TuizuController@store')->name('weixin_tuizu');
+//显示房屋变更界面
+Route::get('/fwbg','weixin\FwbgController@index')->name('weixin_fwbg');
+//处理房屋变更界面
+Route::post('/fwbg','weixin\FwbgController@store')->name('weixin_fwbg');
+//显示合同列表
+Route::get('/htlb','weixin\HtController@htlb')->name('weixin_htlb');
+//显示合同详情
+Route::get('/htxq/{id}','weixin\HtController@htxq')->name('weixin_htxq');
+//显示手机修改
+Route::get('/bindphone','weixin\BindPhoneController@index')->name('weixin_bindphone');
+//操作成功跳转
+Route::get('/success','weixin\SuccessController@success')->name('weixin_success');
+//微信--测试
+Route::get('/test','weixin\TestController@index')->name('weixin_test');
 
 
 

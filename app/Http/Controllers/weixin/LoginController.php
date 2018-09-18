@@ -30,10 +30,12 @@ class LoginController extends Controller
                 // 把用户常用的数据保存到SESSION（标记一下、打卡）
                 session([
                     'id' => $household->id,
+                    'username' => $household->username,
                     'realname' => $household->realname,
                     'phone' => $household->phone,
                     'cardId' => $household->cardId,
                     'village' => $household->village,
+                    'address' => $household->address,
                 ]);
                 // 跳转
                 return redirect()->route('weixin_index');
