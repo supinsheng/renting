@@ -6,12 +6,30 @@ use Illuminate\Http\Request;
 use DB;
 class ExamineController extends Controller
 {
-    public function list()
+    public function list(Request $req)
     {
-       $data = DB::table('examines')
-        ->select('examines.*','households.username','households.realname')
-        ->leftJoin('households', 'examines.household_id' ,'=', 'households.id')
-        ->get();
+        if($req->keyword)
+        {
+            $data = DB::table('examines')
+                    ->select('examines.*','households.username','households.realname')
+                    ->leftJoin('households', 'examines.household_id' ,'=', 'households.id')
+                    ->where(function($q) use($req){
+                        $q->where('username','like',"%$req->kwyword%")
+                        ->orWhere('realname','like',"%$req->keyword%")
+                        ->orWhere('examines.id','like',"%$req->keyword%");
+                    })
+                    ->orderBy('examines.id','desc')
+                    ->get();
+        }
+        else
+        {
+            $data = DB::table('examines')
+                    ->select('examines.*','households.username','households.realname')
+                    ->leftJoin('households', 'examines.household_id' ,'=', 'households.id')
+                    ->orderBy('id','desc')
+                    ->get();
+        }
+       
         return view('admin.examine',[
             'data' => $data
         ]);

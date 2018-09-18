@@ -10,7 +10,7 @@
 <body>
 <form class="form-horizontal" action="{{route('agreement_doEdit')}}" method="post">
 {{csrf_field()}}
-<h2 style="text-align:center">新建协议</h2>
+<h2 style="text-align:center">修改协议</h2>
 <input type="hidden" name="id" value="{{$data->id}}">
   <div class="form-group">
     <label for="inputTitle" class="col-sm-2 control-label">协议标题</label>

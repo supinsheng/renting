@@ -108,7 +108,7 @@ table tr th {
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：房屋出租状态查询</td>
+    <td width="99%" align="left" valign="top">您的位置：审核管理</td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -123,7 +123,6 @@ table tr th {
               
 	        </form>
          </td>
-  		  <td width="10%" align="center" valign="middle" style="text-align:right; width:150px;"><a href="{{ route('agreement_add') }}" target="mainFrame" onFocus="this.blur()" class="add">新增协议</a></td>
   		</tr>
 	</table>
     </td>
