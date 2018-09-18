@@ -159,6 +159,11 @@ Route::middleware('adminLogin')->group(function () {
     Route::get('/admin/juris','JurController@jurisList')->name('jurisList');
     Route::post('/admin/addJuris','JurController@addJuris')->name("addJuris");
     Route::get('/admin/delJuris/{id}','JurController@delJuris')->name('delJuris');
+
+    // 表格审核
+    Route::get('/admin/examine','ExamineController@list')->name('examineList');
+    Route::post('/admin/examineEdit','ExamineController@edit')->name('examineEdit');
+    Route::post('/admin/download','ExamineController@download')->name('download');
 });
 
 //后台2
