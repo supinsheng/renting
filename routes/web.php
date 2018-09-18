@@ -53,7 +53,15 @@ Route::middleware('adminLogin')->group(function () {
     Route::get('/admin/indexMain','AdminController@indexMain')->name('indexMain');
     Route::get('/admin/indexBottom','AdminController@indexBottom');
     // 后台主页结束
-
+    //变更房屋
+    Route::get('/admin/house_change','HouseController@house_change')->name('house_change');
+    Route::post('/admin/house_doChange','HouseController@house_doChange')->name('house_doChange');
+    //查看协议
+    Route::get('/admin/agreement_see','AgreementController@see')->name("agreement_see");
+    Route::get('/admin/agreement_add','AgreementController@add')->name("agreement_add");
+    Route::post('/admin/agreement_store','AgreementController@store')->name("agreement_store");
+    Route::get('/admin/agreement_edit/{id}','AgreementController@edit')->name("agreement_edit");
+    Route::post('/admin/agreement_doEdit','AgreementController@doEdit')->name("agreement_doEdit");
     // 删除住户
     Route::get('/admin/deleteHousehold/{id}','AdminController@delHousehold')->name('deleteHousehold');
 

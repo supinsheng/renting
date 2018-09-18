@@ -32,6 +32,7 @@ body{overflow-x:hidden; background:url(/images/main/leftbg.jpg) left top repeat-
         <a href="/admin/xuzu" target="mainFrame" onFocus="this.blur()">续租管理</a>
         <a href="/admin/tuizu" target="mainFrame" onFocus="this.blur()">退租管理</a>
         <a href="/admin/house" target="mainFrame" onFocus="this.blur()">房屋出租状态查询</a>
+        <a href="/admin/house_change" target="mainFrame" onFocus="this.blur()">房屋变更</a>
         <a href="/admin/list_household" target="mainFrame" onFocus="this.blur()">住户信息查询</a>
         <a href="/admin/select_house" target="mainFrame" onFocus="this.blur()">房屋出租记录查询</a>
         <a href="/admin/village" target="mainFrame" onFocus="this.blur()">小区管理</a>
@@ -52,6 +53,7 @@ body{overflow-x:hidden; background:url(/images/main/leftbg.jpg) left top repeat-
         <span>操作员管理</span>
         <a href="/admin/jurList" target="mainFrame" onFocus="this.blur()">设置操作员权限</a>
         <a href="/admin/juris" target="mainFrame" onFocus="this.blur()">修改管理权限</a>
+        <a href="/admin/agreement_see" target="mainFrame" onFocus="this.blur()">协议管理</a>
   
       </div>
       @endif
