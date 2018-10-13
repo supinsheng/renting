@@ -14,7 +14,9 @@ class EditHousehouldsAddColumns extends Migration
     public function up()
     {
         Schema::table('households', function (Blueprint $table) {
-            
+            $table->string('contract',10)->default(0)->comment('签约费用');
+            $table->string('payment',10)->default(0)->comment('本月已支付的费用');
+            $table->tinyInteger('peoples')->default(0)->comment('入住的人数');
         });
     }
 
@@ -26,9 +28,9 @@ class EditHousehouldsAddColumns extends Migration
     public function down()
     {
         Schema::table('households', function (Blueprint $table) {
-            $table->string('contract',10)->default(0)->comment('签约费用');
-            $table->string('payment',10)->default(0)->comment('本月已支付的费用');
-            $table->tinyInteger('peoples')->default(0)->comment('入住的人数');
+            $table->dropColumn('contract');
+            $table->dropColumn('payment');
+            $table->dropColumn('peoples');
         });
     }
 }
