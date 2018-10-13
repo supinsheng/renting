@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -106,53 +107,10 @@ th {
   </tr>
 </table>
 
-  <form action="{{route('doEditNew')}}" method="post" id="form2">
-      <div class="modal fade" id="doEditNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="exampleModalLabel">更改新闻</h4>
-            </div>
-            <div class="modal-body">
-	
-            <div class="panel-body">
-					{{csrf_field()}}
-					<input type="text" id="edit-title" name="title" class="form-control" placeholder="请输入规范的新闻标题">
-					<br>
-					<textarea class="form-control" id="edit-desc" name="content" placeholder="请输入规范的新闻内容" rows="6"></textarea>
-					<br>
-					<input type="hidden" id="edit-id" name="id" value="">
-				</div>				
-			</div>
-			<div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <button type="submit" class="btn btn-primary">确认更改</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
+ 
 
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script>
-    function edit(k){
-	
-		let str = '{{$data}}';
-			s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
-			let s2 = JSON.parse(s1);
-			let title = s2[k].title;
-			let desc = s2[k].content;
-			let id = s2[k].id;
-			// console.log(id);
-			// console.log(title,desc);
-			// document.getElementById('标签id').innerText= '要修改的文本内容';
-			document.getElementById('edit-title').value = title;
-			document.getElementById('edit-desc').innerText = desc;
-			document.getElementById('edit-id').value = id;
-			
-		}
-  </script>
+
 </body>
 </html>

@@ -139,9 +139,7 @@
 	<script>
 	console.log('{{Route::currentRouteName()}}');
 		function addCelue(name){
-			// console.log(name);
-			// console.log(title,desc);
-			// document.getElementById('标签id').innerText= '要修改的文本内容';
+	
 			document.getElementById('add_name').value = name;
 			
 		}

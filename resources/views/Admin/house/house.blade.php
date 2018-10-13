@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -125,43 +126,6 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 	</table>
     </td>
   </tr>
-  <!-- <tr>
-    <td align="left" valign="top">
-    
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
-      <tr>
-        <th align="center" valign="middle" class="borderright">编号</th>
-        <th align="center" valign="middle" class="borderright">房屋编号</th>
-        <th align="center" valign="middle" class="borderright">房屋状态</th>
-        <th align="center" valign="middle" class="borderright">住户</th>
-        <th align="center" valign="middle" class="borderright">住户电话</th>
-        <th align="center" valign="middle" class="borderright">入住时间</th>
-        <th align="center" valign="middle" class="borderright">到期时间</th>
-        <th align="center" valign="middle" class="borderright">剩余租期</th>
-        <th align="center" valign="middle" class="borderright">小区</th>
-        <th align="center" valign="middle">操作11</th>
-      </tr>
-      @foreach($house as $h)
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->id }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->house_id }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->state }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->hold_name }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->hold_phone }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->start_time }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->end_time }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->residual_lease }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->village }}</td>
-        
-        <td align="center" valign="middle" class="borderbottom"><span class="gray"></span>
-        <a href="{{ route('del_house',['id'=>$h->id]) }}" onclick="return confirm(' 如果房屋已出租，删除房屋对应的住户也会被删除，请确定是否要删除？ ')" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
-      </tr>
-      @endforeach
-    </table></td>
-    </tr>
-   <tr>
-    <td align="left" style="text-align:center" valign="top" class="fenye">{{ $house->appends($req->all())->links() }}</td>
-  </tr> -->
   <tr>
     
   </tr>

@@ -73,11 +73,11 @@
 			s1=str.replace(/&quot;/g,'"');
 			return JSON.parse(s1)
 		}
-		let arr = quot('{{$data}}');
+		let arr = quot("{{$data}}");
 
 		console.log(arr);
 		//输出所有的区域
-		let villages = quot('{{$villages}}');
+		let villages = quot("{{$villages}}");
 		let villagesList = [];
 		for(let i = 0;i< villages.length;i++){
 			villagesList.push({'name':villages[i].name.trim(),'paid':0,'unpaid':0});

@@ -103,10 +103,10 @@
 			s1=str.replace(/&quot;/g,'"');
 			return JSON.parse(s1)
 		}
-		// let str = '{{$data}}';
+
 		// console.log(str);
 		// s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
-		let arr =quot('{{$data}}')
+		let arr =quot("{{$data}}")
 
 		let map = {}, dest= [];
 		for(let i=0;i<arr.length;i++){

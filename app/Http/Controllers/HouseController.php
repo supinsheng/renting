@@ -47,7 +47,7 @@ class HouseController extends Controller
     // 执行新增
     public function doAdd_house(Request $req){
         
-        if($req->house_id=='' || $req->village==''){
+        if($req->house_id=='' || $req->village=='' || $req->house_area=='' || $req->rent==''){
             return back()->withInput()->withErrors(['error'=>'输入数据不完整！']);
             
         }else {

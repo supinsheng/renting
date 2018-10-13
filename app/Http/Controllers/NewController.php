@@ -43,6 +43,7 @@ class NewController extends Controller
             ->update(['updated_at'=>$date,'title'=>$req->title,'content'=>$req->content]);
         return back()->with('success','新闻编辑成功！');
     }
+    // 新闻纪录列表
     public function query(Request $req){
 
         if($req->keyword){
@@ -57,7 +58,7 @@ class NewController extends Controller
         }else {
             $data = DB::table('news')->orderBy('id','desc')->get();
         }
-        // return $data;
+  
         return view('admin.new.query',[
             'data'=>$data
         ]);

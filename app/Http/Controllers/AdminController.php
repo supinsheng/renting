@@ -71,7 +71,9 @@ class AdminController extends Controller
         
         if($req->keyword){
             
-            $household = Household::where(function($q) use($req){
+            $household = Household::select('Households.*','houses.house_area','houses.rent')
+            ->leftJoin('houses', 'households.address','houses.house_id')
+            ->where(function($q) use($req){
 
                 $q->where('realname','like',"%$req->keyword%")
                   ->orWhere('address','like',"%$req->keyword%")
@@ -82,9 +84,10 @@ class AdminController extends Controller
                   ->orWhere('start','like',"%$req->keyword%");
             })->orderBy('id','desc')->paginate(15);
         }else {
-            $household = Household::orderBy('id','desc')->paginate(15);
+            $household =  Household::select('Households.*','houses.house_area','houses.rent')
+            ->leftJoin('houses', 'households.address','houses.house_id')
+            ->orderBy('id','desc')->paginate(15);
         }
-        
         return view('admin.main',['household'=>$household,'req'=>$req]);
     }
 

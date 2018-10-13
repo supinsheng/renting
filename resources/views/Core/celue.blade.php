@@ -153,35 +153,19 @@
 	<!-- <script src="/scripts/klorofil-common.js"></script> -->
 	<script>
 	// console.log('{{Route::currentRouteName()}}');
+		var str = "{{$data}}";
+		var s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
+		var s2 = JSON.parse(s1);
 		function edit(k){
-			let str = '{{$data}}';
-			s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
-			let s2 = JSON.parse(s1);
-			let title = s2[k].title;
-			let desc = s2[k].description;
-			let id = s2[k].id;
-			// console.log(id);
-			// console.log(title,desc);
 			// document.getElementById('标签id').innerText= '要修改的文本内容';
-			document.getElementById('edit-title').value = title;
-			document.getElementById('edit-desc').innerText = desc;
-			document.getElementById('edit-id').value = id;
-			
+			document.getElementById('edit-title').value = s2[k].title;
+			document.getElementById('edit-desc').innerText = s2[k].description;
+			document.getElementById('edit-id').value = s2[k].id;	
 		}
 		function release(k){
-			let str = '{{$data}}';
-			s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
-			let s2 = JSON.parse(s1);
-			let title = s2[k].title;
-			let desc = s2[k].description;
-			let id = s2[k].id;
-			// console.log(id);
-			// console.log(title,desc);
-			// document.getElementById('标签id').innerText= '要修改的文本内容';
-			document.getElementById('release-title').value = title;
-			document.getElementById('release-desc').innerText = desc;
-			document.getElementById('release-id').value = id;
-			
+			document.getElementById('release-title').value = s2[k].title;
+			document.getElementById('release-desc').innerText = s2[k].description;
+			document.getElementById('release-id').value = s2[k].id;		
 		}
 	</script>
 @endsection

@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -134,20 +135,14 @@ th {
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
   <script>
-    function edit(k){
-	
-		let str = '{{$data}}';
-			s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
-			let s2 = JSON.parse(s1);
-			let title = s2[k].title;
-			let desc = s2[k].content;
-			let id = s2[k].id;
-			// console.log(id);
-			// console.log(title,desc);
+    var str = "{{$data}}";
+    var s1=str.replace(/&quot;/g,'"');
+    var s2 = JSON.parse(s1);
+    function edit(k){  
 			// document.getElementById('标签id').innerText= '要修改的文本内容';
-			document.getElementById('edit-title').value = title;
-			document.getElementById('edit-desc').innerText = desc;
-			document.getElementById('edit-id').value = id;
+			document.getElementById('edit-title').value = s2[k].title;
+			document.getElementById('edit-desc').innerText = s2[k].content;
+			document.getElementById('edit-id').value = s2[k].id;
 			
 		}
   </script>

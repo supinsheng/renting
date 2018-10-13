@@ -84,10 +84,11 @@
 	<script src="/vendor/toastr/toastr.min.js"></script>
 	<!-- <script src="/scripts/klorofil-common.js"></script> -->
 	<script>
-	function showModal(k){
-			let str = '{{$data}}';
-			s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
-			let s2 = JSON.parse(s1);
+		let str = "{{$data}}";
+		var s1=str.replace(/&quot;/g,'"');//将&quot; 转义为空
+		let s2 = JSON.parse(s1);
+		function showModal(k){
+			
 		
 			let mobile = s2[k].phone;
 			// let desc = s2[k].description;
@@ -95,7 +96,7 @@
 			// // console.log(id);
 			// // console.log(title,desc);
 			// // document.getElementById('标签id').innerText= '要修改的文本内容';
-		document.getElementById('mobileShow').innerText = mobile;
+			document.getElementById('mobileShow').innerText = mobile;
 			// $("#mobileShow").removeClass("hidden");
 			// document.getElementById('edit-desc').innerText = desc;
 			// document.getElementById('edit-id').value = id;

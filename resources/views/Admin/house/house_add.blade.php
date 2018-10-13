@@ -1,12 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>主要内容区main</title>
-<link href="/css/css.css" type="text/css" rel="stylesheet" />
-<link href="/css/main.css" type="text/css" rel="stylesheet" />
-<link rel="shortcut icon" href="/images/main/favicon.ico" />
-<style>
-body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>主要内容区main</title>
+  <link href="/css/css.css" type="text/css" rel="stylesheet" />
+  <link href="/css/main.css" type="text/css" rel="stylesheet" />
+  <link rel="shortcut icon" href="/images/main/favicon.ico" />
+  <style>
+    body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
 #searchmain{ font-size:12px;}
 #search{ font-size:12px; background:#548fc9; margin:10px 10px 0 0; display:inline; width:100%; color:#FFF}
 #search form span{height:40px; line-height:40px; padding:0 0px 0 10px; float:left;}
@@ -34,55 +36,69 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 
 </style>
 </head>
+
 <body>
-<!--main_top-->
-<table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
-  <tr>
-    <td width="99%" align="left" valign="top">您的位置：退租管理&nbsp;&nbsp;>&nbsp;&nbsp;添加退租</td>
-  </tr>
-  <tr>
-    <td align="left" valign="top" id="addinfo">
-    <a target="mainFrame" onFocus="this.blur()" class="add"></a>
-    </td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-    <form method="post" action="{{ route('doAdd_house') }}">
-    {{ csrf_field() }}
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
-    @if($errors->has('error'))
-				<span style='color:red'>{{$errors->first('error')}}</span>
-        
-			@endif
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">房屋编号：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="house_id" value="" class="text-word" placeholder="请输入规范的房屋编号">( 如建南小区1栋 第1楼第一间房编号为：JN01 001 )
-        </td>
-        </tr>
-
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">小区：</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <select name="village" value="" id="level">
-      @foreach($village as $v)
-	    <option value="{{ $v->name }}">&nbsp;&nbsp;{{ $v->name }}</option>
-      @endforeach
-        </select>
-        </td>
-      </tr>
-
-      
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="right" valign="middle" class="borderright borderbottom bggray">&nbsp;</td>
-        <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input name="" type="submit" value="添加" class="text-but">
-        <input name="" type="reset" value="重置" class="text-but"></td>
-        </tr>
-    </table>
-    </form>
-    </td>
+  <!--main_top-->
+  <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
+    <tr>
+      <td width="99%" align="left" valign="top">您的位置：退租管理&nbsp;&nbsp;>&nbsp;&nbsp;添加退租</td>
     </tr>
-</table>
+    <tr>
+      <td align="left" valign="top" id="addinfo">
+        <a target="mainFrame" onFocus="this.blur()" class="add"></a>
+      </td>
+    </tr>
+    <tr>
+      <td align="left" valign="top">
+        <form method="post" action="{{ route('doAdd_house') }}">
+          {{ csrf_field() }}
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
+            @if($errors->has('error'))
+            <span style='color:red'>{{$errors->first('error')}}</span>
+            @endif
+            <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+              <td align="right" valign="middle" class="borderright borderbottom bggray">房屋编号：</td>
+              <td align="left" valign="middle" class="borderright borderbottom main-for">
+                <input type="text" name="house_id" value="" class="text-word" placeholder="请输入规范的房屋编号">( 如建南小区1栋
+                第1楼第一间房编号为：JN01 001 )
+              </td>
+            </tr>
+            <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+              <td align="right" valign="middle" class="borderright borderbottom bggray">房屋面积：</td>
+              <td align="left" valign="middle" class="borderright borderbottom main-for">
+                <input type="number" name="house_area" value="" class="text-word" placeholder="请输入房屋的面积">(单位：平方米)
+              </td>
+            </tr>
+            <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+              <td align="right" valign="middle" class="borderright borderbottom bggray">房租：</td>
+              <td align="left" valign="middle" class="borderright borderbottom main-for">
+                <input type="text" name="rent" value="" class="text-word" placeholder="请输入房屋的租费">(单位：00.00)
+              </td>
+            </tr>
+
+            <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+              <td align="right" valign="middle" class="borderright borderbottom bggray">小区：</td>
+              <td align="left" valign="middle" class="borderright borderbottom main-for">
+                <select name="village" value="" id="level">
+                  @foreach($village as $v)
+                  <option value="{{ $v->name }}">&nbsp;&nbsp;{{ $v->name }}</option>
+                  @endforeach
+                </select>
+              </td>
+            </tr>
+
+
+            <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+              <td align="right" valign="middle" class="borderright borderbottom bggray">&nbsp;</td>
+              <td align="left" valign="middle" class="borderright borderbottom main-for">
+                <input name="" type="submit" value="添加" class="text-but">
+                <input name="" type="reset" value="重置" class="text-but"></td>
+            </tr>
+          </table>
+        </form>
+      </td>
+    </tr>
+  </table>
 </body>
+
 </html>
