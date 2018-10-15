@@ -123,17 +123,29 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 			  @endif
         </td>
       </tr>
-
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">入住人数：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <input type="text" name="peoples" value="" class="text-word">
+         @if($errors->has('peoples'))
+				  <span style='color:red'>{{$errors->first('peoples')}}</span>
+			  @endif
         </td>
       </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">签约费用：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <input type="text" name="contract" value="" class="text-word">
+        @if($errors->has('contract'))
+				  <span style='color:red'>{{$errors->first('contract')}}</span>
+			  @endif
+        </td>
+      </tr>
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">备注：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+      
+        <textarea name="remarks" id="" cols="40" rows="10"></textarea>
         </td>
       </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">

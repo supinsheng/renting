@@ -86,7 +86,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
             <th align="center" valign="middle" class="borderright">缴费标准</th>
             <th align="center" valign="middle" class="borderright">缴费情况</th>
             <th align="center" valign="middle" class="borderright">备注</th>
-            <!-- <th align="center" valign="middle">操作</th> -->
+            <th align="center" valign="middle">操作</th>
           </tr>
           @foreach($household as $h)
           <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
@@ -102,11 +102,11 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->house_area }}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->rent }}</td>
             <td align="center" valign="middle" class="borderright borderbottom">缴费情况</td>
-            <td align="center" valign="middle" class="borderright borderbottom">备注</td>
-            <!-- <td align="center" valign="middle" class="borderbottom">
+            <td align="center" valign="middle" class="borderright borderbottom" title="{{ $h->remarks }}">...</td>
+            <td align="center" valign="middle" class="borderbottom">
         <a href="{{ route('editHousehold',['id'=>$h->id]) }}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a><span class="gray">&nbsp;|&nbsp;</span>
         <a href="{{ route('deleteHousehold',['id'=>$h->id]) }}" onclick="return confirm('确定要删除吗？')" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
-      </tr> -->
+      </tr>
           </tr>
           @endforeach
 
