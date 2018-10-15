@@ -68,29 +68,32 @@ class AdminController extends Controller
     }
 
     public function indexMain(Request $req){
-        $type_id = DB::table('cost_types')->select('id')->where('type_name','房租')->get();
-        echo $type_id;
-        return  ;
-        // if($req->keyword){
+        $date = date("Y-m");//获取当前年月
+        if($req->keyword){
             
-        //     $household = Household::select('Households.*','houses.house_area','houses.rent')
-        //     ->leftJoin('houses', 'households.address','houses.house_id')
-        //     ->where(function($q) use($req){
+            $data = Household::select('Households.*','houses.house_area','houses.rent','rent.state')
+            ->leftJoin('houses', 'households.address','houses.house_id')
+            ->leftJoin('rent', 'households.id','rent.user_id')
+            ->where(function($q) use($req){
 
-        //         $q->where('realname','like',"%$req->keyword%")
-        //           ->orWhere('address','like',"%$req->keyword%")
-        //           ->orWhere('village','like',"%$req->keyword%")
-        //           ->orWhere('phone','like',"%$req->keyword%")
-        //           ->orWhere('cardId','like',"%$req->keyword%")
-        //           ->orWhere('time','like',"%$req->keyword%")
-        //           ->orWhere('start','like',"%$req->keyword%");
-        //     })->orderBy('id','desc')->paginate(15);
-        // }else {
-        //     $household =  Household::select('Households.*','houses.house_area','houses.rent')
-        //     ->leftJoin('heouses', 'households.address','houses.house_id')
-        //     ->orderBy('id','desc')->paginate(15);
-        // }
-        // return view('admin.main',['household'=>$household,'req'=>$req]);
+                $q->where('realname','like',"%$req->keyword%")
+                  ->orWhere('address','like',"%$req->keyword%")
+                  ->orWhere('village','like',"%$req->keyword%")
+                  ->orWhere('phone','like',"%$req->keyword%")
+                  ->orWhere('cardId','like',"%$req->keyword%")
+                  ->orWhere('time','like',"%$req->keyword%")
+                  ->orWhere('start','like',"%$req->keyword%");
+            })
+            ->where('rent.date',$date)
+            ->orderBy('id','desc')->paginate(15);
+        }else {
+            $data = Household::select('Households.*','houses.house_area','houses.rent','rent.state')
+            ->leftJoin('houses', 'households.address','houses.house_id')
+            ->leftJoin('rent', 'households.id','rent.user_id')
+            ->where('rent.date',$date)
+            ->orderBy('id','desc')->paginate(15);
+        }
+        return view('admin.main',['household'=>$data,'req'=>$req]);
     }
 
     public function indexBottom(){

@@ -42,13 +42,13 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="search">
   		<tr>
    		 <td width="90%" align="left" valign="middle">
-	        <form>
+	        <!-- <form>
               <span>管理员：</span>
               
               <input type="text" name="keyword" value="" class="text-word">
               <input name="" type="submit" value="查询" class="text-but">
               
-	        </form>
+	        </form> -->
          </td>
   		</tr>
 	</table>
@@ -70,17 +70,17 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <th align="center" valign="middle" class="borderright">电费</th>
         <th align="center" valign="middle">房租</th>
       </tr>
-    @foreach($household as $h)
+    @foreach($data as $v)
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->id }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->address }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->realname }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->cardId }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->village }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->phone }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->water_rent }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->power_rate }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $h->rent }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['id'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['address'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['realname'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['cardId'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['village'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['phone'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['water'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['electric'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['rent'] }}</td>
         
         <td align="center" valign="middle" class="borderbottom"><span class="gray"></span>
       </tr>
@@ -88,7 +88,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
     </table></td>
     </tr>
     <tr>
-    <td align="left" style="text-align:center" valign="top" class="fenye">{{ $household->appends($req->all())->links() }}</td>
+    <td align="left" style="text-align:center" valign="top" class="fenye"></td>
   </tr>
 </table>
 </body>

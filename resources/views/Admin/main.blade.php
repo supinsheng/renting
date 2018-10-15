@@ -101,7 +101,13 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->end }}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->house_area }}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->rent }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">缴费情况</td>
+            <td align="center" valign="middle" class="borderright borderbottom">
+           @if($h->state == false)
+           否
+           @else
+           是
+           @endif
+            </td>
             <td align="center" valign="middle" class="borderright borderbottom" title="{{ $h->remarks }}">...</td>
             <td align="center" valign="middle" class="borderbottom">
         <a href="{{ route('editHousehold',['id'=>$h->id]) }}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a><span class="gray">&nbsp;|&nbsp;</span>

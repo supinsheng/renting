@@ -41,23 +41,12 @@ th {
 <!--main_top-->
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
-    <td width="99%" align="left" valign="top">您的位置：收费管理</td>
+    <td width="99%" align="left" valign="top">您的位置：收费管理  &nbsp;&nbsp;&nbsp;本月</td>
   </tr>
   <tr>
     <td align="left" valign="top">
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="search">
-  		<tr>
-   		 <td width="90%" align="left" valign="middle">
-	        <form>
-              <span>管理员：</span>
-              
-              <input type="text" name="keyword" value="" class="text-word">
-              <input name="" type="submit" value="查询" class="text-but">
-              
-	        </form>
-         </td>
-  		</tr>
-	</table>
+
+
     </td>
   </tr>
   <tr>
@@ -74,29 +63,42 @@ th {
         <th align="center" valign="middle" class="borderright">电费</th>
         <th align="center" valign="middle" class="borderright">房租费</th>
         <th align="center" valign="middle" class="borderright">物业费</th>
-        <th align="center" valign="middle">其他费用</th>
       </tr>
     @foreach($data as $k=>$v)
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v->id }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v->realname }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v->username }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v->data }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v->water_rent }}
-        <a href="#" onClick="edit('{{$v->id}}','水费','water_rent','{{$v->water_rent}}')" data-toggle="modal" data-target="#updatePay" data-whatever="@mdo1">改</a>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['id'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['realname'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['username'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['date'] }}</td>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['water'] }}
+        @if($v['water'] != '' && $v['water_state'] ==1)
+        已交
+        @elseif($v['water'] != '' && $v['water_state'] ==0)
+        未交
+        @endif
         </td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v->power_rate }}
-        <a href="#" onClick="edit('{{$v->id}}','电费','power_rate','{{$v->power_rate}}')" data-toggle="modal" data-target="#updatePay" data-whatever="@mdo1">改</a>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['electric'] }}
+        @if($v['electric'] != '' && $v['electric_state'] ==1)
+        已交
+        @elseifif($v['electric'] != '' && $v['electric_state'] ==0)
+        未交
+        @endif
         </td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v->rent }}
-        <a href="#" onClick="edit('{{$v->id}}','房租费','rent','{{$v->rent}}')" data-toggle="modal" data-target="#updatePay" data-whatever="@mdo1">改</a>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['rent'] }}
+        @if($v['rent'] != '' && $v['rent_state'] ==1)
+        已交
+        @elseif($v['rent'] != '' && $v['rent_state'] ==0)
+        未交
+        @endif
         </td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v->property_fee }}
-        <a href="#" onClick="edit('{{$v->id}}','物业费','property_fee','{{$v->property_fee}}')" data-toggle="modal" data-target="#updatePay" data-whatever="@mdo1">改</a>
+        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['property'] }}
+        @if($v['property'] !='' &&  $v['property_state'] ==1)
+        已交
+        @elseif($v['property'] !='' &&  $v['property_state'] ==0)
+        未交
+        @endif
         </td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v->other_expenses }}
-        <a href="#" onClick="edit('{{$v->id}}','其他费用','other_expenses','{{$v->other_expenses}}')" data-toggle="modal" data-target="#updatePay" data-whatever="@mdo1">改</a>
-        </td>
+       
         
         <td align="center" valign="middle" class="borderbottom"><span class="gray"></span>
       </tr>
@@ -104,7 +106,7 @@ th {
     </table></td>
     </tr>
     <tr>
-    <td align="left" style="text-align:center" valign="top" class="fenye">{{ $data->appends($req->all())->links() }}</td>
+    <td align="left" style="text-align:center" valign="top" class="fenye"></td>
   </tr>
 </table>
 
