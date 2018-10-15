@@ -68,27 +68,29 @@ class AdminController extends Controller
     }
 
     public function indexMain(Request $req){
-        
-        if($req->keyword){
+        $type_id = DB::table('cost_types')->select('id')->where('type_name','房租')->get();
+        echo $type_id;
+        return  ;
+        // if($req->keyword){
             
-            $household = Household::select('Households.*','houses.house_area','houses.rent')
-            ->leftJoin('houses', 'households.address','houses.house_id')
-            ->where(function($q) use($req){
+        //     $household = Household::select('Households.*','houses.house_area','houses.rent')
+        //     ->leftJoin('houses', 'households.address','houses.house_id')
+        //     ->where(function($q) use($req){
 
-                $q->where('realname','like',"%$req->keyword%")
-                  ->orWhere('address','like',"%$req->keyword%")
-                  ->orWhere('village','like',"%$req->keyword%")
-                  ->orWhere('phone','like',"%$req->keyword%")
-                  ->orWhere('cardId','like',"%$req->keyword%")
-                  ->orWhere('time','like',"%$req->keyword%")
-                  ->orWhere('start','like',"%$req->keyword%");
-            })->orderBy('id','desc')->paginate(15);
-        }else {
-            $household =  Household::select('Households.*','houses.house_area','houses.rent')
-            ->leftJoin('houses', 'households.address','houses.house_id')
-            ->orderBy('id','desc')->paginate(15);
-        }
-        return view('admin.main',['household'=>$household,'req'=>$req]);
+        //         $q->where('realname','like',"%$req->keyword%")
+        //           ->orWhere('address','like',"%$req->keyword%")
+        //           ->orWhere('village','like',"%$req->keyword%")
+        //           ->orWhere('phone','like',"%$req->keyword%")
+        //           ->orWhere('cardId','like',"%$req->keyword%")
+        //           ->orWhere('time','like',"%$req->keyword%")
+        //           ->orWhere('start','like',"%$req->keyword%");
+        //     })->orderBy('id','desc')->paginate(15);
+        // }else {
+        //     $household =  Household::select('Households.*','houses.house_area','houses.rent')
+        //     ->leftJoin('heouses', 'households.address','houses.house_id')
+        //     ->orderBy('id','desc')->paginate(15);
+        // }
+        // return view('admin.main',['household'=>$household,'req'=>$req]);
     }
 
     public function indexBottom(){
