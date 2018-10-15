@@ -51,9 +51,8 @@ class Household extends Model
         return $arr;
     }
 
-    public function list()
+    public function list($data)
     {
-        $data = Household::get();
 
         $arr = [];
         foreach($data as $v)

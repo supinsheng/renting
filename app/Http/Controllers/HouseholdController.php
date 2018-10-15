@@ -16,29 +16,23 @@ class HouseholdController extends Controller
 {
     function list (Request $req) {
         // $data = Household::get();
-        // if($req->keyword){
+        if($req->keyword){
             
-        //     $household = Household::leftJoin('properties','households.username','=','properties.username')
-        //     ->select('households.*','water_rent','power_rate','rent')
-        //     ->where(function($q) use($req){
+            $data = Household::where(function($q) use($req){
 
-        //         $q->where('households.id','like',"%$req->keyword%")
-        //           ->orWhere('address','like',"%$req->keyword%")
-        //           ->orWhere('phone','like',"%$req->keyword%")
-        //           ->orWhere('village','like',"%$req->keyword%")
-        //           ->orWhere('start','like',"%$req->keyword%")
-        //           ->orWhere('households.realname','like',"%$req->keyword%");
-        //         //   ->orWhere('end_time','like',"%$req->keyword%");
-        //     })->orderBy('id','desc')->paginate(15);
-        // }else {
-        //     $household = Household::leftJoin('properties','households.username','=','properties.username')
-        //     ->select('households.*','water_rent','power_rate','rent')
-        //     ->orderBy('id','desc')
-        //     ->paginate(15);
-        // }
+                $q->Where('address','like',"%$req->keyword%")
+                  ->orWhere('phone','like',"%$req->keyword%")
+                  ->orWhere('village','like',"%$req->keyword%")
+                  ->orWhere('start','like',"%$req->keyword%")
+                  ->orWhere('realname','like',"%$req->keyword%");
+                //   ->orWhere('end_time','like',"%$req->keyword%");
+            })->orderBy('id','desc')->get();
+        }else {
+            $data = Household::get();
+        }
         // return $household;
         $model = new Household;
-        $data = $model->list();
+        $data = $model->list($data);
         return view('admin.household.list',[
             'data'=>$data,
             'req'=>$req

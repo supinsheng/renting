@@ -42,13 +42,13 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
     <table width="100%" border="0" cellspacing="0" cellpadding="0" id="search">
   		<tr>
    		 <td width="90%" align="left" valign="middle">
-	        <!-- <form>
+	        <form>
               <span>管理员：</span>
               
               <input type="text" name="keyword" value="" class="text-word">
               <input name="" type="submit" value="查询" class="text-but">
               
-	        </form> -->
+	        </form>
          </td>
   		</tr>
 	</table>
