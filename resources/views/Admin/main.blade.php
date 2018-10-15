@@ -77,7 +77,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
             <th align="center" valign="middle" class="borderright">小区地址</th>
             <th align="center" valign="middle" class="borderright">用户账号</th>
             <th align="center" valign="middle" class="borderright">姓名</th>
-            <th align="center" valign="middle" class="borderright">入住人口</th>
+            <th align="center" valign="middle" class="borderright">入住人数</th>
             <th align="center" valign="middle" class="borderright">电话</th>
             <th align="center" valign="middle" class="borderright">身份证</th>
             <th align="center" valign="middle" class="borderright">入住时间</th>
@@ -94,8 +94,8 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->village }}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->username }}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->realname }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->realname }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->realname }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->peoples }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->phone }}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->cardId }}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->start }}</td>
             <td align="center" valign="middle" class="borderright borderbottom">{{ $h->end }}</td>

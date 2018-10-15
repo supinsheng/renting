@@ -39,7 +39,9 @@ class HouseholdRequest extends FormRequest
             ],
             'start'=>'required',
             'address'=>'required | unique:households,address',
-            'village'=>'required'
+            'village'=>'required',
+            'contract' => 'required',
+            'peoples' => 'required',
         ];
     }
 
@@ -61,7 +63,9 @@ class HouseholdRequest extends FormRequest
             'address.required'=>'住址 不能为空',
             'address.unique'=>'该房屋 已出租',
 
-            'village.required'=>'小区 不能为空'
+            'village.required'=>'小区 不能为空',
+            'contract.required' => '签约费用不能为空',
+            'peoples.required' => '入住人数不能为空',
         ];
     }
 }

@@ -127,13 +127,13 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">入住人数：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="number" name="village" value="" class="text-word">
+        <input type="text" name="peoples" value="" class="text-word">
         </td>
       </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">签约费用：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
-        <input type="text" name="village" value="" class="text-word">
+        <input type="text" name="contract" value="" class="text-word">
         </td>
       </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
