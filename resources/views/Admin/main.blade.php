@@ -88,31 +88,27 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
             <th align="center" valign="middle" class="borderright">备注</th>
             <th align="center" valign="middle">操作</th>
           </tr>
-          @foreach($household as $h)
+          @foreach($data as $v)
           <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->id }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->village }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->username }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->realname }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->peoples }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->phone }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->cardId }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->start }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->end }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->house_area }}</td>
-            <td align="center" valign="middle" class="borderright borderbottom">{{ $h->rent }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->id }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->village }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->username }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->realname }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->peoples }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->phone }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->cardId }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->start }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->end }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->house_area }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->rent }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">@if($v->state ===1) 已交 @elseif($v->state===0) 未交 @endif </td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v->remarks }}</td>
             <td align="center" valign="middle" class="borderright borderbottom">
-           @if($h->state == false)
-           否
-           @else
-           是
-           @endif
-            </td>
-            <td align="center" valign="middle" class="borderright borderbottom" title="{{ $h->remarks }}">...</td>
-            <td align="center" valign="middle" class="borderbottom">
-        <a href="{{ route('editHousehold',['id'=>$h->id]) }}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a><span class="gray">&nbsp;|&nbsp;</span>
-        <a href="{{ route('deleteHousehold',['id'=>$h->id]) }}" onclick="return confirm('确定要删除吗？')" target="mainFrame" onFocus="this.blur()" class="add">删除</a></td>
-      </tr>
+              <a href="{{ route('editHousehold',['id'=>$v->id]) }}" target="mainFrame" onFocus="this.blur()" class="add">编辑</a>
+              <span
+                class="gray">&nbsp;|&nbsp;</span>
+              <a href="{{ route('deleteHousehold',['id'=>$v->id]) }}" onclick="return confirm('确定要删除吗？')" target="mainFrame"
+                onFocus="this.blur()" class="add">删除</a></td>
           </tr>
           @endforeach
 
@@ -120,8 +116,9 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       </td>
     </tr>
     <tr>
-      <td align="left" style="text-align:center" valign="top" class="fenye">{{
-        $household->appends($req->all())->links() }}</td>
+      <td align="left" style="text-align:center" valign="top" class="fenye">
+      {{ $data->appends($req->all())->links() }}
+      </td>
     </tr>
   </table>
 </body>

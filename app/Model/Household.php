@@ -8,10 +8,9 @@ class Household extends Model
     protected $fillable = ['username','realname','cardId','phone','address','village','time','start','contract','peoples','remarks'];
 
 
-    public function getAll()
+    public function getAll($data)
     {
         $data = Household::get();
-
         $arr = [];
         foreach($data as $v)
         {
@@ -50,7 +49,33 @@ class Household extends Model
 
         return $arr;
     }
+    public function getData($data)
+    {
+        $arr = [];
+        foreach($data as $v)
+        {
+            $rent = Rent::where('date','=',date('Y-m'))
+            ->where('user_id','=',$v['id'])
+            ->first();
+            $arr[] = [
+                'id' => $v['id'], 
+                'village' => $v['village'],
+                'realname' => $v['realname'],
+                'username' => $v['username'],
+                'peoples' => $v['peoples'],
+                'phone' => $v['phone'],
+                'cardId' => $v['cardId'],
+                'start' => $v['start'],
+                'house_area' => $v['house_area'],
+                'rent' => $rent['money'],
+                'rent_state' => $rent['state'],
+                'remarks' => $v['remarks'],
+            ]; 
 
+        }
+
+        return $arr;
+    }
     public function list($data)
     {
 
@@ -86,5 +111,9 @@ class Household extends Model
 
         return $arr;
 
+    }
+
+    public function house(){
+        return $this->hasOne(House::class,'adress');
     }
 }

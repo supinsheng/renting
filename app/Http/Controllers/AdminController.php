@@ -68,12 +68,15 @@ class AdminController extends Controller
     }
 
     public function indexMain(Request $req){
-        $date = date("Y-m");//获取当前年月
+        $date = date("Y-m");
         if($req->keyword){
             
             $data = Household::select('Households.*','houses.house_area','houses.rent','rent.state')
             ->leftJoin('houses', 'households.address','houses.house_id')
-            ->leftJoin('rent', 'households.id','rent.user_id')
+            ->leftJoin('rent', function($join){
+                $join->on('households.id','rent.user_id')
+                ->where('rent.date',date("Y-m"));
+            })
             ->where(function($q) use($req){
 
                 $q->where('realname','like',"%$req->keyword%")
@@ -84,16 +87,17 @@ class AdminController extends Controller
                   ->orWhere('time','like',"%$req->keyword%")
                   ->orWhere('start','like',"%$req->keyword%");
             })
-            ->where('rent.date',$date)
             ->orderBy('id','desc')->paginate(15);
         }else {
             $data = Household::select('Households.*','houses.house_area','houses.rent','rent.state')
             ->leftJoin('houses', 'households.address','houses.house_id')
-            ->leftJoin('rent', 'households.id','rent.user_id')
-            ->where('rent.date',$date)
-            ->orderBy('id','desc')->paginate(15);
+            ->leftJoin('rent', function($join){
+                $join->on('households.id','rent.user_id')
+                ->where('rent.date',date("Y-m"));
+            })
+            ->orderBy('id','desc')->paginate(20);
         }
-        return view('admin.main',['household'=>$data,'req'=>$req]);
+        return view('admin.main',['data'=>$data,'req' => $req]);
     }
 
     public function indexBottom(){
@@ -129,7 +133,6 @@ class AdminController extends Controller
 
     // 执行录入
     public function doaddHold(HouseholdRequest $req){
-        
         $house = House::where('house_id',$req->address)->where('village',$req->village)->first();
                 
         if($house){
