@@ -13,7 +13,7 @@ class CoreController extends Controller
 {
     //
 
-    function login(){
+    public function login(){
         // $user = Core::where('name','=','aaa')->get();
         // $pwd = Hash::make('123');
         return view('core.index');
