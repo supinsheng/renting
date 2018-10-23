@@ -8,7 +8,7 @@ class Household extends Model
     protected $fillable = ['username','realname','cardId','phone','address','village','time','start','contract','peoples','remarks'];
     protected $table = 'households';
 
-    public function getAll($data)
+    public function getAll()
     {
         $data = Household::get();
         $arr = [];
