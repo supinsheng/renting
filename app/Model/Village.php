@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Village extends Model
 {
     protected $fillable = ['name'];
+    protected $table = 'villages';
 }

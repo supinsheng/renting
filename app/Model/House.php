@@ -7,7 +7,7 @@ class House extends Model
 {
     protected $fillable = ['house_id','village','house_area','rent'];
     public $timestamps = false;
-
+    protected $table = 'houses';
     public function household()
     {
         return $this->belongsTo(Household::class,'house_id');
