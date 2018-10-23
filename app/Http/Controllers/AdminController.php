@@ -71,7 +71,7 @@ class AdminController extends Controller
         $date = date("Y-m");
         if($req->keyword){
             
-            $data = Household::select('Households.*','houses.house_area','houses.rent','rent.state')
+            $data = Household::select('households.*','houses.house_area','houses.rent','rent.state')
             ->leftJoin('houses', 'households.address','houses.house_id')
             ->leftJoin('rent', function($join){
                 $join->on('households.id','rent.user_id')
@@ -89,7 +89,7 @@ class AdminController extends Controller
             })
             ->orderBy('id','desc')->paginate(15);
         }else {
-            $data = Household::select('Households.*','houses.house_area','houses.rent','rent.state')
+            $data = Household::select('households.*','houses.house_area','houses.rent','rent.state')
             ->leftJoin('houses', 'households.address','houses.house_id')
             ->leftJoin('rent', function($join){
                 $join->on('households.id','rent.user_id')

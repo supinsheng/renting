@@ -7,10 +7,6 @@ use App\Model\Household;
 use App\Model\Property;
 use App\Model\Rent;
 use App\Model\Water;
-
-
-
-
 use DB;
 class HouseholdController extends Controller
 {
