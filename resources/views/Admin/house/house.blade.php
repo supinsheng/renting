@@ -91,7 +91,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
   border-radius: 12.5px;
   padding: 5px;
   /* background-color: #000; */
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
   margin-left: 5px;
 }
 .clear{
@@ -154,6 +154,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
           <a href="#"  title="{{$h->hold_phone}}"> <i class="fa fa-phone fa-lg" style="color:#fff"></i></a>
           <a href="#"  title="入住时间: {{$h->start_time}} &#10;到期时间: {{$h->end_time}} "> <i class="fa fa-eye fa-lg" style="color:#fff"></i></a>
           <a href="#"  title="剩余租期: {{$h->residual_lease}} "> <i class="fa fa-bell fa-lg" style="color:#fff"></i></a>
+          <a href="{{route('house.edit',['id'=>$h->id])}}"  title="修改"> <i class="fa fa-edit fa-lg" style="color:#fff"></i></a>
           <a href="{{ route('del_house',['id'=>$h->id]) }}" onclick="return confirm(' 如果房屋已出租，删除房屋对应的住户也会被删除，请确定是否要删除？ ')" target="mainFrame" onFocus="this.blur()"><i class="fa fa-times fa-lg" style="color:#fff"></i></a>
         </div>
       </li>
