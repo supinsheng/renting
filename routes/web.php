@@ -154,6 +154,8 @@ Route::middleware('adminLogin')->group(function () {
     Route::get('/admin/add_house','HouseController@add_house')->name('add_house');
     // 执行新增
     Route::post('/admin/doAdd_house','HouseController@doAdd_house')->name('doAdd_house');
+    Route::get('/admin/house/edit/{id}','HouseController@edit')->name('house.edit');
+    Route::post('/admin/house/update','HouseController@update')->name('house.update');
 
     // 删除房屋
     Route::get('/admin/del_house/{id}','HouseController@del_house')->name('del_house');

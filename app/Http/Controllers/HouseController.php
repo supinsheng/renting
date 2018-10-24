@@ -24,9 +24,9 @@ class HouseController extends Controller
                   ->orWhere('start_time','like',"%$req->keyword%")
                   ->orWhere('village','like',"%$req->keyword%")
                   ->orWhere('end_time','like',"%$req->keyword%");
-            })->orderBy('state','asc')->orderBy('id','desc')->paginate(15);
+            })->orderBy('state','asc')->orderBy('id','desc')->get();
         }else {
-            $house = House::orderBy('state','asc')->orderBy('id','desc')->paginate(15);
+            $house = House::orderBy('state','asc')->orderBy('id','desc')->get();
         }
         $vills = Village::select('name')->get();
         return view('admin.house.house',[
@@ -41,7 +41,7 @@ class HouseController extends Controller
 
         $village = Village::get();
 
-        return view('admin.house.house_add',['village'=>$village]);
+        return view('admin.house.create',['village'=>$village]);
     }
 
     // 执行新增
@@ -64,7 +64,19 @@ class HouseController extends Controller
             
         } 
     } 
-    
+    public function edit($id)
+    {
+        $data = House::find($id);
+        return view('admin.house.update',['data'=>$data]);
+    }
+    public function update(Request $req)
+    {
+        $model = House::find($req->id);
+        $model->house_id = $req->house_id;
+        $model->rent = $req->rent;
+        $model->save();
+        return redirect()->route('house');
+    }
     // 删除房屋
     public function del_house($id){
 
