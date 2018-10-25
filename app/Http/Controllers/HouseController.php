@@ -74,6 +74,7 @@ class HouseController extends Controller
         $model = House::find($req->id);
         $model->house_id = $req->house_id;
         $model->rent = $req->rent;
+        $model->house_area = $req->house_area;
         $model->save();
         return redirect()->route('house');
     }
