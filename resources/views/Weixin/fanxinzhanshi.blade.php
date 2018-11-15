@@ -10,44 +10,44 @@
 	<body>
 		<div class="wrap">
 			<img src="/images/weixin/bgg.png"/>
-			<div class="list clearfix">
+			<div class="list clearfix" onclick="location.href='{{route('weixin_fanxinzhanshi1')}}' ">
 				<img src="/images/weixin/bg.jpeg"/>
 				<div class="name">河东公房廉租房</div>
 				<div class="detail"><span>1439.82㎡建筑面积</span></div>
 				<!-- <div class="detail"><span>1439.82㎡建筑面积</span> <span style="position: absolute;right: 0;">818套住宅</span></div> -->
 				<div class="addr"><span>&#xe654;</span> 三明市建宁县濉溪镇河塔路48号</div>
 			</div>
-			<div class="list clearfix">
+			<div class="list clearfix" onclick="location.href='{{route('weixin_fanxinzhanshi1')}}' ">
 				<img src="/images/weixin/bg.jpeg"/>
 				<div class="name">黄丹坊上坑C栋</div>
 				<div class="detail"><span>450.08㎡建筑面积</span> </div>
 				<div class="addr"><span>&#xe654;</span> 三明市建宁县濉溪镇黄丹坊南路</div>
 			</div>
-			<div class="list clearfix">
+			<div class="list clearfix" onclick="location.href='{{route('weixin_fanxinzhanshi1')}}' ">
 				<img src="/images/weixin/bg.jpeg"/>
 				<div class="name">原河东小学</div>
 				<div class="detail"><span>592.08㎡建筑面积</span> </div>
 				<div class="addr"><span>&#xe654;</span> 三明市建宁县濉溪镇河东村三层</div>
 			</div>
-			<div class="list clearfix">
+			<div class="list clearfix" onclick="location.href='{{route('weixin_fanxinzhanshi1')}}' ">
 				<img src="/images/weixin/bg.jpeg"/>
 				<div class="name">黄丹坊上坑A栋</div>
 				<div class="detail"><span>386.6㎡建筑面积</span> </div>
 				<div class="addr"><span>&#xe654;</span> 三明市建宁县濉溪镇黄丹坊南路</div>
 			</div>
-			<div class="list clearfix">
+			<div class="list clearfix" onclick="location.href='{{route('weixin_fanxinzhanshi1')}}' ">
 				<img src="/images/weixin/bg.jpeg"/>
 				<div class="name">黄丹坊上坑B栋</div>
 				<div class="detail"><span>656.04㎡建筑面积</span> </div>
 				<div class="addr"><span>&#xe654;</span> 三明市建宁县濉溪镇黄丹坊南路</div>
 			</div>
-			<div class="list clearfix">
+			<div class="list clearfix" onclick="location.href='{{route('weixin_fanxinzhanshi1')}}' ">
 				<img src="/images/weixin/bg.jpeg"/>
 				<div class="name">65-67号属危房</div>
 				<div class="detail"><span>137.7㎡建筑面积</span> </div>
 				<div class="addr"><span>&#xe654;</span> 三明市建宁县一枝山63号，65号</div>
 			</div>
-			<div class="list clearfix">
+			<div class="list clearfix" onclick="location.href='{{route('weixin_fanxinzhanshi1')}}' ">
 				<img src="/images/weixin/bg.jpeg"/>
 				<div class="name">49号属危房</div>
 				<div class="detail"><span>291.46㎡建筑面积</span> </div>

@@ -32,4 +32,7 @@ class IndexController extends Controller
     public function fanxinzhanshi(){
         return view('Weixin.fanxinzhanshi');
     }
+    public function fanxinzhanshi1(){
+        return view('Weixin.fanxinzhanshi1');
+    }
 }

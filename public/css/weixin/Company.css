@@ -1,0 +1,875 @@
+﻿body {
+    font-family: 微软雅黑;   background-color: #f2f2f2;
+    position: relative;
+    margin: 0;
+    padding-bottom: 50px;
+    -webkit-text-size-adjust: 100%;
+}
+p,h1,h2,body,form,html {
+    padding:0;
+    margin:0;
+}
+table {
+     border: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input {
+    -webkit-appearance: none;
+     -webkit-tap-highlight-color:rgba(0,0,0,0);
+     -webkit-tap-highlight-color:rgba(255,0,0,0);
+}
+    input:focus {
+        outline:none;
+    }
+select {
+            /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+            border: solid 1px #000;
+            /*很关键：将默认的select选择框样式清除*/
+            appearance:none;
+            -moz-appearance:none;
+            -webkit-appearance:none;
+            /*将背景改为绿色*/
+            background:green;
+            /*留出一点位置，避免被文字覆盖*/
+            padding-right: 14px;
+            background: url(../../Images/Company/select.png) no-repeat 90% center;
+       
+        }
+   
+        /*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+        select::-ms-expand { display: none; }
+/*企业首页*/
+.main {
+    height: 318px;
+    width: 100%;
+}
+
+.main-top {
+    height: 318px;
+    width: 100%;
+    background: url(../../Images/Company/Companyinfo-bac.png) no-repeat left center;
+    background-size:cover;
+}
+
+.companyname {
+    position: relative;
+    top: 50px;
+    color: #ffffff;
+    font-size: 2.25rem;
+    margin-left:20px;
+}
+
+.companycode {
+    position: relative;
+    top: 70px;
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-left:20px;
+}
+.outmain {
+    font-size:1.75rem;
+    color:#fff;
+    border:1px solid #fff;
+    width:164px;
+    height:48px;
+    top:100px;
+    margin-left:20px;
+    text-align:center;
+    position:relative;
+    line-height:48px;
+}
+
+.main-sub {
+    height: 257px;
+    background-color: white;
+    border:1px solid #ccc;
+    width:100%;
+}
+.main-subbox {
+    width:87%;
+    margin:0 auto;
+    overflow:hidden;
+}
+.head-end-div {
+    width: 27%;
+    margin-left: 3%;
+    margin-right:3%;
+    float: left;
+    /*position: relative;*/
+}
+    .head-end-div a {
+        display:block;
+        text-decoration:none;
+    }
+.head-end-divin {
+    width: 100%;
+    height: 120px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align: center;
+    margin-top:50px;
+    margin-bottom:20px;
+}
+
+.head-end-divname {
+    text-align: center;
+    font-size: 24px;
+    color: #666;
+}
+
+.main-content {
+    margin-top: 24px;
+    width: 100%;
+    height: 984px;
+    color: #333333;
+    font-size: 30px;
+    background-color: white;
+    border:1px solid #ccc;
+}
+
+
+    .main-content div {
+        height:56px;
+        text-align: center;
+        width: 100%;
+        margin-top:34px;
+    }
+
+.content-title {
+    padding-left: 5%;
+    float: left;
+    width: 31%;
+    text-align: left;
+    height:56px;
+    line-height:28px;
+}
+
+.content-titledata {
+    float: right;
+    color: #01b473;
+    padding-right: 8%;
+    text-align: right;
+    width: 56%;
+    height:56px;
+    line-height:28px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.applyhousebac {
+    background: url(../Images/Company/public-sqbac.png) repeat-x left bottom;
+    /*background-color:#E2FBE5;*/
+    width: 94%;
+    padding-bottom:36px;
+    padding-left:30px;
+}
+    .applyhousebac h1 {
+        font-size:2em;
+        color:#333;
+        margin:0;
+        padding:0;
+        padding-top:30px;
+        margin-bottom:10px;
+    }
+    .applyhousebac p {
+        font-size:1.5rem;
+        line-height:1.6em;
+        color:#333;
+         margin:0;
+        padding:0;
+        padding-top:15px;
+    }
+.applyhouse-subone {
+    width:100%;
+    height:225px;
+    font-size:2em;
+}
+.applyhouse-subonebox {
+    width:87%;
+    margin:0 auto;
+    overflow:hidden;
+    margin-top:54px;
+}
+    .applyhouse-subone span {
+        width:50%;
+        text-align:center;
+    }
+
+.common-person {
+    background:url(../../Images/Company/public-commonsq.png) no-repeat center top;
+    float:left;
+    padding-top:188px;
+    color:#333;
+}
+
+.advance-person {
+    background:url(../../Images/Company/public-advancesq.png) no-repeat center top;
+  padding-top:188px;
+    float:right;
+        color:#333;
+}
+
+.common-persont {
+    background:url(../../Images/Company/public-commoncheckedsq.png) no-repeat center top;
+     float:left;
+    padding-top:188px;
+        color:#333;
+}
+
+.advance-persont {
+     padding-top:188px;
+    float:right;
+    background:url(../../Images/Company/public-advancecheckedsq.png) no-repeat center top;   
+        color:#333;
+}
+
+
+.button-next{
+    height:84px;
+    line-height:84px;
+    font-size:2rem;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    background-color: #00C46C;
+    width:90%;
+    margin:0 auto;
+    margin-top:48px;
+}
+.check {
+    margin-left:40px;
+    /*margin-top:20px;*/
+    font-size:2em;
+}
+.check_read {
+    margin-right:20px;
+}
+/*优租房申请*/
+.apply_person {
+    margin-left:27px;
+    margin-right:27px;
+    padding-bottom:60px;
+}
+.apply_person h1 {
+    color:#00c46c;
+    font-size:2rem;
+    padding-left:20px;
+    background:url(../../Images/Company/h1_tit.png) no-repeat left 54px;
+    padding-left:20px;
+    font-weight:normal;
+    padding-top:45px;
+    padding-bottom:20px;
+}
+.presonbox {
+    overflow:hidden;
+}
+.l_person {
+    float:left;
+}
+.r_person {
+    float:right;
+    width:280px;
+    height:280px;
+    background-color:#ccc;
+    text-align:center;
+}
+.l_personbox {
+    width:98.8%;
+    border:1px solid #ccc;
+    border-radius:2px;
+    margin-bottom:20px;
+    height:5rem;
+    line-height:5rem;
+    clear:both;
+    background-color:#fff;
+    position:relative;
+    overflow:hidden;
+}
+.person_tit{
+   font-size:1.7rem;
+   color:#333;
+    display:inline-block;
+    width:40%;
+    text-align:left;
+    padding-left:4%;
+}
+.l_personbox1 .person_tit {
+    padding-left:3%;
+    width:40%;
+}
+.person_tit2 {
+    width:43%;
+    float:left;
+}
+.l_personbox .person_tit_input {
+    float:left;
+    width:45%;
+}
+    .l_personbox input {
+        width:68%;
+        border:none;
+        background-color:#fff;
+        text-align:left;
+        color:#666;
+        height:2.5rem;
+        font-size:1.7rem;
+        margin-top:1rem;
+    }
+.l_personbox1 input {
+    width:50%;
+}
+.l_personbox1 select {
+        width:56%;
+        border:none;
+        background-color:#fff;
+        text-align:left;
+        color:#666;
+        font-size:1.7rem;
+        height:40px;
+    }
+
+    .l_personbox1 select option {
+        font-size:1.7rem;
+    }
+.sex {
+    position:relative;
+    top:14px;
+    left:10px;
+}
+.l_personbox2 input{
+    width:40.4%;
+}
+.sf {
+    display:inline-block;
+    width:12%;
+    border-left:1px solid #ccc;
+    text-align:center;
+    position:absolute;
+    /*top:-5px;*/
+    font-size:1.5rem;
+    color:#00c46c;
+}
+.l_personbox_mess {
+    font-size:1.9rem;
+    line-height:2.1rem;
+    color:#ff894f;
+    background-color:#fcffeb;
+    border:1px solid #e4e9c5;
+    border-radius:2px;
+    padding-top:26px;
+    padding-bottom:26px;
+    margin-bottom:18px;
+    margin-top:18px;padding-left:26px;
+    position:relative;
+}
+.row {
+    position:absolute;
+    top:-11px;
+    left:15%;
+    z-index:3;
+    display:inline-block;
+    width:18px;
+    height:11px;
+    background:url("../../Images/Company/row.png");
+}
+.l_personbox_mess p {
+    padding-right:10px;
+    line-height:35px;
+}
+.ExpectationRoomer {
+    background:url(../../Images/Company/ExpectationRoomer.png) no-repeat 99% center;
+}
+/*优租房查询*/
+.searchbox {
+    width:96%;
+    margin:0 auto;
+    margin-top:26px;
+}
+.searchbox_input {
+    height:80px;
+    border:1px solid #ccc;
+    border-radius:2px;
+    background-color:#fff;
+    width:80%; 
+    background:url(../../Images/Company/search.png) no-repeat 16px center;
+    background-color:#fff;
+    text-indent:80px;
+    font-size:1.75rem;
+}
+.search_select {
+    padding-left:20px;
+    background:url(../../Images/Company/ssearch_select.png) no-repeat left center;
+    color:#00c46c;
+    padding-left:5%;
+    margin-left:3%;
+    font-size:2rem;
+}
+.customer_info {
+    width:96%;
+    margin:0 auto;
+    margin-top:32px;
+    border:1px solid #ccc;
+    background-color:#fff;
+}
+    .customer_info h2 {
+        padding:25px;
+        font-weight:normal;
+        font-size:2rem;
+        color:#333;
+    }
+    .customer_info table {
+         font-size:1.9rem;
+        color:#8c8c8c;
+        margin-left:25px;
+        margin-bottom:25px;
+    }
+    .customer_info table td {
+        height:47px;
+    }
+.zz_box {
+    width:100%;
+    height:100%;
+    position:fixed;
+    left:100%;
+    top:0;
+    overflow:hidden;
+    background:url(../../Images/Company/bg.png);
+}
+.zz_box_animate {
+     width:100%;
+    height:100%;
+    position:fixed;
+    left:0%;
+    top:0;
+    overflow:hidden;
+    background:url(../../Images/Company/bg.png);
+}
+.zz_cont {
+    width:70%;
+    float:right;
+    height:97%;
+    background-color:#fff;
+}
+.l_personbox3 {
+    width:90%;
+    margin:0 auto;
+    border:none;
+}
+.zz_conttit {
+    color:#00c46c;
+    font-size:2rem;
+    padding-left:20px;
+    background:url(../../Images/Company/h1_tit.png) no-repeat left center;
+    padding-left:20px;
+    font-weight:normal;
+    margin-top:16px;
+    margin-bottom:10px;
+}
+.l_personbox3 input {
+    width:68%;
+}
+.l_personbox3 select {
+    width:67%;
+}
+/*滚动开关*/
+.checkbarsex {
+    float: right;
+    width: 97px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #00c46c;
+    margin-top: 20px;
+    margin-right: 16px;
+    line-height:40px;
+    font-size:1.5rem;
+    text-indent:0.7em;
+    color:#fff;
+}
+
+    .checkbarsex .bar {
+        width: 36px;
+        height: 36px;
+        margin-left: 2px;
+        margin-top: 2px;
+        border-radius: 18px;
+        background-color: white;
+        float:right;
+    }
+
+    .checkbarsex.checked {
+        background-color: #00C46C;
+    }
+
+        .checkbarsex.checked .bar {
+            margin-left: 42px;
+        }
+        .checkbarsex .bar_wom {
+        width: 36px;
+        height: 36px;
+        margin-left: 2px;
+        margin-top: 2px;
+        border-radius: 18px;
+        background-color: white;
+        float:left;
+    }
+        .checkbarsex.checked .bar_wom {
+            margin-left: 42px;
+        }
+        /*房型展示*/
+.showroom_bg {
+     background:url(../../Images/Company/room_bg.jpg) no-repeat top center;
+     background-size:100%;
+     background-color:#f2fff9;
+}
+.showroom_bgt {
+     background:url(../../Images/Company/comm_bg.jpg) no-repeat top center;
+     background-size:100%;
+     background-color:#f2fff9;
+}
+.show_room {
+    overflow-x:hidden;
+    overflow-y:auto;
+    width:97%;
+    margin:0 auto;
+}
+.show_room_div {
+    float:left;
+    width:45%;
+    margin-left:2%;
+    margin-right:2%;
+    margin-bottom:4%;
+    position:relative;
+    border:1px solid #dedede;
+    background-color:#fff;
+}
+    .show_room_div img {
+        width:100%;
+    }
+.show_room_div div {
+    height:80px;
+    line-height:80px;
+    text-align:center;
+    font-size:1.5rem;
+    color:#333;
+}
+    /*.show_room_div div span {
+        display:block;
+        width:53px;
+        margin:0 auto;
+        margin-top:20px;
+        line-height:38px;
+    }*/
+.dibu {
+    font-size:1.125rem;
+    color:#999;
+    text-align:center;
+}
+/*房型预览*/
+.list-title {
+    height: 98px;
+    padding: 0 30px;
+    border-bottom: solid 1px #ccc;
+}
+
+    .list-title .menu {
+        width: 50%;
+        float: left;
+        height: 96px;
+        line-height: 96px;
+        font-size: 1.875rem;
+        color: #666;
+        /*margin-left:4%;
+        margin-right:4%;*/
+        text-align: center;
+    }
+
+        .list-title .menu.selected {
+            color: #02b062;
+            border-bottom: solid 3px #02b062;
+        }
+
+.list-cont {
+    font-size: 1.5rem;
+   overflow:hidden;
+   margin:20px 45px 0;
+   margin-top:20px;
+}
+
+    .list-cont .panel {
+        border-radius: 7px;
+        background-color: white;
+        text-align:center;
+        margin-top:40px;
+        overflow-y:auto;
+        overflow-x:hidden;
+    }
+.house_tit {
+         background:url(../../Images/Company/house.png) no-repeat left center;
+         height:88px;
+         padding-left:120px;
+         line-height:88px;
+         font-size:2.25rem;
+         color:#333;
+}
+.swap {
+    position:relative;
+    left:3%;
+    margin-top:32px;
+}
+.preview_h1 {
+    font-size:2.25rem;
+    color:#333;
+    text-align:center;
+    margin-top:56px;
+    font-weight:normal;
+    margin-bottom:32px;
+}
+.preview_select {
+    width:465px;
+    font-size:2.25rem;
+    color:#fff;
+    display:none;
+   }
+    .preview_select ul {
+        margin-left:4%;
+    }
+    .preview_select li {
+        line-height:80px;
+    }
+.house_type {
+    position:fixed;
+    background:url(../../images/Company/bg.png) repeat;
+    width:100%;
+    top:0;
+    left:0;
+    height:100%;
+    top:100px;
+    overflow:hidden;
+}
+.house_type_ul {
+    margin:0;
+    padding:0;
+    width:53%;
+    background-color:#fff;
+    height:100%;
+    padding-top:20px;
+    float:left;
+}
+.house_li {
+    height:78px;
+    line-height:78px;
+    padding-left:6%;
+    font-size:1.875rem;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+    .house_li .potspan {
+        width:12px;
+        height:12px;
+        display:inline-block;
+        border-radius:50%;
+        background-color:#fff;
+        margin-right:20px;
+    }
+.house_li_pre {
+    color:#02b062;
+}
+    .house_li_pre .potspan {
+        background-color:#02b062;
+    }
+.house_type_kong {
+    width:47%;
+    height:100%;
+    float:right;
+}
+/*小区介绍*/
+.introducebg {
+    width:94%;
+    margin:0 auto;
+    text-align:center;
+}
+.introducebg img {
+    width:95%;
+}
+.introduce_container {
+    width:94%;
+    margin:0 auto;
+    background-color:#fff;
+}
+.intro_box {
+    width:94%;
+    margin: 0 auto;
+    overflow:hidden;
+    padding-top:26px;
+    padding-bottom:19px;
+    border-bottom:1px solid #dedede;
+}
+.l_intro_box {
+    float:left;
+    width:200px;
+    height:140px;
+}
+    .l_intro_box img {
+        border:1px solid #dedede;
+        width:100%;
+        height:100%;
+    }
+.r_intro_box {
+    float:left;
+    margin-left:20px;
+}
+    .r_intro_box h1 {
+        font-size:2.25rem;
+        color:#333;
+        font-weight:normal;
+        padding:0;
+        margin:0;
+        margin-bottom:13px;
+    }
+.r_intro_box {
+     font-size:1.6rem;
+    color:#999;
+}
+.r_intro_box_cont {
+       overflow:hidden;
+       margin-bottom:11px;
+}
+.r_intro_box_mj {
+    float:left;
+}
+.r_intro_box_num {
+    float:right;
+}
+.intro_box_loation {
+    background:url(../../images/Company/location.png) left center no-repeat;
+    padding-left:26px;
+}
+.introduce_container_zhe {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url(../../images/Company/bg.png) repeat;
+    left:0;
+    top:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+    .introduce_container_zhe h1 {
+        font-size:2.25rem;
+        color:#333;
+        text-align:center;
+        padding-top:33px;
+       padding-bottom:30px;
+        background-color:#fff;
+        font-weight:normal;
+    }
+.introduce_container_zhe_img {
+    height:auto;
+    width:100%;
+}
+    .introduce_container_zhe_img img {
+        width: 100%;
+    }
+.introduce_container_zhe_p {
+    font-size:1.75rem;
+    color:#333;
+    text-indent:2em;
+    line-height:40px;
+    background-color:#fff;
+    padding:34px 22px;
+}
+.introduce_del {
+    position:absolute;
+    right:60px;
+    top:43px;
+}
+.errorimg {
+    text-align:center;
+}
+/*7.26*/
+.ckeck_mainimg {
+    width:32px;
+    height:32px;
+    background:url("../../Images/Company/check.png");
+    display:inline-block;
+    position:relative;
+    top:6px;
+}
+.head_photp_img {
+    width: 280px; height: 280px;
+    background:url("../../Images/Company/picture.png") no-repeat center center;
+    float:right;
+}
+.introducebg_img {
+    background:url("../../images/Company/introducebg.png") no-repeat center top;
+    width:95%;
+    margin:0 auto;
+    height:277px;
+    background-size:cover;
+}
+.xq_img {
+    border: 1px solid #dedede;
+    width: 100%;
+    height: 100%;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.show_room_div .fx_img {
+    height:180px;
+    width:100%;
+   background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.layui-layer-dialog .layui-layer-content {
+    padding-top:200px!important;
+    background:url(../../images/error.png) center 60px no-repeat;
+    text-align:center!important;
+    font-size:1.8rem!important;
+    color:#333!important;
+    margin-bottom:20px!important;
+    line-height:32px!important;
+}
+.layui-layer-btn {
+    text-align:center!important;
+}
+.layui-layer-dialog {
+    min-width:500px!important;
+    border-radius:8px!important;
+}
+.layui-layer-btn a {
+    height:47px!important;
+    line-height:47px!important;
+    font-size:2rem!important;
+    margin-bottom:16px!important;
+    padding:0 22px!important;
+}
+.layui-layer-btn .layui-layer-btn0 {
+    border-color: rgb(174, 222, 244)!important;
+    background-color: rgb(174, 222, 244)!important;
+}
+.page-back {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-image: url(../../Images/Personal/timg.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    left: 0;
+    top: 0;
+    display: none;
+    background-color: rgba(0,0,0,0.2);
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+}
+
+    .page-back .page {
+        position: absolute;
+        right: -100%;
+        width: 100%;
+        min-height: 100%;
+        border: none;
+    }
