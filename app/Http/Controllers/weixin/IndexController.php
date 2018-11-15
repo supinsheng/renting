@@ -20,4 +20,12 @@ class IndexController extends Controller
                 'ishouse'=>$ishouse,
             ]);
     }
+    // 地图
+    public function ditu(){
+        return view('Weixin.ditu');
+    }
+    // 小区一览
+    public function xiaoqu(){
+        return view('Weixin.xiaoquyilan');
+    }
 }

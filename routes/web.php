@@ -36,6 +36,10 @@ Route::get('/htxq/{id}','weixin\HtController@htxq')->name('weixin_htxq');
 Route::get('/bindphone','weixin\BindPhoneController@index')->name('weixin_bindphone');
 //操作成功跳转
 Route::get('/success','weixin\SuccessController@success')->name('weixin_success');
+//微信--地图
+Route::get('/ditu','weixin\IndexController@ditu')->name('weixin_ditu');
+//微信--小区一览
+Route::get('/xiaoquyilan','weixin\IndexController@xiaoqu')->name('weixin_xiaoquyilan');
 //微信--测试
 Route::get('/test','weixin\TestController@index')->name('weixin_test');
 
