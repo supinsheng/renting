@@ -53,7 +53,7 @@
         });
     }
     for (;i<mapPoints.length;i++) {
-        var points = new BMap.Point(mapPoints[i].y,mapPoints[i].x);//创建坐标点
+        var points = new BMap.Point(mapPoints[i].y,mapPoints[i].x);
         var opts = {
             width:250,
             height: 100,
