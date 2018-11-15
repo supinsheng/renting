@@ -21,12 +21,12 @@
 		<div class="phone">&#xe60d;
 			<span>{{session('phone')}}</span>
 		</div>
-		<div class="addr">&#xe654;
+		<div class="addr" onclick="location.href='{{route('weixin_ditu')}}' ">&#xe654;
 			<span>{{session('village')}}</span>
 		</div>
 		<div class="handle">
 			<span>&#xe678;</span>
-			<span>&#xe604;</span>
+			<!-- <span>&#xe604;</span> -->
 		</div>
 	</div>
 	<!--我的账单-->
