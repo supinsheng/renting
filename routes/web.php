@@ -40,6 +40,8 @@ Route::get('/success','weixin\SuccessController@success')->name('weixin_success'
 Route::get('/ditu','weixin\IndexController@ditu')->name('weixin_ditu');
 //微信--小区一览
 Route::get('/xiaoquyilan','weixin\IndexController@xiaoqu')->name('weixin_xiaoquyilan');
+//微信--房型展示
+Route::get('/fanxinzhanshi','weixin\IndexController@fanxinzhanshi')->name('weixin_fanxinzhanshi');
 //微信--测试
 Route::get('/test','weixin\TestController@index')->name('weixin_test');
 

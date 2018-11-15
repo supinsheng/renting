@@ -28,4 +28,8 @@ class IndexController extends Controller
     public function xiaoqu(){
         return view('Weixin.xiaoquyilan');
     }
+    // 房型展示
+    public function fanxinzhanshi(){
+        return view('Weixin.fanxinzhanshi');
+    }
 }
