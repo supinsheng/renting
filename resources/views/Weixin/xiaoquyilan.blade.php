@@ -24,15 +24,20 @@
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hMhtEs7usebfuEzIoCAc9zmVW6vMjhLY"></script>
 <script type="text/javascript">
     var map = new BMap.Map("map");
-    var point = new BMap.Point(120.382029,30.312903);
-    map.centerAndZoom(point,9);
+    var point = new BMap.Point(116.608886,26.623865);
+    map.centerAndZoom(point,11);
     var marker = new BMap.Marker(point);
     var mapPoints = [
-        {x:30.312903,y:120.382029,title:"A",con:"我是A",branch:"老大"},
-        {x:30.215855,y:120.024568,title:"B",con:"我是B",branch:"老二"},
-        {x:30.18015,y:120.174968,title:"C",con:"我是C",branch:"老三"},
-        {x:30.324994,y:120.164399,title:"D",con:"我是D",branch:"老四"},
-        {x:30.24884,y:120.305074,title:"E",con:"我是E",branch:"老五"}
+        {x:26.623865,y:116.608886,title:"1",con:"1",branch:"河东公房廉租房"},
+        {x:26.845408,y:116.848487,title:"2",con:"2",branch:"黄丹坊上坑C栋"},
+        {x:26.841057,y:116.855676,title:"3",con:"3",branch:"原河东小学"},
+        {x:26.845408,y:116.848487,title:"4",con:"4",branch:"黄丹坊上坑A栋"},
+        {x:26.845408,y:116.848487,title:"5",con:"5",branch:"黄丹坊上坑B栋"},
+        {x:26.845408,y:116.848487,title:"6",con:"6",branch:"65-67号属危房"},
+        {x:26.845408,y:116.848487,title:"7",con:"7",branch:"49号属危房"},
+        {x:26.833175,y:116.845501,title:"8",con:"8",branch:"高家窠A，B栋公房"},
+        {x:26.835519,y:116.852443,title:"9",con:"9",branch:"危房"},
+        {x:26.853525,y:116.834195,title:"0",con:"0",branch:"危房"}
     ];
     var i = 0;
     map.addOverlay(marker);
