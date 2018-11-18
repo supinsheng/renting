@@ -46,7 +46,11 @@ Route::get('/fanxinzhanshi','weixin\IndexController@fanxinzhanshi')->name('weixi
 Route::get('/fanxinzhanshi1','weixin\IndexController@fanxinzhanshi1')->name('weixin_fanxinzhanshi1');
 //微信--测试
 Route::get('/test','weixin\TestController@index')->name('weixin_test');
-
+// 订单页
+Route::get('/order','weixin\OrderController@index')->name('order');
+// 微信--支付
+Route::post('/wxpay','weixin\WxpayController@index')->name('wxpay');
+Route::get('/wxpay/notify','weixin\WxpayController@index');
 
 
 

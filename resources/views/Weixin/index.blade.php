@@ -88,7 +88,7 @@
 			<div class="ico" style="color: #FF4081;">&#xe603;</div>
 			<div class="tit">房屋变更</div>
 		</div>
-		<div onclick="location.href='{{route('weixin_warranty_list')}}' ">
+		<div onclick="location.href='{{route('order')}}' ">
 			<div class="ico" style="color: #5972FB;">&#xe61c;</div>
 			<div class="tit">在线缴费</div>
 		</div>
