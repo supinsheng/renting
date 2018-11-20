@@ -144,7 +144,7 @@
                 },
                 data:[
                     @foreach($data as $v)
-                    {value:400, name:'{{$v->name}}'},
+                    {value:{{$v->count}}, name:'{{$v->name}}'},
                     @endforeach
                     // {value:310, name:'邮件营销'},
                     // {value:234, name:'联盟广告'},
@@ -163,7 +163,7 @@
     myChart.on('click', function (param){
 
         var name=param.name;
-        window.location.href="/admin/indexMain?keyword="+name
+        window.location.href="/admin/house#"+name
         // if(name=="用户数"){
 
         // window.location.href="${base}/admin/user/list.htm";

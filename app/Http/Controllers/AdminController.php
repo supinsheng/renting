@@ -11,6 +11,15 @@ use App\Http\Requests\HouseholdRequest;
 use DB;
 class AdminController extends Controller
 {
+    public function show(Request $req)
+    {
+        // $data = Household::find($id);
+        $data = Household::where('realname',$req->name)->first();
+        return view('admin.show',[
+            'data' => $data
+        ]);
+        // return 'fasdfasd';
+    }
     public function index2()
     {
         $data = Village::all();
