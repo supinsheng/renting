@@ -149,14 +149,17 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
       <!-- 已出租房屋 -->
       <li style="background-color:#295f90"><p class="main-sort-block-title">{{$h->house_id}}</p>
       
-        <div class="main-sort-block-icon2"><span style="white-space:nowrap; width:10px;">{{$h->hold_name}}</span><i class="fa fa-user-circle fa-3x" style="color:#fff"></i></div>
-        <div class="block-lived">
+        <div class="main-sort-block-icon2">
+        <span style="white-space:nowrap; width:10px;">{{$h->hold_name}}</span>
+        <a href="/admin/show?name={{$h->hold_name}}"><i class="fa fa-user-circle fa-3x" style="color:#fff"></i></a>
+        </div>
+        <!-- <div class="block-lived">
           <a href="#"  title="{{$h->hold_phone}}"> <i class="fa fa-phone fa-lg" style="color:#fff"></i></a>
           <a href="/admin/show?name={{$h->hold_name}}"  title="入住时间: {{$h->start_time}} &#10;到期时间: {{$h->end_time}} "> <i class="fa fa-eye fa-lg" style="color:#fff"></i></a>
           <a href="#"  title="剩余租期: {{$h->residual_lease}} "> <i class="fa fa-bell fa-lg" style="color:#fff"></i></a>
           <a href="{{route('house.edit',['id'=>$h->id])}}"  title="修改"> <i class="fa fa-edit fa-lg" style="color:#fff"></i></a>
           <a href="{{ route('del_house',['id'=>$h->id]) }}" onclick="return confirm(' 如果房屋已出租，删除房屋对应的住户也会被删除，请确定是否要删除？ ')" target="mainFrame" onFocus="this.blur()"><i class="fa fa-times fa-lg" style="color:#fff"></i></a>
-        </div>
+        </div> -->
       </li>
       @endif
     @endforeach
