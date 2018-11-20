@@ -17,7 +17,7 @@
 		@if(session('jurisdiction') == '新闻管理员')
 		<frame scrolling="auto" noresize="" border="0" name="mainFrame" src="/admin/editNew"></frame>
 		@else
-		<frame scrolling="auto" noresize="" border="0" name="mainFrame" src="/admin/indexMain"></frame>
+		<frame scrolling="auto" noresize="" border="0" name="mainFrame" src="/admin/index2"></frame>
 		@endif
 	</frameset>
 <!--bottom样式-->

@@ -20,7 +20,7 @@ class CreateGuaranteesTable extends Migration
             $table->string("username",10)->comment('用户账号');
             $table->string('realname',10)->comment('用户实名(用户名称)');
             $table->string('device_name',20)->comment('设备名称');
-            $table->string('img')->comment('图片');
+            $table->string('img')->comment('设备名称');
             $table->string('address',30)->comment('用户住址(精确到房间号)');
             $table->longText('describe')->comment('故障描述');
             $table->enum('state',['审核中','审核成功','审核失败']);

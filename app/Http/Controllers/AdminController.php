@@ -11,6 +11,13 @@ use App\Http\Requests\HouseholdRequest;
 use DB;
 class AdminController extends Controller
 {
+    public function index2()
+    {
+        $data = Village::all();
+        return view('admin.index2',[
+            'data' => $data
+        ]);
+    }
     public function admin_login(){
         return view('admin.login');
     }
@@ -71,17 +78,17 @@ class AdminController extends Controller
         $date = date("Y-m");
         if($req->keyword){
             
-            $data = Household::select('households.*','houses.house_area','houses.rent','rent.state')
+            $data = Household::select('households.*','houses.house_area','houses.rent')
             ->leftJoin('houses', 'households.address','houses.house_id')
-            ->leftJoin('rent', function($join){
-                $join->on('households.id','rent.user_id')
-                ->where('rent.date',date("Y-m"));
-            })
+            // ->leftJoin('rent', function($join){
+            //     $join->on('households.id','rent.user_id')
+            //     ->where('rent.date',date("Y-m"));
+            // })
             ->where(function($q) use($req){
 
                 $q->where('realname','like',"%$req->keyword%")
                   ->orWhere('address','like',"%$req->keyword%")
-                  ->orWhere('village','like',"%$req->keyword%")
+                  ->orWhere('households.village','like',"%$req->keyword%")
                   ->orWhere('phone','like',"%$req->keyword%")
                   ->orWhere('cardId','like',"%$req->keyword%")
                   ->orWhere('time','like',"%$req->keyword%")
@@ -89,14 +96,15 @@ class AdminController extends Controller
             })
             ->orderBy('id','desc')->paginate(15);
         }else {
-            $data = Household::select('households.*','houses.house_area','houses.rent','rent.state')
+            $data = Household::select('households.*','houses.house_area','houses.rent')
             ->leftJoin('houses', 'households.address','houses.house_id')
-            ->leftJoin('rent', function($join){
-                $join->on('households.id','rent.user_id')
-                ->where('rent.date',date("Y-m"));
-            })
+            // ->leftJoin('rent', function($join){
+            //     $join->on('households.id','rent.user_id')
+            //     ->where('rent.date',date("Y-m"));
+            // })
             ->orderBy('id','desc')->paginate(20);
         }
+        // return $data;
         return view('admin.main',['data'=>$data,'req' => $req]);
     }
 

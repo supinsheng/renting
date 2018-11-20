@@ -8,14 +8,15 @@ use Yansongda\Pay\Pay;
 class WxpayController extends Controller
 {
     protected $config = [
-        'app_id' => 'wx426b3015555a46be', // 公众号 APPID
-        'mch_id' => '1900009851',
-        'key' => '8934e7d15453e97507ef794cf7b0519d',
+        'app_id' => 'wx4cbc0a5a5e78d748', // 公众号 APPID
+        'mch_id' => '1511187271',
+        'key' => '08839714a18fb0130a35ca9073810d2b',
         // 通知的地址
-        'notify_url' => 'http://b7c2f34f.ngrok.io/wxpay/notify',
+        'notify_url' => 'http://b7c2f34f.ngrok.io/notify',
+            
     ];
 
-    public function index(Request $req)
+    public function pay(Request $req)
     {
         $order = [
             'out_trade_no' => time(),
@@ -24,7 +25,7 @@ class WxpayController extends Controller
         ];
         // wap H5支付
         $pay = Pay::wechat($this->config)->wap($order);
-
+        // return $wechat->wap($order);
         echo $pay->return_code , '<hr>';
         echo $pay->return_msg , '<hr>';
         echo $pay->appid , '<hr>';

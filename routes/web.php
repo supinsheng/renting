@@ -49,8 +49,8 @@ Route::get('/test','weixin\TestController@index')->name('weixin_test');
 // 订单页
 Route::get('/order','weixin\OrderController@index')->name('order');
 // 微信--支付
-Route::post('/wxpay','weixin\WxpayController@index')->name('wxpay');
-Route::get('/wxpay/notify','weixin\WxpayController@index');
+Route::get('/wxpay','weixin\WxpayController@pay')->name('wxpay');
+Route::post('/notify','weixin\WxpayController@notify');
 
 
 
@@ -61,6 +61,11 @@ Route::post('/admin_doLogin','AdminController@admin_doLogin')->name('admin_doLog
 // 后台退出
 Route::get('/admin_logout','AdminController@admin_logout')->name('admin_logout');
 Route::middleware('adminLogin')->group(function () {
+    // 报修
+    // Route::resource('/admin/repair','RepairController');
+    Route::get('/admin/repair','RepairController@index')->name('repair.index');
+    Route::get('/admin/repair/edit','RepairController@edit')->name('repair.edit');
+    Route::get('/admin/index2','AdminController@index2')->name('index');
     // 后台主页开始
     Route::get('/admin/index','AdminController@index')->name('admin_index');
     Route::get('/admin/indexTop','AdminController@indexTop');

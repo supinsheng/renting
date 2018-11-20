@@ -142,6 +142,24 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         </td>
       </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">水表号：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="water_meter" value="" class="text-word">
+        @if($errors->has('water_meter'))
+				  <span style='color:red'>{{$errors->first('water_meter')}}</span>
+			  @endif
+        </td>
+      </tr>
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+        <td align="right" valign="middle" class="borderright borderbottom bggray">电表号：</td>
+        <td align="left" valign="middle" class="borderright borderbottom main-for">
+        <input type="text" name="electric_meter" value="" class="text-word">
+        @if($errors->has('electric_meter'))
+				  <span style='color:red'>{{$errors->first('electric_meter')}}</span>
+			  @endif
+        </td>
+      </tr>
+      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">备注：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
       

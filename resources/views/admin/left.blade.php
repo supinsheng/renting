@@ -38,6 +38,7 @@ body{overflow-x:hidden; background:url(/images/main/leftbg.jpg) left top repeat-
         <a href="/admin/village" target="mainFrame" onFocus="this.blur()">小区管理</a>
         <a href="/admin/payment" target="mainFrame" onFocus="this.blur()">收费管理</a>
         <a href="/admin/examine" target="mainFrame" onFocus="this.blur()">审核管理</a>
+        <a href="/admin/repair" target="mainFrame" onFocus="this.blur()">报修管理</a>
       </div>
       @endif
       @if(session('jurisdiction') != '住户和房屋管理员')

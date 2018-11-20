@@ -3,11 +3,19 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
+
+use App\Model\Rent;
+use App\Model\Water;
+use App\Model\Electric;
+use App\Model\Property;
 class Household extends Model
 {
-    protected $fillable = ['username','realname','cardId','phone','address','village','time','start','contract','peoples','remarks'];
+    protected $fillable = ['username','realname','cardId','phone','address','village','time','start','contract','peoples','remarks','electric_meter','water_meter'];
     protected $table = 'households';
-
+    public $appends = [
+        'paid',
+        'unpaid'
+    ];
     public function getAll()
     {
         $data = Household::get();
@@ -115,5 +123,84 @@ class Household extends Model
 
     public function house(){
         return $this->hasOne(House::class,'adress');
+    }
+
+    public function getPaidAttribute()
+    {
+        $id = $this->attributes['id'];
+        $money = 0;
+        $rent = Rent::select('money')->where([
+            ['date','=' ,date("Y-m")],
+            ['state','=','1'],
+            ['user_id','=',$id],
+        ])->first();
+        if($rent){
+            $money += $rent->money;
+        }
+        $water = Water::select('money')->where([
+            ['date','=' ,date("Y-m")],
+            ['state','=','1'],
+            ['user_id','=',$id],
+        ])->first();
+        if($water){
+            $money += $water->money;
+        }
+        $elec = Electric::select('money')->where([
+            ['date','=' ,date("Y-m")],
+            ['user_id','=',$id],
+            ['state','=','1'],
+        ])->first();
+        if($elec){
+            $money += $elec->money;
+        }
+        $prop = Property::select('money')->where([
+            ['date','=' ,date("Y-m")],
+            ['user_id','=',$id],
+            ['state','=','1'],
+        ])->first();
+        if($prop){
+            $money += $prop->money;
+        }
+        return $money;
+
+    }
+    public function getUnpaidAttribute()
+    {
+        $id = $this->attributes['id'];
+        $money = 0;
+        $rent = Rent::select('money')->where([
+            ['date','=' ,date("Y-m")],
+            ['state','=','0'],
+            ['user_id','=',$id],
+        ])->first();
+        if($rent){
+            $money += $rent->money;
+        }
+        $water = Water::select('money')->where([
+            ['date','=' ,date("Y-m")],
+            ['state','=','0'],
+            ['user_id','=',$id],
+        ])->first();
+        if($water){
+            $money += $water->money;
+        }
+        $elec = Electric::select('money')->where([
+            ['date','=' ,date("Y-m")],
+            ['user_id','=',$id],
+            ['state','=','0'],
+        ])->first();
+        if($elec){
+            $money += $elec->money;
+        }
+        $prop = Property::select('money')->where([
+            ['date','=' ,date("Y-m")],
+            ['user_id','=',$id],
+            ['state','=','0'],
+        ])->first();
+        if($prop){
+            $money += $prop->money;
+        }
+        return $money;
+
     }
 }

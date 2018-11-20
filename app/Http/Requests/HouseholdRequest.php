@@ -42,6 +42,8 @@ class HouseholdRequest extends FormRequest
             'village'=>'required',
             'contract' => 'required',
             'peoples' => 'required',
+            'water_meter'=>'required',
+            'electric_meter'=>'required',
         ];
     }
 
@@ -66,6 +68,8 @@ class HouseholdRequest extends FormRequest
             'village.required'=>'小区 不能为空',
             'contract.required' => '签约费用不能为空',
             'peoples.required' => '入住人数不能为空',
+            'electric_meter.required' => '电表号不能为空',
+            'water_meter.required' => '水表号不能为空',
         ];
     }
 }
