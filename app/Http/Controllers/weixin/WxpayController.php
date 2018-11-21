@@ -12,7 +12,7 @@ class WxpayController extends Controller
         'mch_id' => '1511187271',
         'key' => '08839714a18fb0130a35ca9073810d2b',
         // 通知的地址
-        'notify_url' => 'http://c732452f.ngrok.io/notify',
+        'notify_url' => 'http://jngzf.cn/notify',
             
     ];
 
