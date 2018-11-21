@@ -150,7 +150,7 @@ table tr th {
         <td align="center" valign="middle" class="borderright borderbottom">{{ $v->username }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $v->realname }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $v->device_name }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom"><img src="/uploads/{{$v->img}}" alt="" width="80"></td>
+        <td align="center" valign="middle" class="borderright borderbottom"><img src="/{{$v->img}}" alt="" width="120"></td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $v->address }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $v->describe }}</td>
         <td align="center" valign="middle" class="borderright borderbottom">{{ $v->state }}</td>

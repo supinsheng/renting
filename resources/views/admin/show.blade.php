@@ -29,23 +29,38 @@
 			<h3 class="page-title">住户信息</h3>
 			<div class="panel panel-headline">
 				<div class="panel-body">
-					<p><code>姓名：</code> {{$data->realname}}</p> 
-					<hr>
 					<p><code>房号：</code> {{$data->village}}</p>
 					<hr>
+					<p class="text-info"><code>用户账号：</code>{{$data->username}}</p>
+					<p><code>姓名：</code> {{$data->realname}}</p> 
+					<hr>
+					<p class="text-info"><code>入住人数：</code>{{$data->peoples}}</p>
+					
+					<hr>
+					<p class="text-info"><code>电话：</code>{{$data->phone}}</p>
+					
+					<hr>
+					<p class="text-info"><code>身份证号：</code>{{$data->cardId}}</p>
+					
+					<hr>
+					<p class="text-info"><code>入住时间：</code>{{$data->start}}</p>
+					<p class="text-info"><code>到期时间：</code>{{$data->end}}</p>
+					
+					<hr>
+					<p class="text-info"><code>房屋面积：</code>{{$data->house_area}}</p>
+					<hr>
+					<p class="text-info"><code>缴费标准：</code>{{$data->rent}}</p>
+					<hr>
+					
 					<p class="text-muted"><code>水表号：</code>{{$data->water_meter}}</p>
 					<hr>
 					<p class="text-muted"><code>电表号：</code>{{$data->electric_meter}}</p>
 					<hr>
-					<p class="text-primary"><code>身份证号：</code> {{$data->cardId}}</p>
-					<hr>
-					<p class="text-success"><code>缴费标准：</code>{{$data->rent}}</p>
-					<hr>
 					<p class="text-info"><code>已缴：</code>{{$data->paid}}</p>
 					<p class="text-warning"><code>未缴：</code>{{$data->unpaid}}</p>
-				
 					<hr>
-
+					<p class="text-info"><code>备注：</code>{{$data->remarks}}</p>
+					
 				</div>
 			</div>
 		</div>

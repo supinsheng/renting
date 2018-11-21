@@ -20,14 +20,14 @@ class WarrantyController extends Controller
             $path=$req->fileVal->move('uploads/'.date("Y-m-d"), $filename);
             //Log::info($path);
             //保存路径$path到数据库
-            $path='http://'.config('app.url')  .'/'  . $path;
+            // $path=config('app.url')  .'/'  . $path;
             $path=str_replace('\\','/',$path);
         }else{
             //保存用户上传的图片
             mkdir('uploads/'.date("Y-m-d"), 0777,true);
             $filename = time() . '_' . str_random(10) . '.png';
             $path=$req->fileVal->move('uploads/'.date("Y-m-d"), $filename);
-            $path='http://'.config('app.url')  .'/'  . $path;
+            // $path=config('app.url')  .'/'  . $path;
             $path=str_replace('\\','/',$path);
             //Log::info($path);
         }
