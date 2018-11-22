@@ -73,11 +73,11 @@ class OrderController extends Controller
     {
         // return $req->type;
         // 通过表名，查询当前月的是否支付成功
-        return DB::table($req->type)->where([
-            ['user_id','=',session('id')],
-            ['date','=',date('Y-m')],
-        ])->get();
+        // return DB::table($req->type)->where([
+        //     ['user_id','=',session('id')],
+        //     ['date','=',date('Y-m')],
+        // ])->get();
    
-        // return DB::table('orders')->where('number',$req->num)->get();
+        return DB::table('orders')->where('number',$req->num)->get();
     }  
 }

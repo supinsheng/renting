@@ -16,6 +16,7 @@ class WxpayController extends Controller
         // 通知的地址
         'notify_url' => 'http://jngzf.cn/notify',
         'spbill_create_ip' => '',
+        'redirect_url' => 'http://jngzf.cn/success',
             
     ];
 

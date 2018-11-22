@@ -52,14 +52,15 @@
 		function subform () {
 			form.submit();
 		}
-
+		lcoalStorage.setItem('number', "{{$num}}")
+		var num = localStorage.getItem('number');
 		var type = "{{$name}}";//缴费项
-		var num = "{{$num}}";
+		// var num = "{{$num}}";
 		setInterval(function(){
 			$.ajax({
 				url:'/ajaxOrder',
 				type:'GET',
-				data:{type:type},
+				data:{num:num},
 				success:function(data){
 					if(data.state==1)
 					{
