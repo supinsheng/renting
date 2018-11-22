@@ -17,7 +17,7 @@
 			</div>
 			<div class="weui-msg__opr-area">
 				<p class="weui-btn-area">
-					<a href="javascript:;" class="weui-btn weui-btn_primary">查看清单</a>
+					<a href="/index" class="weui-btn weui-btn_primary">回到首页</a>
 				</p>
 			</div>
 			<div class="weui-msg__extra-area">
