@@ -9,6 +9,6 @@ class OrderController extends Controller
 {
     public function index()
     {
-        return view('weixin.order');
+        return view('Weixin.order');
     }
 }
