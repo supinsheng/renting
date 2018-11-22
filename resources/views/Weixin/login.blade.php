@@ -33,10 +33,15 @@
 		</div>
 	</body>
 </html>
-<script>
-//    点击登录提交表单
-    var form = document.getElementById('test_form');
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+	// var cip = returnCitySN["cip"]+','+returnCitySN["cname"]
+	localStorage.setItem('cip',returnCitySN['cip'])
+
+	//点击登录提交表单
+	var form = document.getElementById('test_form');
     function subform () {
         form.submit();
     }
 </script>
+

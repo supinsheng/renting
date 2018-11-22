@@ -49,7 +49,7 @@ Route::get('/test','weixin\TestController@index')->name('weixin_test');
 // 订单页
 Route::get('/order','weixin\OrderController@index')->name('order');
 // 微信--支付
-Route::get('/wxpay','weixin\WxpayController@pay')->name('wxpay');
+Route::post('/wxpay','weixin\WxpayController@pay')->name('wxpay');
 Route::post('/notify','weixin\WxpayController@notify');
 
 
