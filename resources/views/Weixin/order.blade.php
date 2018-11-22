@@ -52,15 +52,16 @@
 		function subform () {
 			form.submit();
 		}
-		var tableName = "{{$name}}";
+
+		var type = "{{$name}}";//缴费项
 		var num = "{{$num}}";
 		setInterval(function(){
 			$.ajax({
 				url:'/ajaxOrder',
 				type:'GET',
-				data:{num:num},
+				data:{type:type},
 				success:function(data){
-					if(data.state=='1')
+					if(data.state==1)
 					{
 						location.href = "/order/success"
 					}
