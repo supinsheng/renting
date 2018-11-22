@@ -89,10 +89,17 @@
 </body>
 
 </html>
-
+<script src="/js/weixin/jquery-3.2.1.min.js"></script>
 <script>
 	var form = document.getElementById('form');
 	function subform() {
-		form.submit();
+		if($(":radio:checked").length ==0)
+		{
+			alert('请选择缴费项')
+		}
+		else
+		{
+			form.submit();
+		}
 	}
 </script>

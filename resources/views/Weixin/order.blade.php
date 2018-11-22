@@ -21,7 +21,16 @@
 			{{csrf_field()}}
 			<div class="detail">
 				<div class="ordernum">单号:{{$num}}</div>
-				<div>收费项<span style="float: right;">{{$name=='rent'?'房租':$name=='water'?'水费':$name=='electric'?'电费':'物业费'}}</span></div>
+				<div>收费项<span style="float: right;">
+				@if($name=='rent')
+				房租
+				@elseif($name=='water')
+				水费
+				@elseif($name=='electric')
+				电费
+				@elseif($name=='property')
+				物业费
+				@endif</span></div>
 				<!-- <div>收费项<span style="float: right;">0.00</span></div>
 				<div>收费项<span style="float: right;">0.00</span></div> -->
 				<div class="all">总计<span style="float: right;color: red;font-size: 16px;">{{$data->money}}</span></div>
@@ -35,6 +44,7 @@
 		<div class="back" onclick="subform()">提交订单</div>
 	</body>
 </html>
+<script src="/js/weixin/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 		var cip = localStorage.getItem('cip');
 		document.getElementById('cip').value = cip;
@@ -42,5 +52,19 @@
 		function subform () {
 			form.submit();
 		}
-       
+		var tableName = "{{$name}}";
+		setInterval(function(){
+			$.ajax({
+				url:'/ajaxOrder',
+				type:'GET',
+				data:{type:tableName},
+				success:function(data){
+					if(data.state=='1')
+					{
+						location.href = "/order/success"
+					}
+				}
+			})
+		},2000)
+		
   </script>

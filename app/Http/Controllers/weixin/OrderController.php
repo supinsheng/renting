@@ -14,21 +14,26 @@ class OrderController extends Controller
 {
     public function index()
     {
+        $date = date('Y-m');
         $rent = Rent::where([
             ['user_id','=', session('id')],
-            ['state','=','0']
+            ['state','=','0'],
+            ['date','=',$date],
         ])->first();
         $water = Water::where([
             ['user_id','=', session('id')],
-            ['state','=','0']
+            ['state','=','0'],
+            ['date','=',$date],
         ])->first();
         $elec = Electric::where([
             ['user_id','=', session('id')],
-            ['state','=','0']
+            ['state','=','0'],
+            ['date','=',$date],
         ])->first();
         $prop = Property::where([
             ['user_id','=', session('id')],
-            ['state','=','0']
+            ['state','=','0'],
+            ['date','=',$date],
         ])->first();
         return view('Weixin.month',[
             'rent' => $rent,
@@ -39,20 +44,18 @@ class OrderController extends Controller
     }
     public function create(Request $req)
     {
-        $order = Order::where('user_id',session('id'))
-        ->whereDate('created_at',date('Y-m-d'))
-        ->first();
-        if($order != '' && $order->state=='1')
-        {
-            return redirect('/order/success');
-        }
         // $name = '';
         // if($req->type == 'rent')
         //     $name = '房租';
         // elseif($req->type == 'water')
         //     $name = '水费';
         // elseif($req->type == 'electric')
-        $data = DB::table($req->type)->where('user_id',session('id'))->first();
+        $data = DB::table($req->type)
+        ->where([
+            ['user_id',session('id')],
+            ['date','=',date('Y-m')],
+        ])
+        ->first();
         $num = time().rand(1,99999);
         return view('Weixin.order',[
             'data' =>$data,
@@ -65,4 +68,16 @@ class OrderController extends Controller
         return view('Weixin.success');
     }
 
+
+    public function ajaxOrder(Request $req)
+    {
+        // return $req->type;
+        // 通过表名，查询当前月的是否支付成功
+        return DB::table($req->type)->where([
+            ['user_id','=',session('id')],
+            ['date','=',date('Y-m')],
+        ])->get();
+   
+
+    }  
 }

@@ -50,6 +50,8 @@ Route::get('/test','weixin\TestController@index')->name('weixin_test');
 Route::get('/order','weixin\OrderController@index')->name('order');
 Route::post('/order','weixin\OrderController@create')->name('order.create');
 Route::get('/order/success','weixin\OrderController@success')->name('order.success');
+// ajax刷新状态
+Route::get('/ajaxOrder','weixin\OrderController@ajaxOrder')->name('ajaxOrder');
 // 微信--支付
 Route::post('/wxpay','weixin\WxpayController@pay')->name('wxpay');
 Route::post('/notify','weixin\WxpayController@notify');

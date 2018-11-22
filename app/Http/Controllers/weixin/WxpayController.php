@@ -58,36 +58,33 @@ class WxpayController extends Controller
             if($data->result_code == 'SUCCESS' && $data->return_code == 'SUCCESS')
             {
                 // 获取订单信息
-                $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
+                // $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
 
-                // $orderInfo = Order::where('number',$data->out_trade_no)->first();
+                $orderInfo = Order::where('number',$data->out_trade_no)->first();
                 // 如果订单的状态为未支付状态 ，说明是第一次收到消息，更新订单状态 
-                // if($orderInfo->state == 0)
-                // {
-                //     // 开启事务
-                //     DB::beginTransaction();
-                //     // 设置订单为已支付状态
-                //     // $ret1 = $order->setPaid($data->out_trade_no); 
-                //     $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
+                if($orderInfo->state == '1')
+                {
+                    // 开启事务
+                    DB::beginTransaction();
+                    // 设置订单为已支付状态
+                    $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'2']);
 
-                //     // 更新用户余额
-                //     // $user = new \models\User;
-                //     // $ret2 = $user->addMoney($orderInfo['money'],$orderInfo['user_id']);
-                //     $ret2 = DB::table($orderInfo->type)->where([
-                //         ['user_id','=',session('id')],
-                //         ['date','=',date('Y-m')],
-                //     ])->update(['state'=>1]);
-                //     if($ret1 && $ret2)
-                //     {
-                //         // 提交事务
-                //         DB::commit();
-                //     }
-                //     else
-                //     {
-                //         // 回滚事务
-                //         DB::rollBack();
-                //     }
-                // }
+                    // 更新用户余额
+                    $ret2 = DB::table($orderInfo->type)->where([
+                        ['user_id','=',session('id')],
+                        ['date','=',date('Y-m')],
+                    ])->update(['state'=>1]);
+                    if($ret1 && $ret2)
+                    {
+                        // 提交事务
+                        DB::commit();
+                    }
+                    else
+                    {
+                        // 回滚事务
+                        DB::rollBack();
+                    }
+                }
             }
         } catch (Exception $e) {
             // $e->getMessage();
