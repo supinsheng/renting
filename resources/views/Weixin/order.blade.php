@@ -53,11 +53,12 @@
 			form.submit();
 		}
 		var tableName = "{{$name}}";
+		var num = "{{$num}}";
 		setInterval(function(){
 			$.ajax({
 				url:'/ajaxOrder',
 				type:'GET',
-				data:{type:tableName},
+				data:{num:num},
 				success:function(data){
 					if(data.state=='1')
 					{
