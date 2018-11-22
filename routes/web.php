@@ -52,7 +52,7 @@ Route::post('/order','weixin\OrderController@create')->name('order.create');
 Route::get('/order/success','weixin\OrderController@success')->name('order.success');
 // 微信--支付
 Route::post('/wxpay','weixin\WxpayController@pay')->name('wxpay');
-Route::get('/notify','weixin\WxpayController@notify');
+Route::post('/notify','weixin\WxpayController@notify');
 
 
 

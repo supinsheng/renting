@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
 //        '/warranty_claim',
-    '/warranty_message'
+        '/warranty_message',
+        '/notify',
     ];
 }
