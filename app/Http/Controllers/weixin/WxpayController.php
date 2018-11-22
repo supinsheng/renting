@@ -33,7 +33,7 @@ class WxpayController extends Controller
         $wechat = Pay::wechat($this->config);
         // return $wechat->spbill_create_ip;
         $order = [
-            'out_trade_no' => $req->nubmer,
+            'out_trade_no' => $req->number,
             'total_fee' => '1', // **单位：分**
             'body' => '公租房相关费用缴纳',
         ];
