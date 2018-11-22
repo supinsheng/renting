@@ -60,10 +60,10 @@ class WxpayController extends Controller
                 // 获取订单信息
                 // $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
 
-                $orderInfo = Order::where('number',$data->out_trade_no)->first();
+                $orderInfo = Order::where('number',$data->out_trade_no)->get();
                 // 如果订单的状态为未支付状态 ，说明是第一次收到消息，更新订单状态 
-                // if($orderInfo->state == '1')
-                // {
+                if($orderInfo->state == '0')
+                {
                     // 开启事务
                     DB::beginTransaction();
                     // 设置订单为已支付状态
@@ -84,7 +84,7 @@ class WxpayController extends Controller
                         // 回滚事务
                         DB::rollBack();
                     }
-                // }
+                }
             }
         } catch (Exception $e) {
             // $e->getMessage();
