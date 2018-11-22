@@ -22,7 +22,7 @@ class WxpayController extends Controller
     public function pay(Request $req)
     {
         $model = new Order;
-        $model->number = $req->nubmer;
+        $model->number = $req->number;
         $model->user_id = session('id');
         $model->real_payment = $req->real_payment;
         $model->type = $req->type;
