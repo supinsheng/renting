@@ -45,7 +45,7 @@
 			localStorage.setItem('cip',data)
 		}
 	})
-	`
+	
 	//点击登录提交表单
 	var form = document.getElementById('test_form');
     function subform () {
