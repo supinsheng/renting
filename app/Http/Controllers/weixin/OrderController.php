@@ -83,8 +83,6 @@ class OrderController extends Controller
     }  
     public function test(Request $req)
     {
-        echo file_get_contents('php://input');
-        echo '<hr>';
-        return $req->all();
+        $req->code
     }
 }
