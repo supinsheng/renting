@@ -38,7 +38,7 @@ class WxpayController extends Controller
             'body' => '公租房相关费用缴纳',
         ];
         // wap H5支付
-        return $wechat->wap($order);
+        return $wechat->mp($order);
         // return $wechat->wap($order);
         // echo $pay->return_code , '<hr>';
         // echo $pay->return_msg , '<hr>';

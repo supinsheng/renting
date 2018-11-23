@@ -38,13 +38,13 @@
 <script type="text/javascript">
 	// var cip = returnCitySN["cip"]+','+returnCitySN["cname"]
 	// localStorage.setItem('cip',returnCitySN['cip'])
-	$.ajax({
-		url:'http://blog.huyp.xin/1.php',
-		type:'GET',
-		success:function(data){
-			localStorage.setItem('cip',data)
-		}
-	})
+	// $.ajax({
+	// 	url:'http://blog.huyp.xin/1.php',
+	// 	type:'GET',
+	// 	success:function(data){
+	// 		localStorage.setItem('cip',data)
+	// 	}
+	// })
 	
 	//点击登录提交表单
 	var form = document.getElementById('test_form');
