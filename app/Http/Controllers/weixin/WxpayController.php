@@ -32,7 +32,7 @@ class WxpayController extends Controller
         // echo '<pre>';
         // echo $data['openid'];
         // die;
-        $openid = $data['openid'];
+        $openid = $data->openid;
 
 
 
