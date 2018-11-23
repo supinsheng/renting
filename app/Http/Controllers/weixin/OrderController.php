@@ -82,9 +82,10 @@ class OrderController extends Controller
         return Order::where('number',$req->num)->first();
     }  
     public function store(Request $req)
-    {
+    {   
+        $num = $req->number;
         $model = new Order;
-        $model->number = $req->number;
+        $model->number = $num;
         $model->user_id = session('id');
         $model->real_payment = $req->real_payment;
         $model->type = $req->type;
@@ -92,6 +93,6 @@ class OrderController extends Controller
         $model->save();
 
         session('cip',$req->cip);
-        return redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4cbc0a5a5e78d748&redirect_uri=http://jngzf.cn/wxpay&response_type=code&scope=snsapi_base&state='+$req->number+'#wechat_redirect');
+        return redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4cbc0a5a5e78d748&redirect_uri=http://jngzf.cn/wxpay&response_type=code&scope=snsapi_base&state=$num#wechat_redirect");
     }
 }
