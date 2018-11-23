@@ -54,7 +54,7 @@ Route::get('/order/test','weixin\OrderController@test')->name('order.test');
 // ajax刷新状态
 Route::get('/ajaxOrder','weixin\OrderController@ajaxOrder')->name('ajaxOrder');
 // 微信--支付
-Route::post('/wxpay','weixin\WxpayController@pay')->name('wxpay');
+Route::get('/wxpay','weixin\WxpayController@pay')->name('wxpay');
 Route::post('/notify','weixin\WxpayController@notify');
 
 
