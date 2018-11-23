@@ -78,6 +78,7 @@ class OrderController extends Controller
         //     ['date','=',date('Y-m')],
         // ])->get();
    
-        return DB::table('orders')->where('number',$req->num)->get();
+        // return DB::table('orders')->where('number',$req->num)->first();
+        return Order::where('number',$req->num)->first();
     }  
 }

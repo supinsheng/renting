@@ -52,8 +52,7 @@
 		function subform () {
 			form.submit();
 		}
-		lcoalStorage.setItem('number', "{{$num}}")
-		var num = localStorage.getItem('number');
+		var num = "{{$num}}";
 		var type = "{{$name}}";//缴费项
 		// var num = "{{$num}}";
 		setInterval(function(){
@@ -62,9 +61,10 @@
 				type:'GET',
 				data:{num:num},
 				success:function(data){
+					// console.log(data.state);
 					if(data.state==1)
 					{
-						location.href = "/order/success"
+						location.href = "/success"
 					}
 				}
 			})
