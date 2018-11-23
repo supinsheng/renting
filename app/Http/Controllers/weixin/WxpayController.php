@@ -29,8 +29,8 @@ class WxpayController extends Controller
         // $data = json_encode($data, true);
 
         var_dump($data);
-        echo '<pre>';
-        echo $data['openid'];
+        // echo '<pre>';
+        // echo $data['openid'];
         die;
         $openid = $data->openid;
 
