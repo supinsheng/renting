@@ -81,4 +81,10 @@ class OrderController extends Controller
         // return DB::table('orders')->where('number',$req->num)->first();
         return Order::where('number',$req->num)->first();
     }  
+    public function test(Request $req)
+    {
+        echo file_get_contents('php://input');
+        echo '<hr>';
+        return $req->all();
+    }
 }
