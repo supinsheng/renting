@@ -17,7 +17,7 @@
 				<div class="name">{{session('realname')}}</div>
 				<div class="addr">{{session('village')}}</div>
 			</div>
-			<form action="/wxpay" method="post" id="order_form">
+			<form action="/order/store" method="post" id="order_form">
 			{{csrf_field()}}
 			<div class="detail">
 				<div class="ordernum">单号:{{$num}}</div>
@@ -69,11 +69,5 @@
 				}
 			})
 		},1000)
-		$.ajax({
-			url: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4cbc0a5a5e78d748&redirect_uri=http://jngzf.cn/order/test&response_type=code&scope=snsapi_base#wechat_redirect',
-			type:'GET',
-			success:function(data){
-				console.log(data)
-			}
-		})
+
   </script>

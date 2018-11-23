@@ -51,6 +51,7 @@ Route::get('/order','weixin\OrderController@index')->name('order');
 Route::post('/order','weixin\OrderController@create')->name('order.create');
 Route::get('/success','weixin\OrderController@success')->name('order.success');
 Route::get('/order/test','weixin\OrderController@test')->name('order.test');
+Route::post('/order/store','weixin\OrderController@store')->name('order.test');
 // ajax刷新状态
 Route::get('/ajaxOrder','weixin\OrderController@ajaxOrder')->name('ajaxOrder');
 // 微信--支付

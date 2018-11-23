@@ -25,10 +25,11 @@ class WxpayController extends Controller
 
         // 获取openid
 
-        $data = file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx4cbc0a5a5e78d748&secret=08839714a18fb0130a35ca9073810d2b&code=$code&grant_type=authorization_code");
+        $data = file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx4cbc0a5a5e78d748&secret=d60bdc7166ee84ec74a4407a4ea9e088&code=$code&grant_type=authorization_code");
         $data = json_encode($data, true);
 
-        var_dump($data);die;
+        // var_dump($data);die;
+        $openid = $data->openid;
 
 
 
@@ -37,21 +38,19 @@ class WxpayController extends Controller
 
 
         $model = new Order;
-        $model->number = $req->number;
-        $model->user_id = session('id');
-        $model->real_payment = $req->real_payment;
-        $model->type = $req->type;
-        $model->state = '0';
-        $model->save();
+        $orderInfo = $model->select('real_payment')->where('number', $state)->first();
+
+        
+
         // return $req->all();
-        $this->config['spbill_create_ip'] = $req->cip;
+        $this->config['spbill_create_ip'] = session('cip');
         $wechat = Pay::wechat($this->config);
         // return $wechat->spbill_create_ip;
         $order = [
             'out_trade_no' => $req->number,
             'total_fee' => '1', // **单位：分**
             'body' => '公租房相关费用缴纳',
-            'open_id' => $req->code,
+            'openid' => $req->code,
         ];
         // wap H5支付
         return $wechat->mp($order);
