@@ -25,7 +25,7 @@ class WxpayController extends Controller
 
         // 获取openid
 
-        $data = file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx4cbc0a5a5e78d748&secret=SECRET&code=$code&grant_type=authorization_code");
+        $data = file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx4cbc0a5a5e78d748&secret=08839714a18fb0130a35ca9073810d2b&code=$code&grant_type=authorization_code");
         $data = json_encode($data, true);
 
         var_dump($data);die;
@@ -35,7 +35,7 @@ class WxpayController extends Controller
 
         $state = $req->state;
 
-        
+
         $model = new Order;
         $model->number = $req->number;
         $model->user_id = session('id');
