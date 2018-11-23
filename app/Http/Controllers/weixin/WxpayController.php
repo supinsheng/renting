@@ -33,7 +33,7 @@ class WxpayController extends Controller
         // echo $data['openid'];
         // return $data;
         // die;
-        $openid = $obj->{'openid'};
+        $openid = $obj->openid;
 
 
 
