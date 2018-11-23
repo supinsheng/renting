@@ -33,11 +33,19 @@
 		</div>
 	</body>
 </html>
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="/js/weixin/jquery-3.2.1.min.js"></script>
+
 <script type="text/javascript">
 	// var cip = returnCitySN["cip"]+','+returnCitySN["cname"]
-	localStorage.setItem('cip',returnCitySN['cip'])
-
+	// localStorage.setItem('cip',returnCitySN['cip'])
+	$.ajax({
+		url:'http://blog.huyp.xin/1.php',
+		type:'GET',
+		success:function(data){
+			localStorage.setItem('cip',data)
+		}
+	})
+	`
 	//点击登录提交表单
 	var form = document.getElementById('test_form');
     function subform () {
