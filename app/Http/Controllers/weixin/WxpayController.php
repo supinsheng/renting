@@ -28,11 +28,11 @@ class WxpayController extends Controller
         $data = file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx4cbc0a5a5e78d748&secret=d60bdc7166ee84ec74a4407a4ea9e088&code=$code&grant_type=authorization_code");
         // $data = json_encode($data, true);
         $data = json_decode($data, true);
-        var_dump($data);
+        // var_dump($data);
         // echo '<pre>';
         // echo $data['openid'];
-        die;
-        $openid = $data->openid;
+        // die;
+        $openid = $data['openid'];
 
 
 
