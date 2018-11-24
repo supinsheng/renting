@@ -93,6 +93,13 @@ class OrderController extends Controller
         $model->save();
 
         session('cip',$req->cip);
-        return redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4cbc0a5a5e78d748&redirect_uri=http://jngzf.cn/wxpay&response_type=code&scope=snsapi_base&state=$num#wechat_redirect");
+        if( session('code')!=null )
+        {
+            return redirect()->route('wxpay',['number'=>$num]);
+        }
+        else
+        {
+            return redirect("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx4cbc0a5a5e78d748&redirect_uri=http://jngzf.cn/wxpay&response_type=code&scope=snsapi_base&state=$num#wechat_redirect");
+        }
     }
 }

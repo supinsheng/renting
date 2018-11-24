@@ -20,8 +20,18 @@ class WxpayController extends Controller
     ];
 
     public function pay(Request $req)
-    {
-        $code = $req->code;
+    {   
+        $code = '';
+        if(session('code'))
+        {
+            $code = session('code');
+        }
+        else
+        {
+            $code = $req->code;
+            session('code',$code);
+        }
+        
 
         // 获取openid
 
