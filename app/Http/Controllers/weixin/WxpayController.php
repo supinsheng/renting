@@ -31,13 +31,13 @@ class WxpayController extends Controller
         $ovj = json_decode($data);
         // var_dump($data,$obj,$ovj);
         // echo '<pre>';
-        // echo $obj['openid'];
-        // echo '<hr>';
-        // echo $ovj->openid;
+        echo $obj['openid'];
+        echo '<hr>';
+        echo $ovj->openid;die;
         // $openid1 = $obj['openid'];
         // extract($obj);
         // echo $openid;
-        $openid1 = $ovj->openid;
+        // $openid1 = $ovj->openid;
         // die;
         // return $data;
         // echo $obj->openid;
