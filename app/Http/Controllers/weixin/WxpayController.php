@@ -41,7 +41,7 @@ class WxpayController extends Controller
         $a = $openid;
         echo '<hr>';
         echo $a;
-        die;
+        // die;
 
 
 
@@ -61,7 +61,7 @@ class WxpayController extends Controller
             'out_trade_no' => $req->number,
             'total_fee' => '1', // **单位：分**
             'body' => '公租房相关费用缴纳',
-            'openid' => $a,
+            'openid' => 'o8lKL1QgwvWhqy9vCsF0h0azn8i0',
         ];
         // wap H5支付
         return $wechat->mp($order);
