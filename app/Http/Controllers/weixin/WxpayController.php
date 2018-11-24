@@ -41,7 +41,7 @@ class WxpayController extends Controller
         $a = 'fsdafds'.$openid;
         echo '<hr>';
         echo $a;
-        die;
+        // die;
 
 
 
