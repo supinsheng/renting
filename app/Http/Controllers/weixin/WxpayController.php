@@ -28,8 +28,8 @@ class WxpayController extends Controller
         $data = file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx4cbc0a5a5e78d748&secret=d60bdc7166ee84ec74a4407a4ea9e088&code=$code&grant_type=authorization_code");
         // $data = json_encode($data, true);
         $obj = json_decode($data, true);
-    
-        // var_dump($data);
+        $ovj = json_decode($data);
+        var_dump($data,$Obj,$ovj);die;
         // echo '<pre>';
         // echo $data['openid'];
         // return $data;
@@ -62,7 +62,7 @@ class WxpayController extends Controller
             'out_trade_no' => $req->number,
             'total_fee' => '1', // **单位：分**
             'body' => '公租房相关费用缴纳',
-            'openid' => $obj['openid'],
+            'openid' => $openid,
         ];
         // wap H5支付
         return $wechat->mp($order);
