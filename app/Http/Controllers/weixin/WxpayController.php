@@ -58,7 +58,7 @@ class WxpayController extends Controller
             'openid' => 'o8lKL1QgwvWhqy9vCsF0h0azn8i0',
         ];
         // wap H5支付
-        return $wechat->mp($order);
+        $pay = $wechat->mp($order);
         // return $wechat->wap($order);
         // echo $pay->return_code , '<hr>';
         // echo $pay->return_msg , '<hr>';
