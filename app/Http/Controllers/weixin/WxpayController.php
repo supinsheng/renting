@@ -33,7 +33,10 @@ class WxpayController extends Controller
         echo '<pre>';
         echo $obj['openid'];
         echo '<hr>';
-        echo $ovj->openid;die;
+        echo $ovj->openid;
+        $openid1 = $obj['openid'];
+        $openid2 = $ovj->openid;
+        die;
         // return $data;
         // echo $obj->openid;
 
