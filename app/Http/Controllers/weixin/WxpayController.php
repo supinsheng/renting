@@ -39,7 +39,9 @@ class WxpayController extends Controller
         echo $openid;
         var_dump($openid);
         $a = $openid;
-        // die;
+        echo '<hr>';
+        echo $a;
+        die;
 
 
 
