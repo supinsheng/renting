@@ -31,23 +31,12 @@ class WxpayController extends Controller
         // $ovj = json_decode($data);
         // var_dump($data,$obj,$ovj);
         // echo '<pre>';
-       if(!isset($obj['openid'])){
-           dd('openid不存在');
-       }
-        // extract($obj);
-        echo $obj['openid'];die;
-       
-        // die;
-        // return $data;
-        // echo $obj->openid;
-
-        // return $obj;
-        // echo '<pre>';
-        // var_dump($data,$obj);
-        // print $obj->{"openid"};
-    //  $obj['openid'];
-        // die;
-        // $openid = $obj['openid'];
+        if(!isset($obj['openid'])){
+            // dd('openid不存在');
+            dd($obj);
+        }
+        $openid = '';
+        $openid = $obj['openid'];
 
 
 
@@ -68,7 +57,7 @@ class WxpayController extends Controller
             'out_trade_no' => $req->number,
             'total_fee' => '1', // **单位：分**
             'body' => '公租房相关费用缴纳',
-            'openid' => $openid1,
+            'openid' => $openid,
         ];
         // wap H5支付
         return $wechat->mp($order);
