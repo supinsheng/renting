@@ -38,7 +38,7 @@ class WxpayController extends Controller
         $openid = $obj['openid'];
         echo $openid;
         var_dump($openid);
-        $a = $openid;
+        $a = 'fsdafds'.$openid;
         echo '<hr>';
         echo $a;
         die;
