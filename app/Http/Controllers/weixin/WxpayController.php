@@ -32,7 +32,8 @@ class WxpayController extends Controller
         // var_dump($data,$obj,$ovj);
         // echo '<pre>';
         if(!isset($obj['openid'])){
-            // dd('openid不存在');
+            // dd('openid不存在');var
+            var_dump($data);
             dd($obj);
         }
         $openid = '';
