@@ -59,12 +59,13 @@ class WxpayController extends Controller
         ];
         // wap H5支付
         $pay = $wechat->mp($order);
+        return $pay;
         // return $wechat->wap($order);
-        echo $pay->return_code , '<hr>';
-        echo $pay->return_msg , '<hr>';
-        echo $pay->appid , '<hr>';
-        echo $pay->result_code , '<hr>';
-        echo $pay->code_url , '<hr>';
+        // echo $pay->return_code , '<hr>';
+        // echo $pay->return_msg , '<hr>';
+        // echo $pay->appid , '<hr>';
+        // echo $pay->result_code , '<hr>';
+        // echo $pay->code_url , '<hr>';
 
     }
 
