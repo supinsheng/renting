@@ -15,7 +15,7 @@ class WxpayController extends Controller
         'key' => '08839714a18fb0130a35ca9073810d2b',
         // 通知的地址
         'notify_url' => 'http://jngzf.cn/notify',
-        'spbill_create_ip' => '',
+        // 'spbill_create_ip' => '',
             
     ];
 
@@ -48,8 +48,8 @@ class WxpayController extends Controller
         
 
         // return $req->all();
-        $this->config['spbill_create_ip'] = session('cip');
-        $wechat = Pay::wechat($this->config);
+        // $this->config['spbill_create_ip'] = session('cip');
+        
         // return $wechat->spbill_create_ip;
         $order = [
             'out_trade_no' => '31241234214123',
@@ -58,14 +58,9 @@ class WxpayController extends Controller
             'openid' => 'o8lKL1QgwvWhqy9vCsF0h0azn8i0',
         ];
         // wap H5支付
-        $pay = $wechat->mp($order);
-        return $pay;
-        // return $wechat->wap($order);
-        // echo $pay->return_code , '<hr>';
-        // echo $pay->return_msg , '<hr>';
-        // echo $pay->appid , '<hr>';
-        // echo $pay->result_code , '<hr>';
-        // echo $pay->code_url , '<hr>';
+        // $pay = $wechat->mp($order);
+        $pay = Pay::wechat($this->config)->mp($order);
+        // return $pay;
 
     }
 
