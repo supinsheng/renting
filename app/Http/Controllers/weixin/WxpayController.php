@@ -62,7 +62,7 @@ class WxpayController extends Controller
         $pay = Pay::wechat($this->config)->mp($order);
         // $result = json_decode($pay);
         return view('Weixin.wechat',[
-            'data' => $data,
+            'data' => $pay,
         ]);
         // return $pay; 
         // echo $pay->appId."<hr>";
