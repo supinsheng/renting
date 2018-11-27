@@ -31,11 +31,9 @@ class WxpayController extends Controller
         // $ovj = json_decode($data);
         // var_dump($data,$obj,$ovj);
         // echo '<pre>';
-
-        $time = time();
-        
+    
         $databat = [
-            'out_trade_no' => $time,
+            'out_trade_no' => $req->state,
             'total_fee' => '1', // **单位：分**
             'body' => '公租房相关费用缴纳',
             'openid' => $obj['openid'],
