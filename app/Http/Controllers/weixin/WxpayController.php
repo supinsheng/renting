@@ -69,7 +69,14 @@ class WxpayController extends Controller
         var_dump( $databat);die;
         // wap H5支付
         // $pay = $wechat->mp($order);
-        $pay = Pay::wechat($this->config)->mp($databat);
+        try{
+         $pay = Pay::wechat($this->config)->mp($databat);
+        }
+        catch(\Exception $e)
+        {
+            var_dump( $e->getMessage());
+            exit;
+        }
         // $data = json_encode($pay, TRUE);
         
         // var_dump($pay->items);
