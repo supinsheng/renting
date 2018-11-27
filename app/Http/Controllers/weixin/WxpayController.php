@@ -100,10 +100,10 @@ class WxpayController extends Controller
         // $arr['signType'] = $pay->signType;
         // $arr['paySign'] = $pay->paySign;
 
-        var_dump( $pay);die;
-        // return view('Weixin.wechat',[
-        //     'data' => $pay,
-        // ]);
+        // var_dump( $pay);die;
+        return view('Weixin.wechat',[
+            'data' => $pay,
+        ]);
     }
 
     public function notify()
