@@ -71,7 +71,7 @@ class WxpayController extends Controller
                 // $orderInfo = Order::where('number',$data->out_trade_no)->get();
                 $order =  Order::where('number',$data->out_trade_no)->first();
                 // 如果订单的状态为未支付状态 ，说明是第一次收到消息，更新订单状态 
-                if($order->state == '0')
+                if($order->state == 0)
                 {
                     // 开启事务
                     DB::beginTransaction();
@@ -82,7 +82,7 @@ class WxpayController extends Controller
                     $ret2 = DB::table($order->type)->where([
                         ['user_id','=',$order->user_id],
                         ['date','=',date('Y-m')],
-                    ])->update(['state'=> '1']);
+                    ])->update(['state'=>1]);
                     if($ret1 && $ret2)
                     {
                         // 提交事务
