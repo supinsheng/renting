@@ -66,7 +66,7 @@ class WxpayController extends Controller
         //     'openid' => $obj['openid'],
         // ];
 
-        var_dump( $databat);die;
+        // var_dump( $databat);die;
         // wap H5支付
         // $pay = $wechat->mp($order);
         try{
