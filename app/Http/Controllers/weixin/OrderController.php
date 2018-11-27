@@ -65,7 +65,7 @@ class OrderController extends Controller
     }
     public function success()
     {
-        return view('Weixin.success');
+        return view('Weixin.wxsuccess');
     }
 
 
