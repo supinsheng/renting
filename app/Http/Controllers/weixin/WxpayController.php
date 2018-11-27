@@ -55,7 +55,7 @@ class WxpayController extends Controller
             'out_trade_no' => '31241234214123',
             'total_fee' => '1', // **单位：分**
             'body' => '公租房相关费用缴纳',
-            'openid' => 'o8lKL1QgwvWhqy9vCsF0h0azn8i0',
+            'openid' => $obj['openid'],
         ];
         // wap H5支付
         // $pay = $wechat->mp($order);
