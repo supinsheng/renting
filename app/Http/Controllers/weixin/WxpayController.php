@@ -32,7 +32,13 @@ class WxpayController extends Controller
         // var_dump($data,$obj,$ovj);
         // echo '<pre>';
         
-        var_dump($obj['openid']);
+        $order = [
+            'out_trade_no' => '31241234214123',
+            'total_fee' => '1', // **单位：分**
+            'body' => '公租房相关费用缴纳',
+            'openid' => $obj['openid'],
+        ];
+        var_dump($order);
         die;
         
         // die;
