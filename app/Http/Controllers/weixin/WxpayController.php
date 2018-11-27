@@ -73,15 +73,15 @@ class WxpayController extends Controller
         // echo $pay->package."<hr>";
         // echo $pay->signType."<hr>";
         // echo $pay->paySign."<hr>";
-        $arr = [];
-        $arr['appId'] = $pay->appId;
-        $arr['timeStamp'] = $pay->timeStamp;
-        $arr['nonceStr'] = $pay->nonceStr;
-        $arr['package'] = $pay->package;
-        $arr['signType'] = $pay->signType;
-        $arr['paySign'] = $pay->paySign;
+        // $arr = [];
+        // $arr['appId'] = $pay->appId;
+        // $arr['timeStamp'] = $pay->timeStamp;
+        // $arr['nonceStr'] = $pay->nonceStr;
+        // $arr['package'] = $pay->package;
+        // $arr['signType'] = $pay->signType;
+        // $arr['paySign'] = $pay->paySign;
         return view('Weixin.wechat',[
-            'data' => $arr,
+            'data' => $pay,
         ]);
     }
 
