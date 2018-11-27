@@ -45,11 +45,11 @@ class WxpayController extends Controller
 
 
 
-        $state = $req->state;
+        // $state = $req->state;
 
 
-        $model = new Order;
-        $orderInfo = $model->select('real_payment')->where('number', $state)->first();
+        // $model = new Order;
+        // $orderInfo = $model->select('real_payment')->where('number', $state)->first();
 
         
 
