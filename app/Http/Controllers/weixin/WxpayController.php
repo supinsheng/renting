@@ -47,30 +47,12 @@ class WxpayController extends Controller
 
 
 
-        // $state = $req->state;
+        $state = $req->state;
 
 
-        // $model = new Order;
-        // $orderInfo = $model->select('real_payment')->where('number', $state)->first();
+        $model = new Order;
+        $orderInfo = $model->select('real_payment')->where('number', $state)->first();
 
-        
-
-        // return $req->all();
-        // $this->config['spbill_create_ip'] = session('cip');
-
-        // var_dump($obj);die;
-        
-        // return $wechat->spbill_create_ip;
-        // $order = [
-        //     'out_trade_no' => '31241234214123',
-        //     'total_fee' => '1', // **单位：分**
-        //     'body' => '公租房相关费用缴纳',
-        //     'openid' => $obj['openid'],
-        // ];
-
-        // var_dump( $databat);die;
-        // wap H5支付
-        // $pay = $wechat->mp($order);
         try{
          $pay = Pay::wechat($this->config)->mp($databat);
         }
@@ -79,28 +61,7 @@ class WxpayController extends Controller
             var_dump( $e->getMessage());
             exit;
         }
-        // $data = json_encode($pay, TRUE);
-        
-        // var_dump($pay->items);
-        // return view('Weixin.wechat',[
-        //     'data' => $data,
-        // ]);
-        // return $pay; 
-        // echo $pay->appId."<hr>";
-        // echo $pay->timeStamp."<hr>";
-        // echo $pay->nonceStr."<hr>";
-        // echo $pay->package."<hr>";
-        // echo $pay->signType."<hr>";
-        // echo $pay->paySign."<hr>";
-        // $arr = [];
-        // $arr['appId'] = $pay->appId;
-        // $arr['timeStamp'] = $pay->timeStamp;
-        // $arr['nonceStr'] = $pay->nonceStr;
-        // $arr['package'] = $pay->package;
-        // $arr['signType'] = $pay->signType;
-        // $arr['paySign'] = $pay->paySign;
-
-        // var_dump( $pay);die;
+      
         return view('Weixin.wechat',[
             'data' => $pay,
         ]);

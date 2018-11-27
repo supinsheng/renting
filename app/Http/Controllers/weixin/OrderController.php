@@ -56,7 +56,7 @@ class OrderController extends Controller
             ['date','=',date('Y-m')],
         ])
         ->first();
-        $num = time().rand(1,99999);
+        $num = time();
         return view('Weixin.order',[
             'data' =>$data,
             'num' => $num,
