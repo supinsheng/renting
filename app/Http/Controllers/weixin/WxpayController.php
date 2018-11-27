@@ -32,14 +32,14 @@ class WxpayController extends Controller
         // var_dump($data,$obj,$ovj);
         // echo '<pre>';
         
-        $order = [
+        $databat = [
             'out_trade_no' => '31241234214123',
             'total_fee' => '1', // **单位：分**
             'body' => '公租房相关费用缴纳',
             'openid' => $obj['openid'],
         ];
-        var_dump($order);
-        die;
+        // var_dump($order);
+        // die;
         
         // die;
 
@@ -59,17 +59,17 @@ class WxpayController extends Controller
         // var_dump($obj);die;
         
         // return $wechat->spbill_create_ip;
-        $order = [
-            'out_trade_no' => '31241234214123',
-            'total_fee' => '1', // **单位：分**
-            'body' => '公租房相关费用缴纳',
-            'openid' => $obj['openid'],
-        ];
+        // $order = [
+        //     'out_trade_no' => '31241234214123',
+        //     'total_fee' => '1', // **单位：分**
+        //     'body' => '公租房相关费用缴纳',
+        //     'openid' => $obj['openid'],
+        // ];
 
-        var_dump( $order);die;
+        // var_dump( $order);die;
         // wap H5支付
         // $pay = $wechat->mp($order);
-        $pay = Pay::wechat($this->config)->mp($order);
+        $pay = Pay::wechat($this->config)->mp($databat);
         // $data = json_encode($pay, TRUE);
         
         // var_dump($pay->items);
