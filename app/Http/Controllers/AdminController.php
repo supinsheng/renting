@@ -153,26 +153,34 @@ class AdminController extends Controller
         $house = House::where('house_id',$req->address)->where('village',$req->village)->first();
                 
         if($house){
-            
-            $household = new Household;
-            $household->fill($req->all());
-            $household->time = $req->time;
-            $household->end = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
-            $household->save();
+            try{
+                $household = new Household;
+                $household->fill($req->all());
+                $household->time = $req->time;
+                $household->end = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
+                $household->save();
 
-            $house->state = '已出租';
-            $house->hold_name = $req->realname;
-            $house->hold_phone = $req->phone;
-            $house->start_time = $req->start;
-            $house->end_time = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
-            if(strtotime('now')<strtotime($req->start)){
-                $house->residual_lease = $req->time;
-                
-            }else {
-                $house->residual_lease = floor((strtotime($household->end)-strtotime('now'))/(60*60*24)).'天';
+                $house->state = '已出租';
+                $house->hold_name = $req->realname;
+                $house->hold_phone = $req->phone;
+                $house->start_time = $req->start;
+                $house->end_time = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
+                if(strtotime('now')<strtotime($req->start)){
+                    $house->residual_lease = $req->time;
+                    
+                }else {
+                    $house->residual_lease = floor((strtotime($household->end)-strtotime('now'))/(60*60*24)).'天';
+                }
+                $house->save();
+                return redirect()->route('indexMain');
             }
-            $house->save();
-            return redirect()->route('indexMain');
+            catch(\Exception $e)
+            {
+                var_dump( $e->getMessage());
+                exit;
+            }
+            
+           
         }else {
             return back()->withInput()->withErrors(['address'=>'该房屋编号 不存在']);
         }
