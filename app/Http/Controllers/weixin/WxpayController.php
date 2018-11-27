@@ -49,6 +49,8 @@ class WxpayController extends Controller
 
         // return $req->all();
         // $this->config['spbill_create_ip'] = session('cip');
+
+        var_dump($obj);die;
         
         // return $wechat->spbill_create_ip;
         $order = [
