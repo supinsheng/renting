@@ -17,66 +17,49 @@
 			{{csrf_field()}}
 			@if($rent != '')
 			<div class="list">
-
-				<div class="item clearfix">
-
-					<label>
-
-						<input type="radio" name="type" value="{{$rent->table}}">房租
-						<small>未支付</small>
-
-						<span style="color: red;float: right;font-size: 16px;">{{$rent->money}}</span>
-					</label>
-
-				</div>
+				<label class="item clearfix">
+					<input type="radio" name="type" value="{{$rent->table}}">房租
+					<small>未支付</small>
+					<span style="color: red;float: right;font-size: 16px;">{{$rent->money}}</span>
+				</label>
 			</div>
 			@endif
 			@if($water != '')
 			<div class="list">
+				<label class="item clearfix">
 
-				<div class="item clearfix">
+					<input type="radio" name="type" value="{{$water->table}}">水费
+					<small>未支付</small>
+					<span style="color: red;float: right;font-size: 16px;">{{$water->money}}</span>
 
-					<label>
-
-						<input type="radio" name="type" value="{{$water->table}}">水费
-						<small>未支付</small>
-
-						<span style="color: red;float: right;font-size: 16px;">{{$water->money}}</span>
-					</label>
-
-				</div>
+				</label>
 			</div>
 			@endif
 			@if($elec != '')
 			<div class="list">
 
-				<div class="item clearfix">
 
-					<label>
 
-						<input type="radio" name="type" value="{{$elec->table}}">电费
-						<small>未支付</small>
+				<label class="item clearfix">
 
-						<span style="color: red;float: right;font-size: 16px;">{{$elec->money}}</span>
-					</label>
+					<input type="radio" name="type" value="{{$elec->table}}">电费
+					<small>未支付</small>
 
-				</div>
+					<span style="color: red;float: right;font-size: 16px;">{{$elec->money}}</span>
+				</label>
+
+
 			</div>
 			@endif
 			@if($prop != '')
 			<div class="list">
+				<label class="item clearfix">
 
-				<div class="item clearfix">
+					<input type="radio" name="type" value="{{$prop->table}}">物业费
+					<small>未支付</small>
+					<span style="color: red;float: right;font-size: 16px;">{{$prop->money}}</span>
 
-					<label>
-
-						<input type="radio" name="type" value="{{$prop->table}}">物业费
-						<small>未支付</small>
-
-						<span style="color: red;float: right;font-size: 16px;">{{$prop->money}}</span>
-					</label>
-
-				</div>
+				</label>
 			</div>
 			@endif
 		</form>
@@ -93,12 +76,10 @@
 <script>
 	var form = document.getElementById('form');
 	function subform() {
-		if($(":radio:checked").length ==0)
-		{
+		if ($(":radio:checked").length == 0) {
 			alert('请选择缴费项')
 		}
-		else
-		{
+		else {
 			form.submit();
 		}
 	}

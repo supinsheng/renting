@@ -5,7 +5,10 @@ namespace App\Http\Controllers\weixin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\House;
-
+use App\Model\Rent;
+use App\Model\Water;
+use App\Model\Electric;
+use App\Model\Property;
 class IndexController extends Controller
 {
     public function  index(){
@@ -16,8 +19,23 @@ class IndexController extends Controller
             }else{
                 $ishouse='未入住';
             }
+            $rent =  Rent::select('money')
+            ->where('id',session('id'))
+            ->where('date', date('Y-m'))
+            ->first();
+            $elec = Electric::select('money')
+            ->where('id',session('id'))
+            ->where('date', date('Y-m'))
+            ->first();
+            $prop = Property::select('money')
+            ->where('id',session('id'))
+            ->where('date', date('Y-m'))
+            ->first();
             return view('Weixin.index',[
                 'ishouse'=>$ishouse,
+                'rent' => isset($rent->moeny)?$rent->money:'0.00',
+                'elec' => isset($elec->money)?$elec->money:'0.00',
+                'prop' => isset($prop->money)?$prop->moeny:'0.00',
             ]);
     }
     // 地图

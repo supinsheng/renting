@@ -52,22 +52,6 @@
 		function subform () {
 			form.submit();
 		}
-		var num = "{{$num}}";
-		var type = "{{$name}}";//缴费项
-		// var num = "{{$num}}";
-		setInterval(function(){
-			$.ajax({
-				url:'/ajaxOrder',
-				type:'GET',
-				data:{num:num},
-				success:function(data){
-					// console.log(data.state);
-					if(data.state==1)
-					{
-						location.href = "/success"
-					}
-				}
-			})
-		},1000)
+	
 
   </script>

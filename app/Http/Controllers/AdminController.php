@@ -9,6 +9,7 @@ use App\Model\Village;
 use App\Model\House;
 use App\Http\Requests\HouseholdRequest;
 use DB;
+use Validator;
 class AdminController extends Controller
 {
     public function show(Request $req)
@@ -200,15 +201,26 @@ class AdminController extends Controller
 
     // 执行编辑
     public function doeditHold(Request $req,$id){
+        // 验证提交的数据，
+        $validator = Validator::make($req->all(),[
+            'start'=>'required',
+            'peoples'=>'required',
+            'remarks'=>'required',
+            'contract'=>'required',
+            'username'=>'required',
+        ],[
+            'start.required'=>'开始时间不能为空',
+            'remarks.required'=>'备注不能为空',
+            'peoples.required'=>'入住人数不能为空',
+            'contract.required'=>'签约费用不能为空',
+            'username.required'=>'用户名不能为空',
+       
+        ]);
+        if($validator->fails())
+        {
+            return back()->withErrors($validator->errors())->withInput();
+        }
         $household = Household::find($id);
-        $house = House::where('house_id',$household->address)->first();
-        $house->state = '未出租';
-        $house->hold_name = '';
-        $house->hold_phone = '';
-        $house->start_time = '';
-        $house->end_time = '';
-        $house->residual_lease = '';
-        $house->save();
 
         $household->fill($req->all());
         $household->password = $req->password;

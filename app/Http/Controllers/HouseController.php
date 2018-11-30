@@ -7,8 +7,14 @@ use App\Model\House;
 use App\Model\Village;
 use App\Model\Household;
 use DB;
+use App\Exports\HouseExport;
+use Maatwebsite\Excel\Facades\Excel;
 class HouseController extends Controller
 {
+    public function export() 
+    {
+        return Excel::download(new HouseExport, 'house.xlsx');
+    }
     // 房屋出租状态
     public function house(Request $req){
 

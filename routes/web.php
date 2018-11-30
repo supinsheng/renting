@@ -49,7 +49,7 @@ Route::get('/test','weixin\TestController@index')->name('weixin_test');
 // 订单页
 Route::get('/order','weixin\OrderController@index')->name('order');
 Route::post('/order','weixin\OrderController@create')->name('order.create');
-Route::get('/success','weixin\OrderController@success')->name('order.success');
+Route::get('/orderSuccess','weixin\OrderController@success')->name('order.success');
 Route::get('/order/test','weixin\OrderController@test')->name('order.test');
 Route::post('/order/store','weixin\OrderController@store')->name('order.test');
 // ajax刷新状态
@@ -220,6 +220,9 @@ Route::middleware('adminLogin')->group(function () {
     Route::get('/admin/examine','ExamineController@list')->name('examineList');
     Route::post('/admin/examineEdit','ExamineController@edit')->name('examineEdit');
     Route::post('/admin/download','ExamineController@download')->name('download');
+
+    // 房屋报表
+    Route::get('/export','HouseController@export')->name('export');
 });
 
 //后台2

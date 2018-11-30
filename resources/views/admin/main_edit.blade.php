@@ -36,6 +36,7 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 </head>
 <body>
 <!--main_top-->
+
 <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
   <tr>
     <td width="99%" align="left" valign="top">您的位置：住户管理&nbsp;&nbsp;>&nbsp;&nbsp;编辑住户</td>
@@ -54,6 +55,9 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="right" valign="middle" class="borderright borderbottom bggray">用户名：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <input type="text" name="username" value="{{ $household->username }}" class="text-word">
+        @if($errors->has('username'))
+				  <span style='color:red'>{{$errors->first('username')}}</span>
+			  @endif
         </td>
         </tr>
 
@@ -86,6 +90,9 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="right" valign="middle" class="borderright borderbottom bggray">入住时间：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <input type="date" name="start" value="{{ $household->start }}" class="text-word">
+        @if($errors->has('start'))
+				  <span style='color:red'>{{$errors->first('start')}}</span>
+			  @endif
         </td>
         </tr>
 
@@ -118,12 +125,18 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="right" valign="middle" class="borderright borderbottom bggray">入住人数：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <input type="text" name="peoples" value="{{ $household->peoples }}" class="text-word">
+        @if($errors->has('peoples'))
+				  <span style='color:red'>{{$errors->first('peoples')}}</span>
+			  @endif
         </td>
       </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
         <td align="right" valign="middle" class="borderright borderbottom bggray">签约费用：</td>
         <td align="left" valign="middle" class="borderright borderbottom main-for">
         <input type="text" name="contract" value="{{ $household->contract }}" class="text-word">
+        @if($errors->has('contract'))
+				  <span style='color:red'>{{$errors->first('contract')}}</span>
+			  @endif
         </td>
       </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
@@ -131,6 +144,9 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
         <td align="left" valign="middle" class="borderright borderbottom main-for">
       
         <textarea name="remarks" id="" cols="40" rows="10">{{ $household->remarks }}</textarea>
+        @if($errors->has('remarks'))
+				  <span style='color:red'>{{$errors->first('remarks')}}</span>
+			  @endif
         </td>
       </tr>
       <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
