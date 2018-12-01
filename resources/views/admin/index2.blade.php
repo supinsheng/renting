@@ -144,7 +144,7 @@
                 },
                 data:[
                     @foreach($data as $v)
-                    {value:{{$v->count}}+400, name:'{{$v->name}}'},
+                    {value:{{$v->count}}, name:'{{$v->name}}'},
                     @endforeach
                     // {value:310, name:'邮件营销'},
                     // {value:234, name:'联盟广告'},

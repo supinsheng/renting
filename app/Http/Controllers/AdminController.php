@@ -206,16 +206,17 @@ class AdminController extends Controller
         $validator = Validator::make($req->all(),[
             'start'=>'required',
             'peoples'=>'required',
-            'remarks'=>'required',
-            'contract'=>'required',
-            'username'=>'required',
+            // 'remarks'=>'required',
+            // 'contract'=>'required',
+            'username'=>'required|min:6|max:18',
         ],[
             'start.required'=>'开始时间不能为空',
-            'remarks.required'=>'备注不能为空',
+            // 'remarks.required'=>'备注不能为空',
             'peoples.required'=>'入住人数不能为空',
-            'contract.required'=>'签约费用不能为空',
+            // 'contract.required'=>'签约费用不能为空',
             'username.required'=>'用户名不能为空',
-       
+            'username.min'=>'用户名不能少于6位',
+            'username.max'=>'用户名不能多于18位',
         ]);
         if($validator->fails())
         {
