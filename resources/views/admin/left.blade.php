@@ -50,7 +50,7 @@ body{overflow-x:hidden; background:url(/images/main/leftbg.jpg) left top repeat-
        
       </div>
       @endif
-      @if(session('jurisdiction') == '总管理员')
+      @if(session('jurisdiction') == '超级管理员')
       <div class="collapsed">
         <span>操作员管理</span>
         <a href="/admin/jurList" target="mainFrame" onFocus="this.blur()">设置操作员权限</a>

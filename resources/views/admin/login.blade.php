@@ -15,6 +15,7 @@
             <li class="topA"></li>
             <li class="topB"><span><h1 style="text-align:center;margin-top:70px;">建宁县公租房</h1><h3 style="text-align:center">后台管理系统</h3></span></li>
             <li class="topC"></li>
+           
             <li class="topD">
                 <ul class="login">
                     <li><span class="left login-text">用户名：</span> <span style="left">
@@ -42,6 +43,9 @@
             <li class="middle_D"></li>
             <li class="bottom_A"></li>
             <li class="bottom_B">网站后台管理系统&nbsp;&nbsp;www.php.com</li>
+            @if($errors->has('error'))
+                        <script>alert("{{$errors->first('error')}}")</script>
+                    @endif
         </ul>
     </div>
     </form>
