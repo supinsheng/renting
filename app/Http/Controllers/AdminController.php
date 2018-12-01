@@ -193,8 +193,11 @@ class AdminController extends Controller
     // 编辑住户
     public function editHousehold($id){
 
-        $household = Household::find($id);
-
+        // $household = Household::find($id);
+        $household = Household::select('households.*','houses.rent')
+            ->leftJoin('houses', 'households.address','houses.house_id')
+            ->where('households.id', $id)
+            ->first();
         $village = Village::get();
 
         return view('admin.main_edit',['household'=>$household,'village'=>$village]);
@@ -230,19 +233,35 @@ class AdminController extends Controller
         $household->end = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
         $household->save();
 
-        $house = House::where('house_id',$req->address)->where('village',$req->village)->first();
-        $house->state = '已出租';
-        $house->hold_name = $req->realname;
-        $house->hold_phone = $req->phone;
-        $house->start_time = $req->start;
-        $house->end_time = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
+        // $house = House::where('house_id',$req->address)->where('village',$req->village)->first();
+        $rent = $req->rent == null ? '' : $req->rent;
+        $end_time = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
+        $residual_lease = '';
         if(strtotime('now')<strtotime($req->start)){
-            $house->residual_lease = $req->time;
+            $residual_lease = $req->time;
             
         }else {
-            $house->residual_lease = floor((strtotime($household->end)-strtotime('now'))/(60*60*24)).'天';
+            $residual_lease = floor((strtotime($household->end)-strtotime('now'))/(60*60*24)).'天';
         }
-        $house->save();
+        $house = House::where('house_id',$req->address)->where('village',$req->village)
+        ->update([
+            'state'=>'已出租',
+            'hold_name'=>$req->realname,
+            'hold_phone'=>$req->phone,
+            'start_time'=>$req->start,
+            'rent'=>$rent,
+            'end_time'=>$end_time,
+            'residual_lease'=>$residual_lease,
+        ]);
+        // $house->state = '已出租';
+        // $house->hold_name = $req->realname;
+        // $house->hold_phone = $req->phone;
+        // $house->start_time = $req->start;
+        // if($req->rent)
+        //     $house->rent = $req->rent;
+        // $house->end_time = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
+       
+        // $house->save();
 
         return redirect()->route('indexMain');
     }
