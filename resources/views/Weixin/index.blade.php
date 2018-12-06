@@ -11,7 +11,7 @@
 
 <body>
 	<div class="top clearfix">
-		<img src="/images/weixin/headimg.png" />
+		<img src="/images/weixin/logo.png" />
 		<div class="name">{{session('realname')}}
 			<span>{{$ishouse}}</span>
 		</div>
