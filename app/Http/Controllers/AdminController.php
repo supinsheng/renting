@@ -36,14 +36,12 @@ class AdminController extends Controller
         $admin = Admin::where('name',$req->name)
         ->leftJoin('jurisdics as b','admins.jurisdiction','=','b.id' )
         ->first();
-        // 判断当前用户是否有权限
-        if(!$admin->jurisdiction)
-            return back()->withErrors(['error'=>'抱歉你不可以登录'])->withInput();
+        
         if($admin){
-           
-            $dic = '';
-          
             if($admin->passwd == $req->passwd){
+                // 判断当前用户是否有权限
+                if(!$admin->jurisdiction)
+                    return back()->withErrors(['error'=>'抱歉你不可以登录'])->withInput();
                 session([
 	
                     'name'=>$admin->name,

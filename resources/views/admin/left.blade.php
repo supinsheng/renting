@@ -28,6 +28,7 @@ body{overflow-x:hidden; background:url(/images/main/leftbg.jpg) left top repeat-
     @if(session('jurisdiction') != '新闻管理员')
       <div>
         <span>住户和房屋管理</span>
+        <a href="/admin/index2" target="mainFrame" onFocus="this.blur()">首页</a>
         <a href="/admin/indexMain" target="mainFrame" onFocus="this.blur()">入住管理</a>
         <a href="/admin/xuzu" target="mainFrame" onFocus="this.blur()">续租管理</a>
         <a href="/admin/tuizu" target="mainFrame" onFocus="this.blur()">退租管理</a>
