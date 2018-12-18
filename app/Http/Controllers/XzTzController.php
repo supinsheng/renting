@@ -220,7 +220,28 @@ class XzTzController extends Controller
                                 ->first();
 
         if($household){
-            $household->delete();
+            // 将相应的房屋表的数据，更改为未出租状态
+            House::where('house_id','=',$household->address)->update([
+                'state'     => '未出租',
+                'hold_name' => '',
+                'hold_phone'=> '',
+                'start_time'=> '',
+                'end_time'  => '',
+                'residual_lease'=>'',
+            ]);
+            // 将该住户的部分数据更改为空，为退租状态
+            $household->address = '';
+            $household->village = '';
+            $household->peoples = 0;
+            $household->remarks = '';
+            $household->electric_meter = '';
+            $household->water_meter = '';
+            $household->username = '';
+            $household->password = '';
+            
+
+            $household->save();
+            
         }
         
         return redirect()->route('tuizu');

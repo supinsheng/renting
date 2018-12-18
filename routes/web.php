@@ -223,7 +223,7 @@ Route::middleware('adminLogin')->group(function () {
     Route::post('/admin/download','ExamineController@download')->name('download');
 
     // 房屋报表
-    Route::get('/export','HouseController@export')->name('export');
+    Route::get('/admin/export','admin\ExportController@index')->name('export');
 });
 
 //后台2

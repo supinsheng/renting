@@ -19,7 +19,6 @@ class AdminController extends Controller
         return view('admin.show',[
             'data' => $data
         ]);
-        // return 'fasdfasd';
     }
     public function index2()
     {

@@ -40,6 +40,7 @@ body{overflow-x:hidden; background:url(/images/main/leftbg.jpg) left top repeat-
         <a href="/admin/payment" target="mainFrame" onFocus="this.blur()">收费管理</a>
         <a href="/admin/examine" target="mainFrame" onFocus="this.blur()">审核管理</a>
         <a href="/admin/repair" target="mainFrame" onFocus="this.blur()">报修管理</a>
+        <a href="/admin/export">导出数据</a>
       </div>
       @endif
       @if(session('jurisdiction') != '住户和房屋管理员')
@@ -48,7 +49,6 @@ body{overflow-x:hidden; background:url(/images/main/leftbg.jpg) left top repeat-
         <a href="/admin/editNew" target="mainFrame" onFocus="this.blur()">新闻编辑</a>
         <a href="/admin/addNew" target="mainFrame" onFocus="this.blur()">新闻发布</a>
         <a href="/admin/queryNew" target="mainFrame" onFocus="this.blur()">新闻记录查询</a>
-       
       </div>
       @endif
       @if(session('jurisdiction') == '超级管理员')
