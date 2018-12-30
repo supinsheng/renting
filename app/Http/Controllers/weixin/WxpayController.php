@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Yansongda\Pay\Pay;
 use App\Model\Order;
+use App\Model\households;
 use DB;
 class WxpayController extends Controller
 {
@@ -28,10 +29,8 @@ class WxpayController extends Controller
         $data = file_get_contents("https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx4cbc0a5a5e78d748&secret=d60bdc7166ee84ec74a4407a4ea9e088&code=$code&grant_type=authorization_code");
         // $data = json_encode($data, true);
         $obj = json_decode($data, true);
-        // $ovj = json_decode($data);
-        // var_dump($data,$obj,$ovj);
-        // echo '<pre>';
-    
+        
+        // 订单详情
         $databat = [
             'out_trade_no' => $req->state,
             'total_fee' => '1', // **单位：分**
@@ -73,26 +72,89 @@ class WxpayController extends Controller
                 // 如果订单的状态为未支付状态 ，说明是第一次收到消息，更新订单状态 
                 if($order->state == 0)
                 {
-                    // 开启事务
-                    DB::beginTransaction();
-                    // 设置订单为已支付状态
-                    $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
-
-                    // 更新用户余额
-                    $ret2 = DB::table($order->type)->where([
+                    $payTable = DB::table($order->type)->where([
                         ['user_id','=',$order->user_id],
                         ['date','=',date('Y-m')],
-                    ])->update(['state'=>1]);
-                    if($ret1 && $ret2)
-                    {
-                        // 提交事务
-                        DB::commit();
+                    ])->first();
+                    $cost = $payTable->cost + $order->real_payment;
+                    // 如果金额等于
+                    if($cost == $payTable->money) {
+                        // 开启事务
+                        DB::beginTransaction();
+                        // 设置订单为已支付状态
+                        $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
+                        // 更新用户缴费状态，添加缴费金额
+                        $ret2 = DB::table($order->type)->where([
+                            ['user_id','=',$order->user_id],
+                            ['date','=',date('Y-m')],
+                        ])->update(
+                            ['state'=> 1],
+                            ['cost'=> $cost]
+                        );
+                        if($ret1 && $ret2)
+                        {
+                            // 提交事务
+                            DB::commit();
+                        }
+                        else
+                        {
+                            // 回滚事务
+                            DB::rollBack();
+                        }
+                    } else if($cost > $payTable->money) { 
+                        // 如果cost 大于 money
+                        // 开启事务
+                        DB::beginTransaction();
+                        // 设置订单为已支付状态
+                        $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
+
+                        // 更新用户缴费状态，并将cost添加到最大值
+                        $ret2 = DB::table($order->type)->where([
+                            ['user_id','=',$order->user_id],
+                            ['date','=',date('Y-m')],
+                        ])->update(
+                            ['state'=>1],
+                            ['cost'=>$payTable->money]
+                        );
+                        // 将多余的金额添加到住户的余额
+                        $ret3 = DB::table('households')
+                                ->where('id','=',session('id'))
+                                ->increment('balance', ($cost-$payTable->money) );
+                        if($ret1 && $ret2 && $ret3)
+                        {
+                            // 提交事务
+                            DB::commit();
+                        }
+                        else
+                        {
+                            // 回滚事务
+                            DB::rollBack();
+                        }
+                    } else if($cost < $payTable->money) {
+                        // 金额小于需要缴纳的费用
+    
+                        // 开启事务
+                        DB::beginTransaction();
+                        // 设置订单为已支付状态
+                        $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
+
+                        // 更新用户余额，因为小于，所以不用更新缴费状态
+                        $ret2 = DB::table($order->type)->where([
+                            ['user_id','=',$order->user_id],
+                            ['date','=',date('Y-m')],
+                        ])->update(['cost'=>$cost]);
+                        if($ret1 && $ret2)
+                        {
+                            // 提交事务
+                            DB::commit();
+                        }
+                        else
+                        {
+                            // 回滚事务
+                            DB::rollBack();
+                        }
                     }
-                    else
-                    {
-                        // 回滚事务
-                        DB::rollBack();
-                    }
+                    
                 }
             }
         } catch (Exception $e) {

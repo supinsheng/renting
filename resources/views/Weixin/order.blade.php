@@ -6,6 +6,15 @@
 		<title>在线缴费</title>
 		<link rel="stylesheet" type="text/css" href="/css/weixin/base.css"/>
 		<link rel="stylesheet" type="text/css" href="/css/weixin/online_payment.css"/>
+		<style>
+			.inputs {
+				width: 80%;
+				height: 1.5rem;
+				line-height: 1.5rem;
+				border: none;
+				padding-left: 1rem;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="wrap">
@@ -38,7 +47,11 @@
 			<input type="hidden" name="cip" id="cip">
 			<input type="hidden" name="number" value="{{$num}}">
 			<input type="hidden" name="type" value="{{$name}}">
-			<input type="hidden" name="real_payment" value="{{$data->money}}">
+			<div class="detail">
+				<label for="">￥</label>
+				<input class="inputs" type="text" name="real_payment" value="{{$data->money}}">
+
+			</div>
 			</form>
 		</div>
 		<div class="back" onclick="subform()">提交订单</div>
