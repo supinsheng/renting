@@ -20,7 +20,7 @@
 				<label class="item clearfix">
 					<input type="radio" name="type" value="{{$rent->table}}">房租
 					<small>未支付</small>
-					<span style="color: red;float: right;font-size: 16px;">{{$rent->money}}</span>
+					<span style="color: red;float: right;font-size: 16px;">{{$rent->money - $rent->cost}}</span>
 				</label>
 			</div>
 			@endif
@@ -30,7 +30,7 @@
 
 					<input type="radio" name="type" value="{{$water->table}}">水费
 					<small>未支付</small>
-					<span style="color: red;float: right;font-size: 16px;">{{$water->money}}</span>
+					<span style="color: red;float: right;font-size: 16px;">{{$water->money - $water->cost}}</span>
 
 				</label>
 			</div>
@@ -45,7 +45,7 @@
 					<input type="radio" name="type" value="{{$elec->table}}">电费
 					<small>未支付</small>
 
-					<span style="color: red;float: right;font-size: 16px;">{{$elec->money}}</span>
+					<span style="color: red;float: right;font-size: 16px;">{{$elec->money - $elec->cost}}</span>
 				</label>
 
 
@@ -57,7 +57,7 @@
 
 					<input type="radio" name="type" value="{{$prop->table}}">物业费
 					<small>未支付</small>
-					<span style="color: red;float: right;font-size: 16px;">{{$prop->money}}</span>
+					<span style="color: red;float: right;font-size: 16px;">{{$prop->money - $prop->cost}}</span>
 
 				</label>
 			</div>

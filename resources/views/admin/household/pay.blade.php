@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>主要内容区main</title>
-<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-<link href="/css/css.css" type="text/css" rel="stylesheet" />
-<link href="/css/main.css" type="text/css" rel="stylesheet" />
-<link rel="shortcut icon" href="/images/main/favicon.ico" />
-<link rel="stylesheet" href="/css/page.css">
 
-<style>
-body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>主要内容区main</title>
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link href="/css/css.css" type="text/css" rel="stylesheet" />
+  <link href="/css/main.css" type="text/css" rel="stylesheet" />
+  <link rel="shortcut icon" href="/images/main/favicon.ico" />
+  <link rel="stylesheet" href="/css/page.css">
+  <link rel="stylesheet" href="/css/iconfont.css">
+
+  <style>
+    body{overflow-x:hidden; background:#f2f0f5; padding:15px 0px 10px 5px;}
 #searchmain{ font-size:12px;}
 #search{ font-size:12px; background:#548fc9; margin:10px 10px 0 0; display:inline; width:100%; color:#FFF; float:left}
 #search form span{height:40px; line-height:40px; padding:0 0px 0 10px; float:left;}
@@ -35,123 +37,189 @@ td.fenye{ padding:10px 0 0 0; text-align:right;}
 th {
     text-align: center;
 }
+    .icon {
+      color: #333;
+    }
 </style>
 </head>
+
 <body>
-<!--main_top-->
-<table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
-  <tr>
-    <td width="99%" align="left" valign="top">您的位置：收费管理  &nbsp;&nbsp;&nbsp;本月</td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-
-
-    </td>
-  </tr>
-  <tr>
-    <td align="left" valign="top">
-    
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
-      <tr>
-        <th align="center" valign="middle" class="borderright">编号</th>
-        <th align="center" valign="middle" class="borderright">住户</th>
-        <!-- <th align="center" valign="middle" class="borderright">房屋状态</th> -->
-        <th align="center" valign="middle" class="borderright">用户名</th>
-        <th align="center" valign="middle" class="borderright">缴费期限</th>
-        <th align="center" valign="middle" class="borderright">水费</th>
-        <th align="center" valign="middle" class="borderright">电费</th>
-        <th align="center" valign="middle" class="borderright">房租费</th>
-        <th align="center" valign="middle" class="borderright">物业费</th>
-      </tr>
-    @foreach($data as $k=>$v)
-      <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['id'] }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['realname'] }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['username'] }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['date'] }}</td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['water'] }}
-        @if($v['water'] != '' && $v['water_state'] ==1)
-        已交
-        @elseif($v['water'] != '' && $v['water_state'] ==0)
-        未交
-        @endif
-        </td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['electric'] }}
-        @if($v['electric'] != '' && $v['electric_state'] ==1)
-        已交
-        @elseifif($v['electric'] != '' && $v['electric_state'] ==0)
-        未交
-        @endif
-        </td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['rent'] }}
-        @if($v['rent'] != '' && $v['rent_state'] ==1)
-        已交
-        @elseif($v['rent'] != '' && $v['rent_state'] ==0)
-        未交
-        @endif
-        </td>
-        <td align="center" valign="middle" class="borderright borderbottom">{{ $v['property'] }}
-        @if($v['property'] !='' &&  $v['property_state'] ==1)
-        已交
-        @elseif($v['property'] !='' &&  $v['property_state'] ==0)
-        未交
-        @endif
-        </td>
-       
-        
-        <td align="center" valign="middle" class="borderbottom"><span class="gray"></span>
-      </tr>
-      @endforeach
-    </table></td>
+  <!--main_top-->
+  <table width="99%" border="0" cellspacing="0" cellpadding="0" id="searchmain">
+    <tr>
+      <td width="99%" align="left" valign="top">您的位置：收费管理 &nbsp;&nbsp;&nbsp;本月</td>
     </tr>
     <tr>
-    <td align="left" style="text-align:center" valign="top" class="fenye"></td>
-  </tr>
-</table>
+      <td align="left" valign="top">
 
-  <form action="{{route('doEdit_payment')}}" method="post" id="form2">
-      <div class="modal fade" id="updatePay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="exampleModalLabel">更改收费</h4>
-            </div>
-            <div class="modal-body">
-	
-				<div class="panel-body">
-				{{csrf_field()}}
-      
-          <p  class="form-control" id="pay-name"></p>
-          <br>
-          <input type="number" id="edit-price" name="price"  class="form-control" >					<br>
-          <input type="hidden" id="edit-id" name="id" value="">
-          <input type="hidden" id="edit-name" name="name" value="">
 
-				</div>				
-			</div>
-			<div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              <button type="submit" class="btn btn-primary">确认更改</button>
+      </td>
+    </tr>
+    <tr>
+      <td align="left" valign="top">
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
+          <tr>
+            <th align="center" valign="middle" class="borderright">编号</th>
+            <th align="center" valign="middle" class="borderright">住户</th>
+            <!-- <th align="center" valign="middle" class="borderright">房屋状态</th> -->
+            <th align="center" valign="middle" class="borderright">用户名</th>
+            <th align="center" valign="middle" class="borderright">缴费期限</th>
+            <th align="center" valign="middle" class="borderright">水费</th>
+            <th align="center" valign="middle" class="borderright">电费</th>
+            <th align="center" valign="middle" class="borderright">房租费</th>
+            <th align="center" valign="middle" class="borderright">物业费</th>
+          </tr>
+          @foreach($data as $k=>$v)
+          <tr onMouseOut="this.style.backgroundColor='#ffffff'" onMouseOver="this.style.backgroundColor='#edf5ff'">
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v['id'] }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v['realname'] }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v['username'] }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v['date'] }}</td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v['water'] }}
+              @if($v['water'] == '')
+              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#insertPay" data-attribute="水费" data-id="{{$v['id']}}" data-type="water">添加账单</button>
+              @elseif($v['water_state'] ==0)
+              <a href="#" class="icon" title="未缴/可修改"  data-toggle="modal" data-target="#updatePay" data-attribute="水费" data-id="{{$v['id']}}" data-type="water" data-price="{{$v['water']}}"><i class="iconfont icon-bianji"></i></a>
+              @elseif($v['water_state'] == 1)
+              已交
+              @endif
+            </td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v['electric'] }}
+              @if($v['electric'] == '')
+              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#insertPay" data-attribute="电费" data-id="{{$v['id']}}" data-type="electric">添加账单</button>
+              @elseif( $v['electric_state'] ==0)
+              <a href="#" class="icon" title="未缴/可修改" data-toggle="modal" data-target="#updatePay" data-attribute="电费" data-id="{{$v['id']}}" data-type="electric" data-price="{{$v['electric']}}"><i class="iconfont icon-bianji"></i></a>
+              @elseif($v['electric_state'] ==1)
+              已交
+              @endif
+            </td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v['rent'] }}
+              @if($v['rent'] == '' )
+              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#insertPay" data-attribute="房租费" data-id="{{$v['id']}}" data-type="rent">添加账单</button>
+              @elseif($v['rent_state'] ==0)
+              <a href="#" class="icon" title="未缴/可修改" data-toggle="modal" data-target="#updatePay" data-attribute="房租费" data-id="{{$v['id']}}" data-type="rent" data-price="{{$v['rent']}}"><i class="iconfont icon-bianji"></i></a>
+              @elseif($v['rent_state'] == 1)
+              已交
+              @endif
+            </td>
+            <td align="center" valign="middle" class="borderright borderbottom">{{ $v['property'] }}
+              @if($v['property'] =='')
+              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#insertPay" data-attribute="物业费" data-id="{{$v['id']}}" data-type="property">添加账单</button>
+              @elseif($v['property_state'] ==0)
+              <a href="#" class="icon" title="未缴/可修改" data-toggle="modal" data-target="#updatePay" data-attribute="物业费" data-id="{{$v['id']}}" data-type="property" data-price="{{$v['property']}}"><i class="iconfont icon-bianji"></i></a>
+              @elseif($v['property_state'] == 1)
+              已交
+              @endif
+            </td>
+
+
+            <td align="center" valign="middle" class="borderbottom"><span class="gray"></span>
+          </tr>
+          @endforeach
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="left" style="text-align:center" valign="top" class="fenye"></td>
+    </tr>
+  </table>
+
+  <form action="{{route('payment.add')}}" method="post" id="form2">
+    <div class="modal fade" id="insertPay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">添加账单</h4>
+          </div>
+          <div class="modal-body">
+
+            <div class="panel-body">
+              {{csrf_field()}}
+              <label for="">确定金额（本月<span id="add-name"></span>）</label>
+              <input type="number" name="price" class="form-control"> <br>
+              <input type="hidden" name="id" id="add-id">
+              <input type="hidden" name="type" id="add-type">
+              <!-- <input type="hidden" id="edit-name" name="name" value=""> -->
+
             </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary">确认添加</button>
           </div>
         </div>
       </div>
-    </form>
+    </div>
+  </form>
 
+  <form action="{{route('payment.edit')}}" method="post">
+    <div class="modal fade" id="updatePay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="exampleModalLabel">修改账单</h4>
+          </div>
+          <div class="modal-body">
+
+            <div class="panel-body">
+              {{csrf_field()}}
+              <!-- 模拟put方式提交 -->
+              <input type="hidden" name="_method" value="put">
+              <label for="">确定金额（本月<span id="edit-name"></span>）</label>
+              <input type="number" id="edit-price" name="price" class="form-control"> <br>
+              <input type="hidden" id="edit-id" name="id">
+              <input type="hidden" name="type" id="edit-type">
+              <!-- <input type="hidden" id="edit-name" name="name" value=""> -->
+
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="submit" class="btn btn-primary">确认更改</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
   <script>
-    function edit(id,name,payName,price){
-	
-			// document.getElementById('标签id').innerText= '要修改的文本内容';
-			document.getElementById('pay-name').innerText = name;
-			document.getElementById('edit-price').value = price;
-			document.getElementById('edit-id').value = id;
-      document.getElementById('edit-name').value = payName;
-			
-		}
+    // function modal(id, name, payName, price) {
+
+    //   // document.getElementById('标签id').innerText= '要修改的文本内容';
+    //   document.querySelector('#type').innerText = type;
+    //   document.getElementById('edit-price').value = price;
+    //   document.getElementById('edit-id').value = id;
+    //   document.getElementById('edit-name').value = payName;
+
+    // }
+    var btn = document.querySelectorAll('.btn-default');
+    for(var i of btn) {
+      i.addEventListener('click', function(){
+        // 该this指向的是调用addEventListener的对象
+        document.querySelector('#add-name').innerText = this.dataset.attribute;
+        document.querySelector('#add-id').value = this.dataset.id;
+        document.querySelector('#add-type').value = this.dataset.type;
+        // alert('1');
+      })
+    }
+    var as = document.querySelectorAll('.icon');
+    for(var i of as) {
+      i.addEventListener('click', function(e){  
+        // 在modal中填充数据
+        document.querySelector('#edit-name').innerText = this.dataset.attribute;
+        document.querySelector('#edit-id').value = this.dataset.id;
+        document.querySelector('#edit-type').value = this.dataset.type;
+        document.querySelector('#edit-price').value = this.dataset.price;
+        // 阻止默认事件
+        // e.stopPropagation();
+      })
+    }
+   
   </script>
 </body>
+
 </html>

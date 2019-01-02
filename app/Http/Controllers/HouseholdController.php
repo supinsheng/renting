@@ -60,22 +60,4 @@ class HouseholdController extends Controller
             'req'=>$req
         ]);
     }
-    //收费管理
-    function payment() {
-        $model = new Household;
-        $data = $model->getAll();
-        // return $data;
-        return view('admin.household.pay',[
-            'data' => $data
-        ]);
-    }
-
-    function doPayment(Request $req) {
-        $data = Propertie::where('id',$req->id)->first();
-        $name = $req->name;
-        $data->$name = $req->price;
-        $data->save();
-        return back();
-        // $data->($req->name)
-    }
 }

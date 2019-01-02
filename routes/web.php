@@ -191,8 +191,9 @@ Route::middleware('adminLogin')->group(function () {
     //房屋出租记录查询、
     Route::get('/admin/select_house','HouseholdController@houseSelect')->name('select_house');
     //收费管理
-    Route::get('/admin/payment','HouseholdController@payment')->name('edit_payment');
-    Route::post('/admin/doPayment','HouseholdController@doPayment')->name('doEdit_payment');
+    Route::get('/admin/payment','admin\PayController@index')->name('payment.index');
+    Route::post('/admin/payment','admin\PayController@add')->name('payment.add');
+    Route::put('/admin/payment','admin\PayController@edit')->name('payment.edit');
 
 
 
