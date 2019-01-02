@@ -22,6 +22,8 @@ class WxpayController extends Controller
 
     public function pay(Request $req)
     {
+        $model = new Order;
+        $orderInfo = $model->select('real_payment')->where('number', $req->state)->first();
         $code = $req->code;
 
         // 获取openid
@@ -33,13 +35,12 @@ class WxpayController extends Controller
         // 订单详情
         $databat = [
             'out_trade_no' => $req->state,
-            'total_fee' => '1', // **单位：分**
+            'total_fee' => $orderInfo->real_payment, // **单位：分**
             'body' => '公租房相关费用缴纳',
             'openid' => $obj['openid'],
         ];
 
-        $model = new Order;
-        $orderInfo = $model->select('real_payment')->where('number', $req->state)->first();
+        
 
         try{
          $pay = Pay::wechat($this->config)->mp($databat);
