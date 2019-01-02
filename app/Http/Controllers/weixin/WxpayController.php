@@ -125,12 +125,17 @@ class WxpayController extends Controller
                             'state'=> 1,
                             'cost' => $payTable->money
                         ]);
-                        $balance = session('balance') + ($cost - $payTable->money);
+                        // 获取住户的余额
+                        $balance = DB::table('households')
+                                        ->select('balance')
+                                        ->where('id','=',$order->user_id)
+                                        ->first();
+                        $balance += $cost - $payTable->money;
                         // 将多余的金额添加到住户的余额
                         $ret3 = DB::table('households')
-                                ->where('id','=',session('id'))
+                                ->where('id','=',$order->user_id)
                                 ->update(['balance' => $balance]);
-                        Log::debug($ret1 . '=--11=' . $ret2 . '2.....3'. $ret3);
+                        Log::debug($ret1 . '====' . $ret2 . '===='. $ret3);
 
                         if($ret1 && $ret2 && $ret3)
                         {
