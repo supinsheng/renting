@@ -126,11 +126,11 @@ class WxpayController extends Controller
                             'cost' => $payTable->money
                         ]);
                         // 获取住户的余额
-                        $balance = DB::table('households')
+                        $household = DB::table('households')
                                         ->select('balance')
                                         ->where('id','=',$order->user_id)
                                         ->first();
-                        $balance += $cost - $payTable->money;
+                        $balance = $household->balance + ($cost - $payTable->money);
                         // 将多余的金额添加到住户的余额
                         $ret3 = DB::table('households')
                                 ->where('id','=',$order->user_id)
