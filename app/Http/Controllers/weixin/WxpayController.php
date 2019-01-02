@@ -8,6 +8,8 @@ use Yansongda\Pay\Pay;
 use App\Model\Order;
 use App\Model\households;
 use DB;
+use Illuminate\Support\Facades\Log;
+
 class WxpayController extends Controller
 {
     protected $config = [
@@ -78,6 +80,12 @@ class WxpayController extends Controller
                     ->where('date','=',date('Y-m'))
                     ->first();
                     $cost = $payTable->cost + $order->real_payment;
+
+
+                    Log::debug($cost . '=-----s=' . $payTable->money);
+
+
+
                     // 如果金额等于
                     if($cost == $payTable->money) {
                         // 开启事务
