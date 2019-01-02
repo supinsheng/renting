@@ -141,10 +141,10 @@ class WxpayController extends Controller
                         $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
 
                         // 更新用户余额，因为小于，所以不用更新缴费状态
-                        $ret2 = DB::table($order->type)->where([
-                            ['user_id','=',$order->user_id],
-                            ['date','=',date('Y-m')],
-                        ])->update(['cost'=>$cost]);
+                        $ret2 = DB::table($order->type)
+                        ->where('user_id','=',$order->user_id)
+                        ->where('date','=',date('Y-m'))
+                        ->update(['cost'=>$cost]);
                         if($ret1 && $ret2)
                         {
                             // 提交事务
