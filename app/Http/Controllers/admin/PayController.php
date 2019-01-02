@@ -15,7 +15,10 @@ class PayController extends Controller
     //收费管理
     function index() {
         // 获取username不为空的住户（即排除退租的住户）
-        $data = Household::where('username','!=','')->where('address','!=','')->get();
+        $data = Household::select('id','username','realname')
+                        ->where('username','!=','')
+                        ->where('address','!=','')
+                        ->get();
         $arr = [];
         foreach($data as $v)
         {

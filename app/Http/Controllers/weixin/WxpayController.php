@@ -73,10 +73,10 @@ class WxpayController extends Controller
                 // 如果订单的状态为未支付状态 ，说明是第一次收到消息，更新订单状态 
                 if($order->state == 0)
                 {
-                    $payTable = DB::table($order->type)->where([
-                        ['user_id','=',$order->user_id],
-                        ['date','=',date('Y-m')],
-                    ])->first();
+                    $payTable = DB::table($order->type)
+                    ->where('user_id','=',$order->user_id)
+                    ->where('date','=',date('Y-m'))
+                    ->first();
                     $cost = $payTable->cost + $order->real_payment;
                     // 如果金额等于
                     if($cost == $payTable->money) {
@@ -85,13 +85,13 @@ class WxpayController extends Controller
                         // 设置订单为已支付状态
                         $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
                         // 更新用户缴费状态，添加缴费金额
-                        $ret2 = DB::table($order->type)->where([
-                            ['user_id','=',$order->user_id],
-                            ['date','=',date('Y-m')],
-                        ])->update(
-                            ['state'=> 1],
-                            ['cost'=> $cost]
-                        );
+                        $ret2 = DB::table($order->type)
+                        ->where('user_id','=',$order->user_id)
+                        ->where('date','=',date('Y-m'))
+                        ->update([
+                            'state'=> 1,
+                            'cost' => $cost
+                        ]);
                         if($ret1 && $ret2)
                         {
                             // 提交事务
@@ -110,17 +110,18 @@ class WxpayController extends Controller
                         $ret1 = Order::where('number',$data->out_trade_no)->update(['state'=>'1']);
 
                         // 更新用户缴费状态，并将cost添加到最大值
-                        $ret2 = DB::table($order->type)->where([
-                            ['user_id','=',$order->user_id],
-                            ['date','=',date('Y-m')],
-                        ])->update(
-                            ['state'=>1],
-                            ['cost'=>$payTable->money]
-                        );
+                        $ret2 = DB::table($order->type)
+                        ->where('user_id','=',$order->user_id)
+                        ->where('date','=',date('Y-m'))
+                        ->update([
+                            'state'=> 1,
+                            'cost' => $payTable->money
+                        ]);
+                        $balance = session('balance') + ($cost - $payTable->money);
                         // 将多余的金额添加到住户的余额
                         $ret3 = DB::table('households')
                                 ->where('id','=',session('id'))
-                                ->increment('balance', ($cost-$payTable->money) );
+                                ->update(['balance' => $balance]);
                         if($ret1 && $ret2 && $ret3)
                         {
                             // 提交事务
