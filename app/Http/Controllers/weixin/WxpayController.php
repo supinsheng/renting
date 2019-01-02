@@ -35,7 +35,7 @@ class WxpayController extends Controller
         // 订单详情
         $databat = [
             'out_trade_no' => $req->state,
-            'total_fee' => $orderInfo->real_payment, // **单位：分**
+            'total_fee' => (int)$orderInfo->real_payment, // **单位：分**
             'body' => '公租房相关费用缴纳',
             'openid' => $obj['openid'],
         ];
