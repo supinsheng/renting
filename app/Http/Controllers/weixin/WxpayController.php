@@ -130,6 +130,8 @@ class WxpayController extends Controller
                         $ret3 = DB::table('households')
                                 ->where('id','=',session('id'))
                                 ->update(['balance' => $balance]);
+                        Log::debug($ret1 . '=--11=' . $ret2 . '2.....3'. $ret3);
+
                         if($ret1 && $ret2 && $ret3)
                         {
                             // 提交事务
