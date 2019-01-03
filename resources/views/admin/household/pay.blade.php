@@ -125,7 +125,7 @@ th {
     </tr>
   </table>
 
-  <form action="{{route('payment.add')}}" method="post" id="form2">
+  <form action="{{route('payment.add')}}"  onsubmit="return toVaild1()" method="post">
     <div class="modal fade" id="insertPay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -138,7 +138,7 @@ th {
             <div class="panel-body">
               {{csrf_field()}}
               <label for="">确定金额（本月<span id="add-name"></span>）</label>
-              <input type="number" name="price" class="form-control"> <br>
+              <input type="number" name="price" id="add-price" class="form-control"> <br>
               <input type="hidden" name="id" id="add-id">
               <input type="hidden" name="type" id="add-type">
               <!-- <input type="hidden" id="edit-name" name="name" value=""> -->
@@ -154,7 +154,7 @@ th {
     </div>
   </form>
 
-  <form action="{{route('payment.edit')}}" method="post">
+  <form action="{{route('payment.edit')}}" method="post"  onsubmit="return toVaild2()">
     <div class="modal fade" id="updatePay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -218,7 +218,43 @@ th {
         // e.stopPropagation();
       })
     }
-   
+    function toVaild1(){
+      var type = document.querySelector('#add-type').value;
+      var id = document.querySelector('#add-id').value;
+      var price = document.querySelector('#add-price').value;
+      if(type.length == 0) {
+        alert('无法确定费用类型，请重试！');
+        return false;
+      }
+      if(id.length == 0) {
+        alert('无法确定是哪个用户，请重试！');
+        return false;
+      }
+      if(price.length == 0) {
+        alert('费用数目不能为空！');
+        return false;
+      }
+      return true;
+    }
+    function toVaild2(){
+      var type = document.querySelector('#edit-type').value;
+      var id = document.querySelector('#edit-id').value;
+      var price = document.querySelector('#edit-price').value;
+      // 验证数据是否无误
+      if(type.length == 0) {
+        alert('无法确定费用类型，请重试！');
+        return false;
+      }
+      if(id.length == 0) {
+        alert('无法确定是哪个用户，请重试！');
+        return false;
+      }
+      if(price.length == 0) {
+        alert('费用数目不能为空！');
+        return false;
+      }
+      return true;
+    }
   </script>
 </body>
 

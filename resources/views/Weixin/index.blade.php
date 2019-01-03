@@ -36,8 +36,13 @@
 	</div>
 	<div class="orderdetail">
 		<div>
+		@if(session()->has('contract'))
+			<div class="price">{{session('contract')}}</div>
+			<div>签约费用</div>
+		@else
 			<div class="price">0.00</div>
 			<div>未支付-签约费用</div>
+		@endif
 		</div>
 		<div>
 			<div class="price">0.00</div>

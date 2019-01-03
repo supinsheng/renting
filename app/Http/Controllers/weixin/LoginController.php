@@ -36,7 +36,7 @@ class LoginController extends Controller
                     'cardId' => $household->cardId,
                     'village' => $household->village,
                     'address' => $household->address,
-                    'balance' => $household->balance //保存住户的余额，任何关于余额的操作都需要更新session
+                    'contract' => $household->contract //签约费用
                 ]);
                 // 跳转
                 return redirect()->route('weixin_index');

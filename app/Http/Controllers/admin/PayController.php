@@ -62,12 +62,15 @@ class PayController extends Controller
     }
 
     function add(Request $req) {
-        // $data = Propertie::where('id',$req->id)->first();
-        // $name = $req->name;
-        // $data->$name = $req->price;
-        // $data->save();
-        // return back();
-        // $data->($req->name)
+        $req->validate([
+            'id' => 'required',
+            'type' => 'required',
+            'money'=> 'required'
+        ],[
+            'id.required' => '无法确定是哪个用户',
+            'type.required' => '无法确定是哪个缴费类型',
+            'money.required' => '金额不能为空'
+        ]);
         DB::table($req->type)->insert([
             'user_id' => $req->id,
             'money' => $req->price,
@@ -76,6 +79,16 @@ class PayController extends Controller
         return back();
     }
     function edit(Request $req) {
+        // 验证数据
+        $req->validate([
+            'id' => 'required',
+            'type' => 'required',
+            'money'=> 'required'
+        ],[
+            'id.required' => '无法确定是哪个用户',
+            'type.required' => '无法确定是哪个缴费类型',
+            'money.required' => '金额不能为空'
+        ]);
         // 更改数据
         DB::table($req->type)->where('user_id','=',$req->id)->update(['money'=>$req->price]);
         return back();
