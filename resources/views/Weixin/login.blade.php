@@ -25,6 +25,9 @@
 					<div class="xieyi">
 						<input type="checkbox" name="isagree" />我同意<a href="">《建宁县公租房微信平台协议》</a>
 					</div>
+					<div  class="xieyi">
+						<a href="{{route('retrieve2')}}" style="color:#333;">忘记密码?</a>
+					</div>
 					<div class="login" onclick="subform()">
 						登录
 					</div>
@@ -38,14 +41,23 @@
 <script type="text/javascript">
 	// var cip = returnCitySN["cip"]+','+returnCitySN["cname"]
 	// localStorage.setItem('cip',returnCitySN['cip'])
-	// $.ajax({
-	// 	url:'http://blog.huyp.xin/1.php',
-	// 	type:'GET',
-	// 	success:function(data){
-	// 		localStorage.setItem('cip',data)
-	// 	}
-	// })
+	var jwt = localStorage.getItem('jwt');
+	console.log(jwt)
+	if(jwt != null) {
+		var url = "{{route('jwt')}}"+'?jwt='+jwt;
+		$.get(url,function(data){
+			// console.log(data)
+			if(data == 1){
+				// 跳转到首页
+				location.href = "{{route('weixin_index')}}";
+			} else{
+				alert('用户信息已失效，请重新登录！');
+				localStorage.removeItem('jwt');
+			}
+		})
+	}
 	
+
 	//点击登录提交表单
 	var form = document.getElementById('test_form');
     function subform () {

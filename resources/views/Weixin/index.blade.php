@@ -7,6 +7,16 @@
 	<title>掌上公租房</title>
 	<link rel="stylesheet" type="text/css" href="/css/weixin/base.css" />
 	<link rel="stylesheet" type="text/css" href="/css/weixin/index.css" />
+	<link rel="stylesheet" href="/css/iconfont.css">
+	<style>
+		.iconfont {
+			font-family:"iconfont" !important;
+			font-size:2.5rem;
+			font-style:normal;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			}
+	</style>
 </head>
 
 <body>
@@ -105,6 +115,16 @@
 			<div class="ico" style="color: #259B24;">&#xe617;</div>
 			<div class="tit">修改手机</div>
 		</div>
+		<div onclick="location.href='{{route('retrieve1')}}' ">
+			<div class="ico" style="color: #259B24"><i class="iconfont icon-jiesuo"></i></div>
+			<div class="tit">修改密码</div>
+		</div>
 	</div>
+	<script>
+		var jwt = "{{$jwt}}";
+		if(jwt != null) {
+		    localStorage.setItem('jwt', jwt);
+		}
+	</script>
 </body>
 </html>

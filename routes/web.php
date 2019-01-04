@@ -4,6 +4,8 @@
 Route::get('/','weixin\LoginController@login')->name('weixin_login');
 //微信--登录验证
 Route::post('/','weixin\LoginController@dologin')->name('weixin_dologin');
+// jwt 验证
+Route::get('/jwt','weixin\LoginController@jwt')->name('jwt');
 //微信--主页
 Route::get('/index','weixin\IndexController@index')->name('weixin_index');
 //微信--显示保修申请
@@ -58,7 +60,9 @@ Route::get('/ajaxOrder','weixin\OrderController@ajaxOrder')->name('ajaxOrder');
 Route::get('/wxpay','weixin\WxpayController@pay')->name('wxpay');
 Route::post('/notify','weixin\WxpayController@notify');
 
-
+// 用户修改密码和找回密码
+Route::get('/retrieve1', 'weixin\IndexController@retrieve1')->name('retrieve1');
+Route::get('/retrieve2', 'weixin\IndexController@retrieve2')->name('retrieve2');
 
 // 后台人口--登录页
 Route::get('/admin','AdminController@admin_login')->name('admin_login');

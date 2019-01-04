@@ -11,7 +11,9 @@ use App\Model\Electric;
 use App\Model\Property;
 class IndexController extends Controller
 {
-    public function  index(){
+    public function  index(Request $req){
+        // 获取用户令牌
+        $jwt = isset($req->jwt) ? $req->jwt: '' ;
             $user = House::where('hold_name',session('realname'))->first();
             $ishouse='';
             if($user){
@@ -36,6 +38,7 @@ class IndexController extends Controller
                 'rent' => isset($rent->moeny)?$rent->money:'0.00',
                 'elec' => isset($elec->money)?$elec->money:'0.00',
                 'prop' => isset($prop->money)?$prop->moeny:'0.00',
+                'jwt' => $jwt
             ]);
     }
     // 地图
@@ -52,5 +55,11 @@ class IndexController extends Controller
     }
     public function fanxinzhanshi1(){
         return view('Weixin.fanxinzhanshi1');
+    }
+    function retrieve1(){
+        return view('Weixin.retrieve1');
+    }
+    function retrieve2(){
+        return view('Weixin.retrieve2');
     }
 }

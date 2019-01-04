@@ -250,16 +250,7 @@ class AdminController extends Controller
             'end_time'=>$end_time,
             'residual_lease'=>$residual_lease,
         ]);
-        // $house->state = '已出租';
-        // $house->hold_name = $req->realname;
-        // $house->hold_phone = $req->phone;
-        // $house->start_time = $req->start;
-        // if($req->rent)
-        //     $house->rent = $req->rent;
-        // $house->end_time = date("Y-m-d", strtotime("+".$req->time." months", strtotime("".$req->start."")));
        
-        // $house->save();
-
         return redirect()->route('indexMain');
     }
 
