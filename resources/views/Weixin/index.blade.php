@@ -55,11 +55,11 @@
 		@endif
 		</div>
 		<div>
-			<div class="price">0.00</div>
+			<div class="price">{{$rent}}</div>
 			<div>未支付-租金</div>
 		</div>
 		<div>
-			<div class="price">0.00</div>
+			<div class="price">{{$paid}}</div>
 			<div>已支付</div>
 		</div>
 	</div>
@@ -70,15 +70,15 @@
 	</div>
 	<div class="orderdetail">
 		<div>
-			<div class="price">0.00</div>
+			<div class="price">{{$elec}}</div>
 			<div>电费</div>
 		</div>
 		<div>
-			<div class="price">0.00</div>
+			<div class="price">{{$water}}</div>
 			<div>水费</div>
 		</div>
 		<div>
-			<div class="price">0.00</div>
+			<div class="price">{{$prop}}</div>
 			<div>物业费</div>
 		</div>
 	</div>

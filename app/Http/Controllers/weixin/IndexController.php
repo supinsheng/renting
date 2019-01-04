@@ -21,25 +21,53 @@ class IndexController extends Controller
             }else{
                 $ishouse='未入住';
             }
-            $rent =  Rent::select('money')
-            ->where('id',session('id'))
+            $rent =  Rent::select('money','cost')
+            ->where('user_id',session('id'))
             ->where('date', date('Y-m'))
             ->first();
-            $elec = Electric::select('money')
-            ->where('id',session('id'))
+            $elec = Electric::select('money','cost')
+            ->where('user_id',session('id'))
             ->where('date', date('Y-m'))
             ->first();
-            $prop = Property::select('money')
-            ->where('id',session('id'))
+            $prop = Property::select('money','cost')
+            ->where('user_id',session('id'))
             ->where('date', date('Y-m'))
             ->first();
-            return view('Weixin.index',[
-                'ishouse'=>$ishouse,
-                'rent' => isset($rent->moeny)?$rent->money:'0.00',
-                'elec' => isset($elec->money)?$elec->money:'0.00',
-                'prop' => isset($prop->money)?$prop->moeny:'0.00',
-                'jwt' => $jwt
-            ]);
+            $water = Water::select('money','cost')
+            ->where('user_id',session('id'))
+            ->where('date', date('Y-m'))
+            ->first();
+            // 当前月份已经支付的费用
+            $arr = ['rent'=>0,'water'=>0,'prop'=>0,'elec'=>0,'jwt'=>$jwt];
+            $paid = 0;
+            if($rent) {
+                $arr['rent'] = $rent->money - $rent->cost;
+                $paid += $rent->cost;
+            }
+            if($water) {
+                $arr['water'] = $water->money - $water->cost;
+                $paid += $water->cost;
+            }
+            if($prop) {
+                $arr['prop'] = $prop->money - $prop->cost;
+                $paid += $prop->cost;
+            }
+            if($elec) {
+                $arr['elec'] = $elec->money - $elec->cost;
+                $paid += $elec->cost;
+            }
+            $arr['paid'] = $paid;
+            $arr['ishouse'] = $ishouse;
+            // return view('Weixin.index',[
+            //     'ishouse'=>$ishouse,
+            //     'rent' => isset($rent->money)?($rent->money - $rent->cost):'0.00',
+            //     'elec' => isset($elec->money)?($elec->money - $elec->cost):'0.00',
+            //     'prop' => isset($prop->money)?($prop->money - $prop->cost):'0.00',
+            //     'water' => isset($water->money)?($water->money - $water->cost):'0.00',
+            //     'jwt' => $jwt,
+            //     'paid' => $paid
+            // ]);
+            return view('Weixin.index', $arr);
     }
     // 地图
     public function ditu(){
