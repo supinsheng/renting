@@ -40,7 +40,9 @@ class PayController extends Controller
                                 ->orWhere('realname','like',"%$req->keyword%");
                         });
         } 
-        $data = $db->orderBy('households.id','desc')->paginate(15);
+        // 排除用户名注销的住户
+        $data = $db->where('address','!=','')
+                   ->orderBy('households.id','desc')->paginate(15);
         
         return view('admin.household.pay',[
             'data' => $data,
