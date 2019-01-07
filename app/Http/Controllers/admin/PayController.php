@@ -13,51 +13,39 @@ use DB;
 class PayController extends Controller
 {
     //收费管理
-    function index() {
-        // 获取username不为空的住户（即排除退租的住户）
-        $data = Household::select('id','username','realname')
-                        ->where('username','!=','')
-                        ->where('address','!=','')
-                        ->get();
-        $arr = [];
-        foreach($data as $v)
-        {
-            $rent = Rent::where('date','=',date('Y-m'))
-            ->where('user_id','=',$v['id'])
-            ->first();
-
-            $water= Water::where('date','=',date('Y-m'))
-            ->where('user_id','=',$v['id'])
-            ->first();
-
-            $property = Property::where('date','=',date('Y-m'))
-            ->where('user_id','=',$v['id'])
-            ->first();
-
-            $electric = Electric::where('date','=',date('Y-m'))
-            ->where('user_id','=',$v['id'])
-            ->first();
-
-            $arr[] = [
-                'id' => $v['id'],
-                'rent' => $rent['money'],
-                'rent_state' => $rent['state'],
-                'water' => $water['money'],
-                'water_state' => $water['state'],
-                'property' => $property['money'],
-                'property_state' => $property['state'],
-                'electric' => $electric['money'],
-                'electric_state' => $electric['state'],
-                'realname' => $v['realname'],
-                'username' => $v['username'],
-                'date' => date('Y-m'),
-            ]; 
-
-        }
-
-        // return $data;
+    function index(Request $req) {
+        $db =  DB::table('households')
+                    ->select('households.id','username','realname',
+                    'rent.money as rent','rent.state as rent_state',
+                    'water.money as water','water.state as water_state',
+                    'property.money as prop','property.state as prop_state',
+                    'electric.money as elec','electric.state as elec_state')
+                    ->leftJoin('rent',function($join) {
+                        $join->on('households.id','=','rent.user_id')
+                                ->where('rent.date','=',date('Y-m'));
+                    })->leftJoin('water',function($join) {
+                        $join->on('households.id','=','water.user_id')
+                                ->where('water.date','=',date('Y-m'));
+                    })->leftJoin('property',function($join) {
+                        $join->on('households.id','=','property.user_id')
+                                ->where('property.date','=',date('Y-m'));
+                    })->leftJoin('electric',function($join) {
+                        $join->on('households.id','=','electric.user_id')
+                                ->where('electric.date','=',date('Y-m'));
+                    });
+        if($req->keyword) {
+            $db = $db->where(function($q) use($req){
+                            $q->where('households.id','like',"%$req->keyword%")
+                                ->orWhere('username','like',"%$req->keyword%")
+                                ->orWhere('realname','like',"%$req->keyword%");
+                        });
+        } 
+        $data = $db->orderBy('households.id','desc')->paginate(15);
+        
         return view('admin.household.pay',[
-            'data' => $arr
+            'data' => $data,
+            'req' => $req,
+            'date' => date('Y-m')
         ]);
     }
 
