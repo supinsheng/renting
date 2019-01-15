@@ -72,7 +72,6 @@ Route::post('/admin_doLogin','AdminController@admin_doLogin')->name('admin_doLog
 Route::get('/admin_logout','AdminController@admin_logout')->name('admin_logout');
 Route::middleware('adminLogin')->group(function () {
     // 报修
-    // Route::resource('/admin/repair','RepairController');
     Route::get('/admin/repair','RepairController@index')->name('repair.index');
     Route::get('/admin/repair/edit','RepairController@edit')->name('repair.edit');
     // 房屋图表
@@ -211,16 +210,16 @@ Route::middleware('adminLogin')->group(function () {
     // 删除新闻
     Route::get('/admin/delNew/{id}','NewController@del')->name('delNew');
     //权限管理
-    Route::get('/admin/jurList','JurController@list')->name('jurList');
+    Route::get('/admin/jurList','admin\JurController@list')->name('jurList');
 
-    Route::post('/admin/addUser','JurController@add')->name('addUser');
-    Route::post('/admin/editUser','JurController@edit')->name('editUser');
+    Route::post('/admin/addUser','admin\JurController@add')->name('addUser');
+    Route::post('/admin/editUser','admin\JurController@edit')->name('editUser');
 
-    Route::get('/admin/delUser/{id}','JurController@del')->name('delUser');
+    Route::get('/admin/delUser/{id}','admin\JurController@del')->name('delUser');
 
-    Route::get('/admin/juris','JurController@jurisList')->name('jurisList');
-    Route::post('/admin/addJuris','JurController@addJuris')->name("addJuris");
-    Route::get('/admin/delJuris/{id}','JurController@delJuris')->name('delJuris');
+    Route::get('/admin/juris','admin\JurController@jurisList')->name('jurisList');
+    Route::post('/admin/addJuris','admin\JurController@addJuris')->name("addJuris");
+    Route::get('/admin/delJuris/{id}','admin\JurController@delJuris')->name('delJuris');
 
     // 表格审核
     Route::get('/admin/examine','ExamineController@list')->name('examineList');

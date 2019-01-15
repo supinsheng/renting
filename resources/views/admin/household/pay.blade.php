@@ -67,7 +67,11 @@ th {
     </tr>
     <tr>
       <td align="left" valign="top">
-
+      @if($errors->any())
+      @foreach($errors->all() as $e)
+        <span style='color:red;margin-right:20px;' >{{$e}}</span>
+      @endforeach
+      @endif
         <table width="100%" border="0" cellspacing="0" cellpadding="0" id="main-tab">
           <tr>
             <th align="center" valign="middle" class="borderright">编号</th>
@@ -135,7 +139,7 @@ th {
     </tr>
   </table>
 
-  <form action="{{route('payment.add')}}"  onsubmit="return toVaild1()" method="post">
+  <form action="{{route('payment.add')}}"  method="post">
     <div class="modal fade" id="insertPay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -151,8 +155,6 @@ th {
               <input type="number" name="price" id="add-price" class="form-control"> <br>
               <input type="hidden" name="id" id="add-id">
               <input type="hidden" name="type" id="add-type">
-              <!-- <input type="hidden" id="edit-name" name="name" value=""> -->
-
             </div>
           </div>
           <div class="modal-footer">
@@ -164,7 +166,7 @@ th {
     </div>
   </form>
 
-  <form action="{{route('payment.edit')}}" method="post"  onsubmit="return toVaild2()">
+  <form action="{{route('payment.edit')}}" method="post">
     <div class="modal fade" id="updatePay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -182,8 +184,6 @@ th {
               <input type="number" id="edit-price" name="price" class="form-control"> <br>
               <input type="hidden" id="edit-id" name="id">
               <input type="hidden" name="type" id="edit-type">
-              <!-- <input type="hidden" id="edit-name" name="name" value=""> -->
-
             </div>
           </div>
           <div class="modal-footer">
@@ -197,22 +197,13 @@ th {
   <script src="/vendor/jquery/jquery.min.js"></script>
   <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
   <script>
-    // function modal(id, name, payName, price) {
-
-    //   // document.getElementById('标签id').innerText= '要修改的文本内容';
-    //   document.querySelector('#type').innerText = type;
-    //   document.getElementById('edit-price').value = price;
-    //   document.getElementById('edit-id').value = id;
-    //   document.getElementById('edit-name').value = payName;
-
-    // }
     var btn = document.querySelectorAll('.btn-default');
     for(var i of btn) {
       i.addEventListener('click', function(){
         // 该this指向的是调用addEventListener的对象
-        document.querySelector('#add-name').innerText = this.dataset.attribute;
-        document.querySelector('#add-id').value = this.dataset.id;
-        document.querySelector('#add-type').value = this.dataset.type;
+        document.querySelector('#add-name').innerText = this.getAttribute('data-attribute');
+        document.querySelector('#add-id').value = this.getAttribute('data-id');
+        document.querySelector('#add-type').value = this.getAttribute('data-type');
         // alert('1');
       })
     }
@@ -220,50 +211,12 @@ th {
     for(var i of as) {
       i.addEventListener('click', function(e){  
         // 在modal中填充数据
-        document.querySelector('#edit-name').innerText = this.dataset.attribute;
-        document.querySelector('#edit-id').value = this.dataset.id;
-        document.querySelector('#edit-type').value = this.dataset.type;
-        document.querySelector('#edit-price').value = this.dataset.price;
-        // 阻止默认事件
+        document.querySelector('#edit-name').innerText =this.getAttribute('data-attribute');
+        document.querySelector('#edit-id').value = this.getAttribute('data-id');
+        document.querySelector('#edit-type').value = this.getAttribute('data-type');
+        document.querySelector('#edit-price').value = this.getAttribute('data-price');
         // e.stopPropagation();
       })
-    }
-    function toVaild1(){
-      var type = document.querySelector('#add-type').value;
-      var id = document.querySelector('#add-id').value;
-      var price = document.querySelector('#add-price').value;
-      if(type.length == 0) {
-        alert('无法确定费用类型，请重试！');
-        return false;
-      }
-      if(id.length == 0) {
-        alert('无法确定是哪个用户，请重试！');
-        return false;
-      }
-      if(price.length == 0) {
-        alert('费用数目不能为空！');
-        return false;
-      }
-      return true;
-    }
-    function toVaild2(){
-      var type = document.querySelector('#edit-type').value;
-      var id = document.querySelector('#edit-id').value;
-      var price = document.querySelector('#edit-price').value;
-      // 验证数据是否无误
-      if(type.length == 0) {
-        alert('无法确定费用类型，请重试！');
-        return false;
-      }
-      if(id.length == 0) {
-        alert('无法确定是哪个用户，请重试！');
-        return false;
-      }
-      if(price.length == 0) {
-        alert('费用数目不能为空！');
-        return false;
-      }
-      return true;
     }
   </script>
 </body>

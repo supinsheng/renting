@@ -24,7 +24,7 @@ class AdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required | min:3 | max:15',
+            'name' => 'required | min:3 | max:15 | unique:admins,name',
             'passwd' => 'required | min:6 | max:20'
         ];
     }
@@ -33,7 +33,8 @@ class AdminRequest extends FormRequest
     {
        return [
            'name.required'=>'账号不能为空',
-           'passwd.required'=>'密码不能为空'
+           'passwd.required'=>'密码不能为空',
+           'name.unique' => '用户名重复，请重新输入！'
        ];
     }
 }

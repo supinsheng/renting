@@ -52,7 +52,15 @@ class PayController extends Controller
     }
 
     function add(Request $req) {
- 
+        $req->validate([
+            'id' => 'required',
+            'price' => 'required',
+            'type' => 'required'
+        ],[
+            'id.required' => '未知用户，请重新操作',
+            'price.required' => '金额不能为空',
+            'type.required' => '缴费类型不能为空'
+        ]);
         DB::table($req->type)->insert([
             'user_id' => $req->id,
             'money' => $req->price,
@@ -61,6 +69,15 @@ class PayController extends Controller
         return back();
     }
     function edit(Request $req) {
+        $req->validate([
+            'id' => 'required',
+            'price' => 'required',
+            'type' => 'required'
+        ],[
+            'id.required' => '未知用户，请重新操作',
+            'price.required' => '金额不能为空',
+            'type.required' => '缴费类型不能为空'
+        ]);
         // 更改数据
         DB::table($req->type)->where('user_id','=',$req->id)->update(['money'=>$req->price]);
         return back();
