@@ -61,11 +61,18 @@ class PayController extends Controller
             'price.required' => '金额不能为空',
             'type.required' => '缴费类型不能为空'
         ]);
-        DB::table($req->type)->insert([
-            'user_id' => $req->id,
-            'money' => $req->price,
-            'date' => date('Y-m')
-        ]);
+        $date = date("Y-m");
+        $costs = DB::table($req->type)->where('user_id','=',$req->id)
+        ->where('date','=',$date)->first();
+        // 判断记录是否已经存在
+        if(!$costs) {
+            DB::table($req->type)->insert([
+                'user_id' => $req->id,
+                'money' => $req->price,
+                'date' => date('Y-m')
+            ]);
+        }
+       
         return back();
     }
     function edit(Request $req) {
