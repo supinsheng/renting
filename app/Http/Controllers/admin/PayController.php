@@ -62,8 +62,11 @@ class PayController extends Controller
             'type.required' => '缴费类型不能为空'
         ]);
         $date = date("Y-m");
-        $costs = DB::table($req->type)->where('user_id','=',$req->id)
-        ->where('date','=',$date)->first();
+        // 先查询数据库，来判断是否重复添加了
+        $costs = DB::table($req->type)
+                    ->where('user_id','=',$req->id)
+                    ->where('date','=',$date)
+                    ->first();
         // 判断记录是否已经存在
         if(!$costs) {
             DB::table($req->type)->insert([
