@@ -228,6 +228,8 @@ Route::middleware('adminLogin')->group(function () {
 
     // 房屋报表
     Route::get('/admin/export','admin\ExportController@index')->name('export');
+    // 确定已收费
+    Route::get('/admin/fixed_charges', 'admin\PayController@fixed')->name('fixed');
 });
 
 //后台2

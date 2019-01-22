@@ -89,7 +89,23 @@ class PayController extends Controller
             'type.required' => '缴费类型不能为空'
         ]);
         // 更改数据
-        DB::table($req->type)->where('user_id','=',$req->id)->update(['money'=>$req->price]);
+        DB::table($req->type)
+        ->where('user_id','=',$req->id)
+        ->where('date','=',date('Y-m'))
+        ->update(['money'=>$req->price]);
+        return back();
+    }
+    function fixed(Request $req){
+        // 先根据类型和id查找数据
+        $model = DB::table($req->type)
+        ->where('user_id','=',$req->id)
+        ->where('date','=',date('Y-m'));
+        $data = $model->get();
+        // 判断是否已经缴费
+        if($data[0]->state == '0') {
+            
+            $model->update(['cost'=>$data[0]->money,'state'=>'1']);
+        }
         return back();
     }
 }

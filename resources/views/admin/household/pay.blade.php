@@ -95,6 +95,8 @@ th {
               <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#insertPay" data-attribute="水费" data-id="{{$v->id}}" data-type="water">添加账单</button>
               @elseif($v->water_state ==0)
               <a href="#" class="icon" title="未缴/可修改"  data-toggle="modal" data-target="#updatePay" data-attribute="水费" data-id="{{$v->id}}" data-type="water" data-price="{{$v->water}}"><i class="iconfont icon-bianji"></i></a>
+              <a href="{{route('fixed',['id'=>$v->id,'type'=>'water'])}}" onclick="return confirm('请确定用户已经缴费了吗？')" class="icon" title="确定缴费"><i class="iconfont icon-xiayibu"></i></a>
+
               @elseif($v->water_state == 1)
               已交
               @endif
@@ -104,6 +106,8 @@ th {
               <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#insertPay" data-attribute="电费" data-id="{{$v->id}}" data-type="electric">添加账单</button>
               @elseif( $v->elec_state ==0)
               <a href="#" class="icon" title="未缴/可修改" data-toggle="modal" data-target="#updatePay" data-attribute="电费" data-id="{{$v->id}}" data-type="electric" data-price="{{$v->elec}}"><i class="iconfont icon-bianji"></i></a>
+              <a href="{{route('fixed',['id'=>$v->id,'type'=>'electric'])}}" onclick="return confirm('请确定用户已经缴费了吗？')" class="icon" title="确定缴费"><i class="iconfont icon-xiayibu"></i></a>
+
               @elseif($v->elec_state ==1)
               已交
               @endif
@@ -113,6 +117,8 @@ th {
               <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#insertPay" data-attribute="房租费" data-id="{{$v->id}}" data-type="rent">添加账单</button>
               @elseif($v->rent_state ==0)
               <a href="#" class="icon" title="未缴/可修改" data-toggle="modal" data-target="#updatePay" data-attribute="房租费" data-id="{{$v->id}}" data-type="rent" data-price="{{$v->rent}}"><i class="iconfont icon-bianji"></i></a>
+              <a href="{{route('fixed',['id'=>$v->id,'type'=>'rent'])}}" onclick="return confirm('请确定用户已经缴费了吗？')" class="icon" title="确定缴费"><i class="iconfont icon-xiayibu"></i></a>
+
               @elseif($v->rent_state == 1)
               已交
               @endif
@@ -122,6 +128,7 @@ th {
               <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#insertPay" data-attribute="物业费" data-id="{{$v->id}}" data-type="property">添加账单</button>
               @elseif($v->prop_state ==0)
               <a href="#" class="icon" title="未缴/可修改" data-toggle="modal" data-target="#updatePay" data-attribute="物业费" data-id="{{$v->id}}" data-type="property" data-price="{{$v->prop}}"><i class="iconfont icon-bianji"></i></a>
+              <a href="{{route('fixed',['id'=>$v->id,'type'=>'property'])}}" onclick="return confirm('请确定用户已经缴费了吗？')" class="icon" title="确定缴费"><i class="iconfont icon-xiayibu"></i></a>
               @elseif($v->prop_state == 1)
               已交
               @endif
